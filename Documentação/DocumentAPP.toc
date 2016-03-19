@@ -1,3 +1,4 @@
 \select@language {portuguese}
-\contentsline {section}{\numberline {0.1}Requisitos Funcionais do Sistema}{2}
-\contentsline {section}{\numberline {0.2}Tabelas}{3}
+\contentsline {section}{\numberline {0.1}Descri\IeC {\c c}\IeC {\~a}o Textual Geral do Projeto }{2}
+\contentsline {section}{\numberline {0.2}Requisitos Funcionais do Sistema}{3}
+\contentsline {section}{\numberline {0.3}Tabelas}{4}
