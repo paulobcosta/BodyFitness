@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.22)  26 MAR 2016 11:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.22)  26 MAR 2016 14:20
 entering extended mode
 **./DocumentAPP.tex
 (DocumentAPP.tex
@@ -489,7 +489,8 @@ File: babel.def 2016/01/08 3.9n Babel common definitions
 \U@D=\dimen122
 )
 Package babel Info: Making " an active character on input line 145.
-)) (DocumentAPP.aux)
+)) (DocumentAPP.aux (desc.aux) (requisitosAPP.aux) (diagramaUso.aux)
+(requisitosnApp.aux) (tabelasAPP.aux))
 \openout1 = `DocumentAPP.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -577,45 +578,45 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 \openout2 = `desc.aux'.
 
- (desc.tex
-
-LaTeX Warning: Reference `secrf' on page 2 undefined on input line 9.
-
-) [2
+ (desc.tex) [2
 
 ]
 \openout2 = `requisitosAPP.aux'.
 
- (requisitosAPP.tex
-
-LaTeX Warning: Reference `tabelas' on page 3 undefined on input line 16.
-
-) [3
+ (requisitosAPP.tex) [3
 
 
 ]
 \openout2 = `diagramaUso.aux'.
 
- (diagramaUso.tex <usecaseD.png, id=21, 784.43062pt x 837.88031pt>
+ (diagramaUso.tex
+<usecaseD.png, id=21, 784.43062pt x 837.88031pt>
 File: usecaseD.png Graphic file (type png)
-
-<use usecaseD.png>
-Package pdftex.def Info: usecaseD.png used on input line 3.
+ <use usecaseD.png>
+Package pdftex.def Info: usecaseD.png used on input line 4.
 (pdftex.def)             Requested size: 470.662pt x 502.73207pt.
-) [4
+ [4
 
 
- <./usecaseD.png>]
+ <./usecaseD.png>] <classD.png, id=27, 1175.14032pt x 796.47563pt>
+File: classD.png Graphic file (type png)
+ <use classD.png>
+Package pdftex.def Info: classD.png used on input line 10.
+(pdftex.def)             Requested size: 646.32918pt x 438.06296pt.
+
+Overfull \vbox (52.45436pt too high) has occurred while \output is active []
+
+
+[5 <./classD.png>])
 \openout2 = `requisitosnApp.aux'.
 
- (requisitosnApp.tex) [5
+ (requisitosnApp.tex) [6
 
 
 ]
 \openout2 = `tabelasAPP.aux'.
 
-
-(tabelasAPP.tex) [6
+ (tabelasAPP.tex) [7
 
 
 ]
@@ -627,35 +628,29 @@ Package minitoc Info: I0009
 Package minitoc(hints) Info: I0019
 (minitoc(hints))             No hints have been written 
 (minitoc(hints))             in the DocumentAPP.log file..
- (DocumentAPP.aux (desc.aux) (requisitosAPP.aux)
-(diagramaUso.aux) (requisitosnApp.aux) (tabelasAPP.aux))
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(DocumentAPP.aux (desc.aux) (requisitosAPP.aux) (diagramaUso.aux)
+(requisitosnApp.aux) (tabelasAPP.aux)) ) 
 Here is how much of TeX's memory you used:
- 4761 strings out of 493634
- 63152 string characters out of 3135239
+ 4781 strings out of 493634
+ 63434 string characters out of 3135239
  151630 words of memory out of 3000000
- 7867 multiletter control sequences out of 15000+200000
+ 7876 multiletter control sequences out of 15000+200000
  16959 words of font info for 66 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  27i,8n,24p,435b,236s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/LuanB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb><C:/Users/LuanB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi12.pfb><C:/Users/LuanB/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/LuanB/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/LuanB/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Luan
-B/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><
+<C:/Users/LuanB/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/LuanB/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Lua
+nB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
 C:/Users/LuanB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmtt12.pfb>
-Output written on DocumentAPP.pdf (7 pages, 175281 bytes).
+/cmr17.pfb><C:/Users/LuanB/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb><C:/Users/LuanB/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/LuanB/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on DocumentAPP.pdf (8 pages, 275326 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
+ 62 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
