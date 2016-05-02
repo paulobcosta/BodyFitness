@@ -39,5 +39,106 @@
 
 	\end{enumerate}
 	\section*{3 -- Descrição de Casos de Uso}
+	\subsection*{3.1 -- Logar No sistema}
+	\textbf{Entrada:} Usuário, senha 
 	
+	\textbf{Descrição:} Para utilizar o sistema, o ator -- no caso o administrador ou pessoa que ocupe função de gerente -- acessará o sistema através de um nome de usuário e uma senha que lhe conferirá permissões para operar o sistema.
+	
+	\subsection*{3.2 -- Cadastrar Cliente}
+	\subsubsection*{3.2.1 -- Inserir Cliente ao Cadastro}
+	\textbf{Entrada:} Dados de usuário
+
+	\textbf{Descrição:} Este caso de uso se refere ao cadastro de um cliente. Para cadastrar alguém como cliente do estabelecimento são necessários alguns dados, dentre os quais estão: 
+	
+	\begin{itemize}
+		\item Nome completo
+		\item Data de nascimento
+		\item Endereço completo (rua, bairro, cep, número, cidade)
+		\item Telefone para contato
+		\item Profissão
+		\item Número do RG
+		\item Número do CPF
+	\end{itemize}
+	Estes dados são utilizados na ficha cadastral do cliente, eles são para estabelecer fácil acesso aos clientes por parte do administrador/gerente.
+	\subsubsection*{3.2.2 -- Gerar Senha Exclusiva para Cliente}
+	\textbf{Descrição:} No momento do cadastro, o sistema fornecerá uma senha exclusiva ao cliente a qual será utilizada para acessar as dependências do estabelecimento.
+	\subsection*{3.3 -- Cadastrar Funcionário}
+	\textbf{Entrada: Dados de funcionário,Cargo}
+	
+	\textbf{Descrição:} Este caso de uso é referente ao ato do administrador/gerente cadastrar um funcionário no sistema. Os dados para tal operação são: 
+	
+	\begin{itemize}
+		\item Nome completo
+		\item Data de nascimento
+		\item Endereço completo 
+		\item Número do CPF
+		\item Número do RG
+		\item Cargo ocupado na academia
+		\item Salário
+	\end{itemize} 
+	\textbf{Observação:} Aqui é necessário salientar que caso o funcionário em questão seja ocupante do cargo de gerente, para o mesmo será elaborada uma conta de gerente para este operar sobre o sistema.
+	
+	\subsection*{3.4 -- Cadastrar Treino}
+	\textbf{Entrada:} Nome do treino, grupo de músculos treinados
+	
+	\textbf{Descrição:} Este caso de uso é referente a cadastro de treinamentos. Para cadastrar um treino são necessários alguns dados, dentre os quais estão:
+	
+	\begin{itemize}
+		\item Nome do treino
+		\item Grupo de músculo a ser treinado
+		\item Equipamentos utilizados
+		\item Séries por exercício/equipamentos
+	\end{itemize}
+	\subsection*{3.5 -- Cadastro de Equipamento}
+	\subsubsection*{3.5.1 -- Inserir equipamento}
+	\textbf{Entrada:} Nome do equipamento, data de aquisição, intervalo de manutenção
+	
+	\textbf{Descrição:} Este caso de uso é referente a realização de cadastro de um equipamento presente no estabelecimento. Para o cadastro, são necessários apenas dois dados: Nome do equipamento e data de aquisição do mesmo. 
+	\subsubsection*{3.5.2 -- Gerar Data de Manutenção}
+	\textbf{Descrição:} A partir do cadastro e da inserção do intervalo de manutenção, o sistema deverá avisar aos administradores a necessidade de enviar um equipamento para a manutenção.
+	
+	
+	\textbf{Observação:} Em eventualidade do fato de um equipamento não se encontrar em situação de uso, este poderá ser excluído do cadastro de equipamentos da academia.
+
+	\subsection*{3.6 -- Atualizar Condicionamento de Cliente}
+	\textbf{Entrada:} Dados de Condicionamento Físico (Referenciado em Apêndice A)
+	
+	\textbf{Descrição:} Este caso de uso se refere à inserção dos dados referentes ao condicionamento físico do cliente. 
+	\subsection*{3.7 -- Associar Condicionamento Físico à Treino}
+	\textbf{Descrição:} Este caso de uso é decorrente da atualização do estado de condicionamento físico do cliente. Após a atualização, o sistema deverá associar o condicionamento físico corrente com um treino previamente cadastrado.
+	
+	\subsection*{3.8 -- Definir Período de Treino}
+	\textbf{Descrição:} Este caso de uso é decorrente da associação do condicionamento físico a um treino. Aqui é definido por quanto tempo o cliente ficará submetido a um determinado treino.
+	
+	\subsection*{3.9 -- Definir Nova Data de Avaliação}
+	\textbf{Descrição:} Neste caso de uso, o sistema deverá gerar uma nova data de avaliação física para o cliente. Isto com base na sua condição física e ao treino ao qual ele está submetido.
+	
+	\subsection*{4.0 -- Gerar Relatório de Condicionamento Físico}
+	\textbf{Descrição:} Neste caso de uso, deve ser dado ao administrador/gerente a possibilidade de gerar relatórios das condições de condicionamento físico de clientes a pedido deste. Este deverá conter os dados cadastrais do cliente, bem como, os dados correspondentes ao condicionamento físico do cliente. O formato de saída do documento será o \textbf{PDF}.
+	
+	\subsection*{4.1 -- Cadastrar Aula}
+	\textbf{Entrada:} Nome da aula
+	
+	\textbf{Descrição:} Neste caso de uso, o usuário (administrador/gerente) terá a possibilidade de cadastrar um tipo de aula.
+	
+	\subsection*{4.2 -- Agendar aulas}
+	\textbf{Entrada:} Aula, Horário/Data, Funcionário responsável
+	
+	\textbf{Descrição:} Neste caso de uso, o administrador/gerente poderá agendar uma aula tendo como entrada a aula que é cadastrada a partir do caso de uso ``4.1", o horário e a data, e o funcionário responsável. Aqui, também  será inserido os clientes que participarão da mesma.
+	
+	\subsection*{4.3 -- Registrar Pagamento de Cliente}
+	\textbf{Entrada:} Cliente, Valor do Pagamento, Responsável pelo Recebimento
+	
+	\textbf{Descrição:} Neste caso de uso, o cliente realizará o pagamento tendo a dívida mensal quitada. 
+	
+	\subsection*{4.4 -- Autorizar Entrada de Cliente no Estabelecimento}
+	\textbf{Entrada:} Senha de entrada
+	\textbf{Descrição:} Neste caso de uso, o cliente acessa a entrada com sua senha. Caso o cliente seja inadimplente, sua entrada é recusada. Caso contrário, terá entrada permitida.
+	
+	\subsection*{4.5 -- Gerar Relatório de Clientes Inadimplentes e Adimplentes} 
+	\textbf{Descrição:} Neste caso de uso, o sistema gerará um relatório de clientes que estão adimplentes e inadimplentes. Este relatório é solicitado pelo gerente/administrador. Seu formato será o \textbf{PDF}.
+	
+	
+	
+		
 \end{document}
