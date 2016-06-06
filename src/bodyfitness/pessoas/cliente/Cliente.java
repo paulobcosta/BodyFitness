@@ -5,7 +5,7 @@
  */
 package bodyfitness.pessoas.cliente;
 
-import bodyfitness.pessoas.cliente.condicionamento.Treino;
+import bodyfitness.pessoas.cliente.condicionamento.treino.Treino;
 import bodyfitness.pessoas.cliente.condicionamento.CondicionamentoFisico;
 import bodyfitness.pessoas.generico.Pessoa;
 

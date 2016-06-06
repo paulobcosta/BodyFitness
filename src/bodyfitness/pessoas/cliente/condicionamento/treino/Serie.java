@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bodyfitness.pessoas.cliente.condicionamento;
+package bodyfitness.pessoas.cliente.condicionamento.treino;
 
 /**
  *
  * @author batista
  */
-public class Treino {
-    
+public class Serie {
+    private 
 }

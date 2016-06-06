@@ -20,7 +20,15 @@ public class Aula <F extends Funcionario> {
     private Date data;
     private Date inicio;
     private Date termino;   
+    private TipoDeAula tipoDeAula;
 
+    public Aula(F professor, TipoDeAula tipoDeAula) {
+        this.professor = professor;
+        this.tipoDeAula = tipoDeAula;
+    }
+    
+    
+    
     public F getProfessor() {
         return professor;
     }
@@ -60,6 +68,15 @@ public class Aula <F extends Funcionario> {
     public void setTermino(Date termino) {
         this.termino = termino;
     }
+
+    public TipoDeAula getTipoDeAula() {
+        return tipoDeAula;
+    }
+
+    public void setTipoDeAula(TipoDeAula tipoDeAula) {
+        this.tipoDeAula = tipoDeAula;
+    }
+    
     
     
 }

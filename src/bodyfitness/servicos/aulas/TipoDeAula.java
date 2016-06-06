@@ -9,6 +9,23 @@ package bodyfitness.servicos.aulas;
  *
  * @author batista
  */
-public enum TipoDeAula {
-    RPM,BODYCOMBAT,SPEEDRUNNING,MUSCULACAO
+public class TipoDeAula {
+    private String tipo;
+
+    public TipoDeAula(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
+    
+    
+    
 }
