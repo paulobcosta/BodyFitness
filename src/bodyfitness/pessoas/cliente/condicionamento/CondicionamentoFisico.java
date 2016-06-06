@@ -10,7 +10,6 @@ package bodyfitness.pessoas.cliente.condicionamento;
  * @author batista
  */
 public class CondicionamentoFisico {
-    private TipoCondicionamentoFisico situacaoCondicionamento;
-    private double peso;
+    
         
 }
