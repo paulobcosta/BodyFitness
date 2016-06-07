@@ -29,27 +29,39 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        signInPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        imageSignIn = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
         userTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JPasswordField();
         userLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
-        menuImage = new javax.swing.JLabel();
+        imageLogin = new javax.swing.JLabel();
         mainMenuPanel = new javax.swing.JPanel();
         mainMenuFrame = new javax.swing.JInternalFrame();
         imageMainMenu = new javax.swing.JLabel();
         menuOpt = new javax.swing.JMenuBar();
-        userSignIn = new javax.swing.JMenu();
-        equipamentSignIn = new javax.swing.JMenu();
         payment = new javax.swing.JMenu();
+        signIn = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login");
+        setTitle("BodyFitness");
         setName("loginScreen"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 650));
+
+        signInPanel.setLayout(null);
+
+        jLabel1.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel1.setText("Nome");
+        signInPanel.add(jLabel1);
+        jLabel1.setBounds(50, 110, 45, 20);
+
+        imageSignIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
+        signInPanel.add(imageSignIn);
+        imageSignIn.setBounds(0, 0, 1200, 690);
 
         loginPanel.setLayout(null);
 
@@ -59,22 +71,22 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             }
         });
         loginPanel.add(userTextField);
-        userTextField.setBounds(110, 270, 230, 28);
+        userTextField.setBounds(110, 270, 230, 32);
         loginPanel.add(passwordTextField);
-        passwordTextField.setBounds(110, 300, 230, 28);
+        passwordTextField.setBounds(110, 300, 230, 32);
 
         userLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         userLabel.setForeground(new java.awt.Color(254, 254, 254));
         userLabel.setText("Usuário");
         loginPanel.add(userLabel);
-        userLabel.setBounds(20, 270, 90, 24);
+        userLabel.setBounds(20, 270, 90, 31);
 
         passwordLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         passwordLabel.setForeground(new java.awt.Color(254, 254, 254));
         passwordLabel.setText("Senha");
         passwordLabel.setToolTipText("");
         loginPanel.add(passwordLabel);
-        passwordLabel.setBounds(20, 300, 70, 24);
+        passwordLabel.setBounds(20, 300, 70, 31);
 
         loginButton.setText("Entrar");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,32 +95,44 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             }
         });
         loginPanel.add(loginButton);
-        loginButton.setBounds(170, 350, 100, 28);
+        loginButton.setBounds(170, 350, 100, 32);
 
-        menuImage.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
-        menuImage.setForeground(new java.awt.Color(254, 254, 254));
-        menuImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
-        menuImage.setToolTipText("");
-        loginPanel.add(menuImage);
-        menuImage.setBounds(-660, -230, 1920, 1080);
+        imageLogin.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        imageLogin.setForeground(new java.awt.Color(254, 254, 254));
+        imageLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
+        imageLogin.setToolTipText("");
+        loginPanel.add(imageLogin);
+        imageLogin.setBounds(-660, -230, 1920, 1080);
 
         mainMenuFrame.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         mainMenuFrame.setPreferredSize(new java.awt.Dimension(1000, 650));
         mainMenuFrame.setVisible(true);
+        mainMenuFrame.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                mainMenuFrameComponentAdded(evt);
+            }
+        });
         mainMenuFrame.getContentPane().setLayout(null);
 
         imageMainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         mainMenuFrame.getContentPane().add(imageMainMenu);
         imageMainMenu.setBounds(-130, 0, 1900, 980);
 
-        userSignIn.setText("Cadastro de Usuários");
-        menuOpt.add(userSignIn);
-
-        equipamentSignIn.setText("Cadastro Equipamento");
-        menuOpt.add(equipamentSignIn);
-
         payment.setText("Pagamento");
         menuOpt.add(payment);
+
+        signIn.setText("Cadastro");
+        signIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signInMouseClicked(evt);
+            }
+        });
+        signIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signInActionPerformed(evt);
+            }
+        });
+        menuOpt.add(signIn);
 
         mainMenuFrame.setJMenuBar(menuOpt);
 
@@ -116,11 +140,13 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         mainMenuPanel.setLayout(mainMenuPanelLayout);
         mainMenuPanelLayout.setHorizontalGroup(
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainMenuFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainMenuFrame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mainMenuPanelLayout.setVerticalGroup(
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainMenuFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenuPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(mainMenuFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,12 +156,20 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(signInPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(signInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 29, Short.MAX_VALUE)))
         );
 
         setBounds(0, 0, 1000, 650);
@@ -150,6 +184,18 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         mainMenuPanel.setVisible(true);
         loginPanel.setVisible(false);
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signInActionPerformed
+
+    private void mainMenuFrameComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_mainMenuFrameComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mainMenuFrameComponentAdded
+
+    private void signInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signInMouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,19 +233,21 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu equipamentSignIn;
+    private javax.swing.JLabel imageLogin;
     private javax.swing.JLabel imageMainMenu;
+    private javax.swing.JLabel imageSignIn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JInternalFrame mainMenuFrame;
     private javax.swing.JPanel mainMenuPanel;
-    private javax.swing.JLabel menuImage;
     private javax.swing.JMenuBar menuOpt;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JMenu payment;
+    private javax.swing.JMenu signIn;
+    private javax.swing.JPanel signInPanel;
     private javax.swing.JLabel userLabel;
-    private javax.swing.JMenu userSignIn;
     private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }
