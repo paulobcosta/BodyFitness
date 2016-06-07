@@ -5,6 +5,8 @@
  */
 package bodyfitness.pessoas.cliente.condicionamento.treino;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author batista

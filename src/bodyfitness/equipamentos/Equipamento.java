@@ -9,7 +9,7 @@ package bodyfitness.equipamentos;
  *
  * @author batista
  */
-public abstract class Equipamento {
+public class Equipamento {
     private String nome;
     private Double pesoMinimo;
     private Double pesoMaximo;
@@ -19,6 +19,9 @@ public abstract class Equipamento {
         this.pesoMaximo = null;
         this.pesoMinimo = null;
     }
+    
+    
+    
 
     
     
