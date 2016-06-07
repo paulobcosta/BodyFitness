@@ -5,6 +5,8 @@
  */
 package bodyfitness.frames;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author a1509950
@@ -27,74 +29,127 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        loginPanel = new javax.swing.JPanel();
         userTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JPasswordField();
         userLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         menuImage = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JPanel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
         setName("loginScreen"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
-        setSize(new java.awt.Dimension(1280, 720));
+        setSize(new java.awt.Dimension(1000, 650));
 
-        jPanel1.setLayout(null);
+        loginPanel.setLayout(null);
 
         userTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(userTextField);
-        userTextField.setBounds(100, 290, 230, 28);
-        jPanel1.add(passwordTextField);
-        passwordTextField.setBounds(100, 320, 230, 28);
+        loginPanel.add(userTextField);
+        userTextField.setBounds(110, 270, 230, 28);
+        loginPanel.add(passwordTextField);
+        passwordTextField.setBounds(110, 300, 230, 28);
 
         userLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         userLabel.setForeground(new java.awt.Color(254, 254, 254));
-        userLabel.setText("Usuário:");
-        jPanel1.add(userLabel);
-        userLabel.setBounds(10, 290, 90, 24);
+        userLabel.setText("Usuário");
+        loginPanel.add(userLabel);
+        userLabel.setBounds(20, 270, 90, 24);
 
         passwordLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         passwordLabel.setForeground(new java.awt.Color(254, 254, 254));
-        passwordLabel.setText("Senha:");
+        passwordLabel.setText("Senha");
         passwordLabel.setToolTipText("");
-        jPanel1.add(passwordLabel);
-        passwordLabel.setBounds(30, 320, 70, 24);
+        loginPanel.add(passwordLabel);
+        passwordLabel.setBounds(20, 300, 70, 24);
 
         loginButton.setText("Entrar");
-        jPanel1.add(loginButton);
-        loginButton.setBounds(180, 370, 51, 28);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+        loginPanel.add(loginButton);
+        loginButton.setBounds(170, 350, 100, 28);
 
         menuImage.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         menuImage.setForeground(new java.awt.Color(254, 254, 254));
         menuImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         menuImage.setToolTipText("");
-        jPanel1.add(menuImage);
-        menuImage.setBounds(-730, -160, 1920, 1080);
+        loginPanel.add(menuImage);
+        menuImage.setBounds(-660, -230, 1920, 1080);
+
+        jInternalFrame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jInternalFrame1.setPreferredSize(new java.awt.Dimension(1000, 650));
+        jInternalFrame1.setVisible(true);
+        jInternalFrame1.getContentPane().setLayout(null);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
+        jInternalFrame1.getContentPane().add(jLabel1);
+        jLabel1.setBounds(-120, -10, 1900, 980);
+
+        jMenu1.setText("Cadastro de Usuários");
+        jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Cadastro Equipamento");
+        jMenuBar1.add(jMenu3);
+
+        jMenu2.setText("Pagamento");
+        jMenuBar1.add(jMenu2);
+
+        jInternalFrame1.setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout mainMenuLayout = new javax.swing.GroupLayout(mainMenu);
+        mainMenu.setLayout(mainMenuLayout);
+        mainMenuLayout.setHorizontalGroup(
+            mainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        mainMenuLayout.setVerticalGroup(
+            mainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(mainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(mainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 1010, 680);
+        setBounds(0, 0, 1000, 650);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userTextFieldActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        mainMenu.setVisible(true);
+        loginPanel.setVisible(false);
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,8 +187,15 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton loginButton;
+    private javax.swing.JPanel loginPanel;
+    private javax.swing.JPanel mainMenu;
     private javax.swing.JLabel menuImage;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTextField;
