@@ -45,7 +45,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login");
+        setTitle("BodyFitness");
         setName("loginScreen"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
