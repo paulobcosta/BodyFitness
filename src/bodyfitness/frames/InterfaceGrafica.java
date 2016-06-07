@@ -36,16 +36,16 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         passwordLabel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
         menuImage = new javax.swing.JLabel();
-        mainMenu = new javax.swing.JPanel();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        mainMenuPanel = new javax.swing.JPanel();
+        mainMenuFrame = new javax.swing.JInternalFrame();
+        imageMainMenu = new javax.swing.JLabel();
+        menuOpt = new javax.swing.JMenuBar();
+        userSignIn = new javax.swing.JMenu();
+        equipamentSignIn = new javax.swing.JMenu();
+        payment = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("BodyFitness");
+        setTitle("Login");
         setName("loginScreen"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
@@ -92,35 +92,35 @@ public class InterfaceGrafica extends javax.swing.JFrame {
         loginPanel.add(menuImage);
         menuImage.setBounds(-660, -230, 1920, 1080);
 
-        jInternalFrame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jInternalFrame1.setPreferredSize(new java.awt.Dimension(1000, 650));
-        jInternalFrame1.setVisible(true);
-        jInternalFrame1.getContentPane().setLayout(null);
+        mainMenuFrame.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        mainMenuFrame.setPreferredSize(new java.awt.Dimension(1000, 650));
+        mainMenuFrame.setVisible(true);
+        mainMenuFrame.getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
-        jInternalFrame1.getContentPane().add(jLabel1);
-        jLabel1.setBounds(-120, -10, 1900, 980);
+        imageMainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
+        mainMenuFrame.getContentPane().add(imageMainMenu);
+        imageMainMenu.setBounds(-130, 0, 1900, 980);
 
-        jMenu1.setText("Cadastro de Usuários");
-        jMenuBar1.add(jMenu1);
+        userSignIn.setText("Cadastro de Usuários");
+        menuOpt.add(userSignIn);
 
-        jMenu3.setText("Cadastro Equipamento");
-        jMenuBar1.add(jMenu3);
+        equipamentSignIn.setText("Cadastro Equipamento");
+        menuOpt.add(equipamentSignIn);
 
-        jMenu2.setText("Pagamento");
-        jMenuBar1.add(jMenu2);
+        payment.setText("Pagamento");
+        menuOpt.add(payment);
 
-        jInternalFrame1.setJMenuBar(jMenuBar1);
+        mainMenuFrame.setJMenuBar(menuOpt);
 
-        javax.swing.GroupLayout mainMenuLayout = new javax.swing.GroupLayout(mainMenu);
-        mainMenu.setLayout(mainMenuLayout);
-        mainMenuLayout.setHorizontalGroup(
-            mainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout mainMenuPanelLayout = new javax.swing.GroupLayout(mainMenuPanel);
+        mainMenuPanel.setLayout(mainMenuPanelLayout);
+        mainMenuPanelLayout.setHorizontalGroup(
+            mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mainMenuFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        mainMenuLayout.setVerticalGroup(
-            mainMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        mainMenuPanelLayout.setVerticalGroup(
+            mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mainMenuFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,13 +129,13 @@ public class InterfaceGrafica extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(mainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(mainMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(mainMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 1000, 650);
@@ -147,7 +147,7 @@ public class InterfaceGrafica extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        mainMenu.setVisible(true);
+        mainMenuPanel.setVisible(true);
         loginPanel.setVisible(false);
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -187,19 +187,19 @@ public class InterfaceGrafica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu equipamentSignIn;
+    private javax.swing.JLabel imageMainMenu;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
-    private javax.swing.JPanel mainMenu;
+    private javax.swing.JInternalFrame mainMenuFrame;
+    private javax.swing.JPanel mainMenuPanel;
     private javax.swing.JLabel menuImage;
+    private javax.swing.JMenuBar menuOpt;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTextField;
+    private javax.swing.JMenu payment;
     private javax.swing.JLabel userLabel;
+    private javax.swing.JMenu userSignIn;
     private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables
 }
