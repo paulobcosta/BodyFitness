@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bodyfitness.pessoas.funcionarios;
+package bodyfitness.dao;
 
 /**
  *
  * @author batista
  */
-public enum Cargo {
-    ADMINISTRADOR,PROFESSOR,SECRETARIADO,GERENCIA,NUTRICIONISTA,ZELADOR
+public class CadastrarCliente {
+    
 }

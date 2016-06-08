@@ -9,6 +9,11 @@ package bodyfitness.pessoas.funcionarios;
  *
  * @author batista
  */
-public class Professor {
+public class Professor extends Funcionario {
+    
+    public Professor(String nome, String idade) {
+        super(nome, idade);
+        setCargo(Cargo.PROFESSOR);
+    }
     
 }

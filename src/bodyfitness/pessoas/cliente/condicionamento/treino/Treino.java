@@ -12,5 +12,30 @@ import java.util.ArrayList;
  * @author batista
  */
 public class Treino {
+    private String nomeDoTreino;
+    private ArrayList<Series> seriesDoTreino;
+
+    public Treino(String nomeDoTreino) {
+        this.nomeDoTreino = nomeDoTreino;
+    }
+
+    public String getNomeDoTreino() {
+        return nomeDoTreino;
+    }
+
+    public void setNomeDoTreino(String nomeDoTreino) {
+        this.nomeDoTreino = nomeDoTreino;
+    }
+
+    public ArrayList<Series> getSeriesDoTreino() {
+        return seriesDoTreino;
+    }
+
+    public void setSeriesDoTreino(ArrayList<Series> seriesDoTreino) {
+        this.seriesDoTreino = seriesDoTreino;
+    }
     
+    
+    
+   
 }

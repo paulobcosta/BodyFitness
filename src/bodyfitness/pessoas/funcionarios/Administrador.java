@@ -9,6 +9,6 @@ package bodyfitness.pessoas.funcionarios;
  *
  * @author batista
  */
-public enum Cargo {
-    ADMINISTRADOR,PROFESSOR,SECRETARIADO,GERENCIA,NUTRICIONISTA,ZELADOR
+public class Administrador {
+    
 }

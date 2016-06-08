@@ -9,6 +9,10 @@ package bodyfitness.pessoas.funcionarios;
  *
  * @author batista
  */
-public enum Cargo {
-    ADMINISTRADOR,PROFESSOR,SECRETARIADO,GERENCIA,NUTRICIONISTA,ZELADOR
+public class Zelador extends Funcionario {
+
+    public Zelador(String nome, String idade) {
+        super(nome, idade);
+    }
+    
 }

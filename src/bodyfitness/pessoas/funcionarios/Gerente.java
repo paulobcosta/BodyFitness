@@ -9,11 +9,17 @@ package bodyfitness.pessoas.funcionarios;
  *
  * @author batista
  */
-public class Gerente extends Funcionario{
+public class Gerente extends Funcionario {
     
     public Gerente(String nome, String idade) {
         super(nome, idade);
         setCargo(Cargo.GERENCIA);
     }
+
+   
+    
+    
+    
+    
     
 }

@@ -5,29 +5,33 @@
  */
 package bodyfitness.pessoas.cliente.condicionamento.treino;
 
+import bodyfitness.equipamentos.Equipamento;
+
 /**
  *
  * @author batista
  */
 public class Series {
-    private String nome;
+    private Equipamento equip;
     private int repeticoes;
     private int numeroDeSeries;
-
-    public Series(String nome, int repeticoes) {
-        this.nome = nome;
+    private Dia dia;
+    
+    
+    public Series(Equipamento equipamento, int repeticoes) {
+        this.equip = equipamento;
         this.repeticoes = repeticoes;
     }
 
     
     
     
-    public String getNome() {
-        return nome;
+    public Equipamento getEquipamento() {
+        return this.equip;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEquipamento(Equipamento equipamento) {
+        this.equip = equipamento;
     }
 
     public int getRepeticoes() {
@@ -45,6 +49,15 @@ public class Series {
     public void setNumeroDeSeries(int numeroDeSeries) {
         this.numeroDeSeries = numeroDeSeries;
     }
+
+    public Dia getDia() {
+        return dia;
+    }
+
+    public void setDia(Dia dia) {
+        this.dia = dia;
+    }
+    
     
     
 }
