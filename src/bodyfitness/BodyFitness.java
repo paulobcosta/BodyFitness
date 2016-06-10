@@ -6,6 +6,8 @@
 package bodyfitness;
 
 import bodyfitness.pessoas.caracteristicas.Endereco;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -21,15 +23,10 @@ public class BodyFitness {
         System.out.println("Iniciando o Projeto");
         //GenericDAO dao = new GenericDAO();
 
-        /*Endereco endereco = new Endereco();
-        endereco.setBairro("Jardim Adriana");
-        endereco.setCidade("Indaiatuba");
-        endereco.setEstado("São Paulo");
-        endereco.setNumero("1223");
-        endereco.setRua("Sidney Vianna");
-        dao.persist(endereco);
-        //Cargo cargo = new Cargo("medico");
-        //dao.persist(cargo);*/
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.MONTH, 5);
+        System.out.println("Data e Hora atual: " + c.getTime());
         System.out.println("Fim do projeto");
     }
 

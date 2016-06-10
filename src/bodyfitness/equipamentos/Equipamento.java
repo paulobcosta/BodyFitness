@@ -5,6 +5,7 @@
  */
 package bodyfitness.equipamentos;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ public class Equipamento {
     private String pesoMinimo;
     private String pesoMaximo;
     private Date dataDaUltimaManutencao;
-    private Date dataDeManutencao;
+    private Date dataDaProximaManutencao;
 
     public Equipamento(String nome) {
         this.nome = nome;
@@ -57,13 +58,17 @@ public class Equipamento {
         this.dataDaUltimaManutencao = dataDaUltimaManutencao;
     }
 
-    public Date getDataDeManutencao() {
-        return dataDeManutencao;
+    public Date getDataDaProximaManutencao() {
+        return dataDaProximaManutencao;
     }
 
-    public void setDataDeManutencao(Date dataDeManutencao) {
-        this.dataDeManutencao = dataDeManutencao;
+    public void setDataDaProximaManutencao(Date dataDaUltimaManutencao) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.dataDaUltimaManutencao);
+        c.add(Calendar.MONTH, 2);
+        this.dataDaProximaManutencao = c.getTime();
     }
+    
     
     
     
