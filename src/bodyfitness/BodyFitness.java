@@ -5,21 +5,6 @@
  */
 package bodyfitness;
 
-
-;
-import bodyfitness.dao.GenericDAO;
-
-
-
-
-
-
-
-
-
-
-
-
 import bodyfitness.pessoas.caracteristicas.Endereco;
 
 /**
@@ -35,16 +20,16 @@ public class BodyFitness {
         // TODO code application logic here
         System.out.println("Iniciando o Projeto");
         GenericDAO dao = new GenericDAO();
-        
-        Endereco endereco = new Endereco();
+
+        /*Endereco endereco = new Endereco();
         endereco.setBairro("Jardim Adriana");
         endereco.setCidade("Indaiatuba");
         endereco.setEstado("São Paulo");
         endereco.setNumero("1223");
         endereco.setRua("Sidney Vianna");
         dao.persist(endereco);
-       
-        
+        //Cargo cargo = new Cargo("medico");
+        //dao.persist(cargo);*/
         System.out.println("Fim do projeto");
     }
 

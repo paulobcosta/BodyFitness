@@ -3,30 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/Situacao.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/Cliente.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/caracteristicas/Endereco.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/BodyFitness.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/generico/Administrador.java</file>
             <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/generico/Pessoa.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/condicionamento/MembrosSuperiores.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/servicos/aulas/TipoDeAula.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/equipamentos/Equipamento.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/condicionamento/MembrosInferiores.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/condicionamento/CondicionamentoFisico.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/funcionarios/Cargo.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/dao/CadastrarCliente.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/funcionarios/Zelador.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/servicos/aulas/Aula.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/condicionamento/treino/Treino.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/frames/InterfaceGrafica.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/funcionarios/FuncoesFuncionario.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/condicionamento/DobrasCutaneas.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/condicionamento/treino/Series.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/funcionarios/Administrador.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/dao/DAOLogin.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/funcionarios/Funcionario.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/funcionarios/Professor.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/condicionamento/ComposicaoCorporal.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/cliente/condicionamento/treino/Dia.java</file>
-            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/funcionarios/Gerente.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/caracteristicas/Permissao.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/generico/Funcionario.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/hibernate.cfg.xml</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/caracteristicas/Cargo.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/caracteristicas/Turno.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/pessoas/caracteristicas/NivelAdmin.java</file>
+            <file>file:/home/batista/NetBeansProjects/BodyFitness/src/bodyfitness/dao/GenericDAO.java</file>
         </group>
     </open-files>
 </project-private>
