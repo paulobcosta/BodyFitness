@@ -14,14 +14,14 @@ import javax.persistence.Persistence;
  *
  * @author batista
  */
-public class EnderecoDAO {
+public class GenericDAO<O extends Object> {
 
-    public void persist(Endereco endereco) {
+    public void persist(O objeto) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("BodyFitnessPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         try {
-            em.persist(endereco);
+            em.persist(objeto);
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();

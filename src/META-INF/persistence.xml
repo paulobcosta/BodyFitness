@@ -3,6 +3,7 @@
   <persistence-unit name="BodyFitnessPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>bodyfitness.pessoas.caracteristicas.Endereco</class>
+    <class>bodyfitness.pessoas.caracteristicas.Cargo</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bodyfitness"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
