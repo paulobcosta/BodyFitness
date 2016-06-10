@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bodyfitness.pessoas.generico;
+package bodyfitness.pessoas.funcionarios;
 
 import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Permissao;
 import bodyfitness.pessoas.caracteristicas.Turno;
+import bodyfitness.pessoas.generico.Pessoa;
 
 /**
  *

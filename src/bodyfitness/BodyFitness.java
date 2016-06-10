@@ -19,7 +19,7 @@ public class BodyFitness {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Iniciando o Projeto");
-        GenericDAO dao = new GenericDAO();
+        //GenericDAO dao = new GenericDAO();
 
         /*Endereco endereco = new Endereco();
         endereco.setBairro("Jardim Adriana");
