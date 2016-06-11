@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bodyfitness.pessoas.caracteristicas.corporal;
+package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -23,15 +23,15 @@ class Indices implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "imc")
     private Double imc;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "percentual_de_gordura")
     private Double percentualGorduraIdeal;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "massa_magra")
     private Double massaMagra;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "percentual_de_gordura_atual")
     private Double percentualGorduraAtual;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "massa_gorda")
     private Double massaGorda;
 
     public Indices() {

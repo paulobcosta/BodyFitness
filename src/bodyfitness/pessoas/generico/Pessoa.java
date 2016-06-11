@@ -31,12 +31,12 @@ import javax.persistence.TemporalType;
 public abstract class Pessoa implements Serializable {
     
     
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false,unique = false,name = "nome")
     private String nome;
-    @Column(nullable = false)
+    @Column(nullable = false,name = "data_de_nascimento")
     @Temporal(TemporalType.DATE)
     private Date dataDeNascimento;
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false,name = "endereco")
     @OneToOne
     private Endereco endereco;
     @Column(name = "tipo_de_pessoa",nullable = false)

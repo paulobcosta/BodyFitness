@@ -9,6 +9,7 @@ import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Permissao;
 import bodyfitness.pessoas.caracteristicas.Turno;
 import bodyfitness.pessoas.generico.Pessoa;
+import bodyfitness.pessoas.generico.TipoDePessoa;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -32,17 +33,17 @@ import javax.persistence.Table;
 @DiscriminatorValue("FUNCIONARIO")
 public class Funcionario extends Pessoa implements Serializable {
     
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false,name = "cargo")
     @OneToOne
     private Cargo cargo;
     
-    @Column(nullable = false)
+    @Column(nullable = false,name = "permissao")
     private Permissao permissao;
-    @Column(nullable = false)
+    @Column(nullable = false,name = "turno")
     private Turno turno;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true,name = "nome_de_usuario")
     private String usuario;
-    @Column(nullable = false)
+    @Column(nullable = false,name = "senha")
     private String senha;
    
 
@@ -100,6 +101,15 @@ public class Funcionario extends Pessoa implements Serializable {
         // this.senha = senha;
     }
 
+    public TipoDePessoa getTipoDePessoa() {
+        return tipoDePessoa;
+    }
+
+    public void setTipoDePessoa(TipoDePessoa tipoDePessoa) {
+        this.tipoDePessoa = tipoDePessoa;
+    }
+
+    
     
 
    

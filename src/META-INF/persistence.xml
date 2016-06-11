@@ -6,13 +6,18 @@
     <class>bodyfitness.pessoas.caracteristicas.Cargo</class>
     <class>bodyfitness.pessoas.funcionarios.Funcionario</class>
     <class>bodyfitness.pessoas.funcionarios.Administrador</class>
-    <class>bodyfitness.pessoas.generico.Cliente</class>
-    <class>bodyfitness.pessoas.caracteristicas.corporal.CondicionamentoFisico</class>
-    <class>bodyfitness.pessoas.caracteristicas.corporal.DobrasCutaneas</class>
-    <class>bodyfitness.pessoas.caracteristicas.corporal.Indices</class>
-    <class>bodyfitness.pessoas.caracteristicas.corporal.MembrosInferiores</class>
-    <class>bodyfitness.pessoas.caracteristicas.corporal.MembrosSuperiores</class>
     <class>bodyfitness.pessoas.generico.Pessoa</class>
+    <class>bodyfitness.equipamentos.Equipamento</class>
+    <class>bodyfitness.aula.CategoriaDeAula</class>
+    <class>bodyfitness.aula.Aula</class>
+    <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.CondicionamentoFisico</class>
+    <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.DobrasCutaneas</class>
+    <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.Indices</class>
+    <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.MembrosSuperiores</class>
+    <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.MembrosInferiores</class>
+    <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.Cliente</class>
+    <class>bodyfitness.pessoas.cliente.treino.Serie</class>
+    <class>bodyfitness.pessoas.cliente.treino.Treino</class>
     <shared-cache-mode>ALL</shared-cache-mode>
     <validation-mode>NONE</validation-mode>
     <properties>

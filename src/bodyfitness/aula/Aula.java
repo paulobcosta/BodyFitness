@@ -6,19 +6,58 @@
 package bodyfitness.aula;
 
 import bodyfitness.pessoas.funcionarios.Funcionario;
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author batista
  */
-public class Aula {
+@Entity
+@Table(name = "aulas")
+public class Aula implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(name = "dia",nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date dia;
+    @Column(name = "hora_inicio",nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date horaDeInicio;
+    @Column(name = "hora_termino",nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date horaDeTermino;
+    @OneToOne
+    @JoinColumn(name = "professor",nullable = false)
     private Funcionario professor;
+    @OneToOne
+    @JoinColumn(name = "categoria_de_aula",nullable = false)
     private CategoriaDeAula categoria;
 
+    public Aula() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
+    
     public Date getDia() {
         return dia;
     }

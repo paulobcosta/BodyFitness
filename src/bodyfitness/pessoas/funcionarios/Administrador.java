@@ -30,7 +30,7 @@ public class Administrador extends Funcionario implements Serializable{
     
     
     
-    @Column(nullable = true)
+    @Column(nullable = false,name = "nivel_de_administrador")
     private NivelAdmin nivelAdmin;
 
     public Administrador() {

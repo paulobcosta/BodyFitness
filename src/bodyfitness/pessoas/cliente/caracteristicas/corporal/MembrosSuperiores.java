@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bodyfitness.pessoas.caracteristicas.corporal;
+package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -23,21 +23,21 @@ class MembrosSuperiores implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "ombro")
     private Double ombro;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "torax_relaxado")
     private Double toraxRelaxado;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "abdome")
     private Double abdome;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "quadril")
     private Double quadril;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "pescoco")
     private Double pescoco;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "torax_inspirado")
     private Double toraxInspirado;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "cintura")
     private Double cintura;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "relacao_cintura_x_quadril")
     private Double relacaoCinturaXQuadril;
 
     public MembrosSuperiores() {
@@ -108,6 +108,14 @@ class MembrosSuperiores implements Serializable{
 
     public void setRelacaoCinturaXQuadril(Double relacaoCinturaXQuadril) {
         this.relacaoCinturaXQuadril = relacaoCinturaXQuadril;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     

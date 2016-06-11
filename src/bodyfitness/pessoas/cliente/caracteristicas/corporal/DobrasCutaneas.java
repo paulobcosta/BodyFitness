@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bodyfitness.pessoas.caracteristicas.corporal;
+package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -24,23 +24,23 @@ class DobrasCutaneas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "sub_escapular")
     private Double subescapular;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "bicipital")
     private Double bicipital;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "tricipital")
     private Double tricipital;
-    @Column(nullable = true)
+    @Column(nullable = true, name = "axilar_media")
     private Double axilarMedia;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "supra_iliaca")
     private Double supraIliaca;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "peitoral")
     private Double peitoral;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "abdominal")
     private Double abdominal;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "coxa")
     private Double coxa;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "panturrilha")
     private Double panturrilha;
 
     public DobrasCutaneas() {

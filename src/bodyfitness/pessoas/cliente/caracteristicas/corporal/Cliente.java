@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bodyfitness.pessoas.generico;
+package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
 import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
-import bodyfitness.pessoas.caracteristicas.corporal.CondicionamentoFisico;
+import bodyfitness.pessoas.cliente.caracteristicas.corporal.CondicionamentoFisico;
+import bodyfitness.pessoas.generico.Pessoa;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -28,10 +29,10 @@ import javax.persistence.Table;
 public class Cliente extends Pessoa {
 
    
-    @Column(nullable = false)
+    @Column(nullable = false,name = "situacao_financeira")
     private SituacaoFinanceira situacaoFinanceira;
     @OneToOne
-    @JoinColumn(nullable = true)
+    @JoinColumn(nullable = true,name = "condicionamento_fisico")
     private CondicionamentoFisico condicionamentoFisico;
 
     public Cliente() {

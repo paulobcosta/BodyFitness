@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bodyfitness.pessoas.caracteristicas.corporal;
+package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -23,17 +23,17 @@ class MembrosInferiores implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "antebraco_direito")
     private Double anteBracoDireito;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "braco_relaxado_direito")
     private Double bracoRelaxadoDireito;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "braco_contraido_direito")
     private Double bracoContraidoDireito;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "panturrilha_direito")
     private Double panturrilhaDireito;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "braco_relaxado_esquerdo")
     private Double bracoRelaxadoEsquerdo;
-    @Column(nullable = true)
+    @Column(nullable = true,name = "coxa_esquerdo")
     private Double coxaEsquerdo;
 
     public MembrosInferiores() {

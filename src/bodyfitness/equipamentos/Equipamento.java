@@ -5,26 +5,56 @@
  */
 package bodyfitness.equipamentos;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author batista
  */
-public class Equipamento {
+@Entity
+@Table(name = "equipamentos")
+public class Equipamento implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(name = "nome",nullable = false)
     private String nome;
+    @Column(name = "peso_minimo",nullable = false)
     private String pesoMinimo;
+    @Column(name = "peso_maximo",nullable = false)
     private String pesoMaximo;
+    @Column(name = "data_ultima_manutencao",nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date dataDaUltimaManutencao;
+    @Column(name = "data_proxima_manutencao",nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date dataDaProximaManutencao;
 
     public Equipamento(String nome) {
         this.nome = nome;
     }
 
+    public Equipamento() {
+    }
+
     
-    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     
     public String getNome() {
         return nome;
