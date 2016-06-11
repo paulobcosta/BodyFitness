@@ -5,21 +5,49 @@
  */
 package bodyfitness.pessoas.caracteristicas.corporal;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author batista
  */
-class DobrasCutaneas {
+@Entity
+@Table(name = "dobras_cutaneas")
+class DobrasCutaneas implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = true)
     private Double subescapular;
+    @Column(nullable = true)
     private Double bicipital;
+    @Column(nullable = true)
     private Double tricipital;
+    @Column(nullable = true)
     private Double axilarMedia;
+    @Column(nullable = true)
     private Double supraIliaca;
+    @Column(nullable = true)
     private Double peitoral;
+    @Column(nullable = true)
     private Double abdominal;
+    @Column(nullable = true)
     private Double coxa;
+    @Column(nullable = true)
     private Double panturrilha;
 
+    public DobrasCutaneas() {
+    }
+
+    
+    
     public Double getSubescapular() {
         return subescapular;
     }
@@ -91,7 +119,13 @@ class DobrasCutaneas {
     public void setPanturrilha(Double panturrilha) {
         this.panturrilha = panturrilha;
     }
-    
-    
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

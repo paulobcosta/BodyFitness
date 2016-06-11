@@ -9,29 +9,51 @@ import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Permissao;
 import bodyfitness.pessoas.caracteristicas.Turno;
 import bodyfitness.pessoas.generico.Pessoa;
+import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author batista
  */
-public class Funcionario extends Pessoa {
-
+@Entity
+@Table(name = "funcionarios")
+@DiscriminatorValue("FUNCIONARIO")
+public class Funcionario extends Pessoa implements Serializable {
+    
+    @JoinColumn(nullable = false)
+    @OneToOne
     private Cargo cargo;
+    
+    @Column(nullable = false)
     private Permissao permissao;
+    @Column(nullable = false)
     private Turno turno;
+    @Column(nullable = false, unique = true)
     private String usuario;
+    @Column(nullable = false)
     private String senha;
+   
 
-    public Funcionario(String nome) {
-        super(nome);
+    public Funcionario() {
     }
 
     public Funcionario(String nome, Cargo funcao) {
-        super(nome);
+        setNome(nome);
         this.cargo = funcao;
         this.permissao = Permissao.COMUM;
     }
-
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
@@ -65,8 +87,21 @@ public class Funcionario extends Pessoa {
         return senha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSenha(String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : messageDigest) {
+            hexString.append(String.format("%02X", 0xFF & b));
+        }
+        String senhaCriptografada = hexString.toString();
+        this.senha = senhaCriptografada;
+        // this.senha = senha;
     }
+
+    
+
+   
 
 }

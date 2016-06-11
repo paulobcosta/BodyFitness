@@ -5,18 +5,45 @@
  */
 package bodyfitness.pessoas.caracteristicas.corporal;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 
 
 /**
  *
  * @author batista
  */
-public class CondicionamentoFisico {
+@Entity
+@Table(name = "condicionamentos_fisicos")
+public class CondicionamentoFisico implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @OneToOne
+    @JoinColumn(nullable = true)
     private Indices composicaoCorporal;
+    @OneToOne
+    @JoinColumn(nullable = true)
     private DobrasCutaneas dobrasCutaneas;
+    @OneToOne
+    @JoinColumn(nullable = true)
     private MembrosSuperiores membrosSuperiores;
+    @OneToOne
+    @JoinColumn(nullable = true)
     private MembrosInferiores membrosInferiores;
 
+    public CondicionamentoFisico() {
+    }
+
+    
+    
     public Indices getComposicaoCorporal() {
         return composicaoCorporal;
     }
@@ -47,6 +74,14 @@ public class CondicionamentoFisico {
 
     public void setMembrosInferiores(MembrosInferiores membrosInferiores) {
         this.membrosInferiores = membrosInferiores;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     

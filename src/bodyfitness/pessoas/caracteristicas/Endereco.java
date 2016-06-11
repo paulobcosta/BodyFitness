@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.caracteristicas;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,11 +22,11 @@ import javax.persistence.Table;
  * @author batista
  */
 @Entity
-@Table(name = "endereco")
-public class Endereco {
+@Table(name = "enderecos")
+public class Endereco implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column()
+    @Column
     private Long id;
     @Column(nullable = false)
     private String rua;

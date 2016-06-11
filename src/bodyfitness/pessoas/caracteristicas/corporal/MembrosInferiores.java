@@ -5,18 +5,44 @@
  */
 package bodyfitness.pessoas.caracteristicas.corporal;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author batista
  */
-class MembrosInferiores {
+@Entity
+@Table(name="membros_inferiores")
+class MembrosInferiores implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = true)
     private Double anteBracoDireito;
+    @Column(nullable = true)
     private Double bracoRelaxadoDireito;
+    @Column(nullable = true)
     private Double bracoContraidoDireito;
+    @Column(nullable = true)
     private Double panturrilhaDireito;
+    @Column(nullable = true)
     private Double bracoRelaxadoEsquerdo;
+    @Column(nullable = true)
     private Double coxaEsquerdo;
 
+    public MembrosInferiores() {
+    }
+
+    
+    
+    
+    
     public Double getAnteBracoDireito() {
         return anteBracoDireito;
     }
@@ -63,6 +89,14 @@ class MembrosInferiores {
 
     public void setCoxaEsquerdo(Double coxaEsquerdo) {
         this.coxaEsquerdo = coxaEsquerdo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     

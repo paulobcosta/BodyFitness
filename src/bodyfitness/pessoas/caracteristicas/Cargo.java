@@ -5,13 +5,34 @@
  */
 package bodyfitness.pessoas.caracteristicas;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+
 /**
  *
  * @author batista
  */
-public class Cargo {
+@Entity
+@Table(name = "cargos")
+public class Cargo implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Column(nullable = false,unique = true)
     private String funcao;
+
+    public Cargo() {
+    }
+
+    
 
     public Cargo(String funcao) {
         this.funcao = funcao;

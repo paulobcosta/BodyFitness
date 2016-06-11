@@ -5,20 +5,47 @@
  */
 package bodyfitness.pessoas.caracteristicas.corporal;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author batista
  */
-class MembrosSuperiores {
+@Entity
+@Table(name = "membros_superiores")
+class MembrosSuperiores implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = true)
     private Double ombro;
+    @Column(nullable = true)
     private Double toraxRelaxado;
+    @Column(nullable = true)
     private Double abdome;
+    @Column(nullable = true)
     private Double quadril;
+    @Column(nullable = true)
     private Double pescoco;
+    @Column(nullable = true)
     private Double toraxInspirado;
+    @Column(nullable = true)
     private Double cintura;
+    @Column(nullable = true)
     private Double relacaoCinturaXQuadril;
 
+    public MembrosSuperiores() {
+    }
+
+    
+    
+    
     public Double getOmbro() {
         return ombro;
     }

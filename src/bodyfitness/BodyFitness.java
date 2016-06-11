@@ -5,9 +5,12 @@
  */
 package bodyfitness;
 
+
+
+import bodyfitness.dao.GenericDAO;
+import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Endereco;
-import java.util.Calendar;
-import java.util.Date;
+
 
 /**
  *
@@ -22,11 +25,18 @@ public class BodyFitness {
         // TODO code application logic here
         System.out.println("Iniciando o Projeto");
         //GenericDAO dao = new GenericDAO();
-
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-        c.add(Calendar.MONTH, 5);
-        System.out.println("Data e Hora atual: " + c.getTime());
+        GenericDAO dao = new GenericDAO();
+        Endereco endereco = new Endereco();
+        endereco.setRua("Sidney Vianna");
+        endereco.setNumero("223");
+        endereco.setBairro("Jardim Adriana");
+        endereco.setEstado("SP");
+        endereco.setCidade("Indaiatuba");
+        dao.persist(endereco);
+        //CargoDAO dao2 = new CargoDAO();
+        Cargo cargo = new Cargo("copeiro");
+        dao.persist(cargo);
+       
         System.out.println("Fim do projeto");
     }
 

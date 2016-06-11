@@ -5,17 +5,39 @@
  */
 package bodyfitness.pessoas.caracteristicas.corporal;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author batista
  */
-class Indices {
+@Entity
+@Table(name = "indices")        
+class Indices implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = true)
     private Double imc;
+    @Column(nullable = true)
     private Double percentualGorduraIdeal;
+    @Column(nullable = true)
     private Double massaMagra;
+    @Column(nullable = true)
     private Double percentualGorduraAtual;
+    @Column(nullable = true)
     private Double massaGorda;
 
+    public Indices() {
+    }
+
+    
     public Double getImc() {
         return imc;
     }
@@ -54,6 +76,14 @@ class Indices {
 
     public void setMassaGorda(Double massaGorda) {
         this.massaGorda = massaGorda;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     
