@@ -5,6 +5,7 @@
  */
 package bodyfitness.aula;
 
+import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.pessoas.funcionarios.Funcionario;
 import java.io.Serializable;
 import java.util.Date;
@@ -25,7 +26,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "aulas")
-public class Aula implements Serializable{
+public class Aula implements Serializable, EntidadeBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -48,6 +49,7 @@ public class Aula implements Serializable{
     public Aula() {
     }
 
+    @Override
     public Long getId() {
         return id;
     }

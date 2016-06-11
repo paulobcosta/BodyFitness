@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.cliente.treino;
 
+import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.equipamentos.Equipamento;
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -24,7 +25,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "series")
 @SequenceGenerator(name = "sequencia_serie",sequenceName = "sequencia_serie",allocationSize = 1,initialValue = 0)
-public class Serie implements Serializable {
+public class Serie implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sequencia_serie")
     private Long id;
@@ -41,6 +42,7 @@ public class Serie implements Serializable {
     public Serie() {
     }
 
+    @Override
     public Long getId() {
         return id;
     }

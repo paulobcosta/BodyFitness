@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.cliente.treino;
 
+import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.pessoas.generico.TipoDePessoa;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "treinos")
-public class Treino implements Serializable {
+public class Treino implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -45,6 +46,7 @@ public class Treino implements Serializable {
     
     
     
+    @Override
     public Long getId() {
         return id;
     }

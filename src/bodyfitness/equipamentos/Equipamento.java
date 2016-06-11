@@ -5,6 +5,7 @@
  */
 package bodyfitness.equipamentos;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,7 +24,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "equipamentos")
-public class Equipamento implements Serializable {
+public class Equipamento implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -48,6 +49,7 @@ public class Equipamento implements Serializable {
     }
 
     
+    @Override
     public Long getId() {
         return id;
     }

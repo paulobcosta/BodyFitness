@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "indices")        
-class Indices implements Serializable{
+class Indices implements Serializable, EntidadeBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -78,6 +79,7 @@ class Indices implements Serializable{
         this.massaGorda = massaGorda;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

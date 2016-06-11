@@ -5,6 +5,7 @@
  */
 package bodyfitness.aula;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "categoria_de_aula")
-public class CategoriaDeAula implements Serializable {
+public class CategoriaDeAula implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -34,6 +35,7 @@ public class CategoriaDeAula implements Serializable {
         this.categoria = categoria;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.funcionarios;
 
+import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Permissao;
 import bodyfitness.pessoas.caracteristicas.Turno;
@@ -17,9 +18,6 @@ import java.security.NoSuchAlgorithmException;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -31,7 +29,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "funcionarios")
 @DiscriminatorValue("FUNCIONARIO")
-public class Funcionario extends Pessoa implements Serializable {
+public class Funcionario extends Pessoa implements Serializable, EntidadeBase {
     
     @JoinColumn(nullable = false,name = "cargo")
     @OneToOne
@@ -107,6 +105,11 @@ public class Funcionario extends Pessoa implements Serializable {
 
     public void setTipoDePessoa(TipoDePessoa tipoDePessoa) {
         this.tipoDePessoa = tipoDePessoa;
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
     }
 
     

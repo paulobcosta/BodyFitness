@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "condicionamentos_fisicos")
-public class CondicionamentoFisico implements Serializable {
+public class CondicionamentoFisico implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -76,6 +77,7 @@ public class CondicionamentoFisico implements Serializable {
         this.membrosInferiores = membrosInferiores;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

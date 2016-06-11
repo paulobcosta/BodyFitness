@@ -5,12 +5,15 @@
  */
 package bodyfitness.pessoas.caracteristicas;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
@@ -23,7 +26,18 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "enderecos")
-public class Endereco implements Serializable{
+@NamedQueries({
+        @NamedQuery(name = "Endereco.consultarTodos",query = "SELECT e FROM Endereco e"),
+        @NamedQuery(name = "Endereco.consultaPorEstado",query = "SELECT e FROM Endereco e WHERE e.estado = :estado"),
+        @NamedQuery(name = "Endereco.consultaPorRua", query = "SELECT e FROM Endereco e WHERE e.rua = :rua"),
+        @NamedQuery(name = "Endereco.consultaPorBairro",query = "SELECT e FROM Endereco e WHERE e.bairro = :bairro"),
+        @NamedQuery(name = "Endereco.consultaPorCidade",query = "SELECT e FROM Endereco e WHERE e.cidade = :cidade"),
+        @NamedQuery(name = "Endereco.consultaPorId", query = "SELECT e FROM Endereco e WHERE e.id = :id")
+        
+})
+public class Endereco implements Serializable, EntidadeBase{
+    //public static final String PROCURAR_POR_BAIRRO = "Endereco.ProcuraPorBairro";
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -39,6 +53,7 @@ public class Endereco implements Serializable{
     @Column(nullable = false)
     private String numero;
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -77,8 +92,8 @@ public class Endereco implements Serializable{
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado(Estado estado) {
+        this.estado = estado.getSigla();
     }
 
     public String getNumero() {

@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.caracteristicas;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "cargos")
-public class Cargo implements Serializable {
+public class Cargo implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -38,6 +39,7 @@ public class Cargo implements Serializable {
         this.funcao = funcao;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

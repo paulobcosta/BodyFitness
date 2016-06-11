@@ -5,6 +5,7 @@
  */
 package bodyfitness.administracao;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "pagamentos")
-public class Pagamento implements Serializable {
+public class Pagamento implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -41,6 +42,7 @@ public class Pagamento implements Serializable {
         this.valor = valor;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

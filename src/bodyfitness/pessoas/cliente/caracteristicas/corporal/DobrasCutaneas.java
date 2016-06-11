@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "dobras_cutaneas")
-class DobrasCutaneas implements Serializable {
+class DobrasCutaneas implements Serializable, EntidadeBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -120,6 +121,7 @@ class DobrasCutaneas implements Serializable {
         this.panturrilha = panturrilha;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

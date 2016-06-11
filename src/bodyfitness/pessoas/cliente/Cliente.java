@@ -6,20 +6,16 @@
 package bodyfitness.pessoas.cliente;
 
 import bodyfitness.administracao.Pagamento;
+import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
 import bodyfitness.pessoas.cliente.caracteristicas.corporal.CondicionamentoFisico;
-import bodyfitness.pessoas.cliente.caracteristicas.corporal.CondicionamentoFisico;
 import bodyfitness.pessoas.generico.Pessoa;
-import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
@@ -33,7 +29,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "clientes")
 @DiscriminatorValue("CLIENTE")
-public class Cliente extends Pessoa {
+public class Cliente extends Pessoa implements EntidadeBase{
 
    
     @Column(nullable = false,name = "situacao_financeira")
@@ -76,6 +72,12 @@ public class Cliente extends Pessoa {
         this.pagamentos = pagamentos;
     }
 
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    
     
     
 

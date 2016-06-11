@@ -11,8 +11,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -42,7 +40,7 @@ public abstract class Pessoa implements Serializable {
     @Column(name = "tipo_de_pessoa",nullable = false)
     protected TipoDePessoa tipoDePessoa;
     @Id
-    private Long ID;
+    protected Long id;
     
     
     public Pessoa() {
@@ -86,12 +84,12 @@ public abstract class Pessoa implements Serializable {
         this.tipoDePessoa = tipoDePessoa;
     }
 
-    public Long getID() {
-        return ID;
+    public Long getId() {
+        return id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
     
     

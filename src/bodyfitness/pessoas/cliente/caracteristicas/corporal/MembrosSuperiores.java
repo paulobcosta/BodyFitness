@@ -5,6 +5,7 @@
  */
 package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
+import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "membros_superiores")
-class MembrosSuperiores implements Serializable{
+class MembrosSuperiores implements Serializable, EntidadeBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -110,6 +111,7 @@ class MembrosSuperiores implements Serializable{
         this.relacaoCinturaXQuadril = relacaoCinturaXQuadril;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
