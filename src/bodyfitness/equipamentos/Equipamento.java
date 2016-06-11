@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +26,14 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "equipamentos")
+@NamedQueries({
+    @NamedQuery(name = "Equipamento.consultarTodos",query = "SELECT e FROM Equipamento e"),
+    @NamedQuery(name = "Equipamento.consultarPorNome",query = "SELECT e FROM Equipamento e WHERE e.nome = :nome"),
+    @NamedQuery(name = "Equipamento.consultaPorId",query = "SELECT e FROM Equipamento e WHERE e.id = :id"),
+    @NamedQuery(name = "Equipamento.consultaPorEquipamentoSemManutencao", query = "SELECT e FROM Equipamento e WHERE e.dataDaProximaManutencao < CURRENT_DATE"),
+    @NamedQuery(name = "Equipamento.consultaPorEquipamentoNaoHabilitado", query = "SELECT e FROM Equipamento e WHERE e.habilitado = true"),
+    @NamedQuery(name = "Equipamento.consultaPorEquipamentoHabilitado", query = "SELECT e FROM Equipamento e WHERE e.habilitado = false")
+})
 public class Equipamento implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,7 +50,9 @@ public class Equipamento implements Serializable, EntidadeBase {
     @Column(name = "data_proxima_manutencao",nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dataDaProximaManutencao;
-
+    @Column(name = "habilitado", nullable = false)
+    private boolean habilitado;
+    
     public Equipamento(String nome) {
         this.nome = nome;
     }
@@ -99,6 +111,14 @@ public class Equipamento implements Serializable, EntidadeBase {
         c.setTime(this.dataDaUltimaManutencao);
         c.add(Calendar.MONTH, 2);
         this.dataDaProximaManutencao = c.getTime();
+    }
+
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
     }
     
     
