@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+//http://uaihebert.com/jpa-ordernando-listas-e-utilizando-map-como-atributo-mapeado/
 /**
  *
  * @author paulo
