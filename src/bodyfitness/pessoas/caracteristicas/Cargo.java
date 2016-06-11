@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
@@ -22,6 +24,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "cargos")
+@NamedQueries({
+    @NamedQuery(name = "Cargo.consultarTodos",query = "SELECT c FROM Cargo c"),
+    @NamedQuery(name = "Cargo.consultaPorFuncao",query = "SELECT c FROM Cargo c WHERE c.funcao = :funcao"),
+    @NamedQuery(name = "Cargo.consultaPorId", query = "SELECT c FROM Cargo c WHERE c.id = :id")    
+})
 public class Cargo implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
