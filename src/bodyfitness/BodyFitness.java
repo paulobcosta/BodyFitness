@@ -5,9 +5,15 @@
  */
 package bodyfitness;
 
+import bodyfitness.dao.ClienteDAO;
 import bodyfitness.dao.EnderecoDAO;
 import bodyfitness.pessoas.caracteristicas.Endereco;
 import bodyfitness.pessoas.caracteristicas.Estado;
+import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
+import bodyfitness.pessoas.cliente.Cliente;
+import bodyfitness.pessoas.generico.TipoDePessoa;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,7 +47,20 @@ public class BodyFitness {
         //CargoDAO dao2 = new CargoDAO();
         //Cargo cargo = new Cargo("copeiro");
         //dao.persist(cargo);
-
+        Cliente c = new Cliente();
+        c.setNome("paulo");
+        c.setCondicionamentoFisico(null);
+        c.setEndereco(endereco2);
+        //c.setId(new Long(1));
+        Date date =  new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(1992, 02, 27);
+        c.setDataDeNascimento(calendar.getTime());
+        ClienteDAO dao2 = new ClienteDAO();
+        c.setSituacaoFinanceira(SituacaoFinanceira.INADIMPLENTE);
+        c.setTipoDePessoa(TipoDePessoa.CLIENTE);
+        dao2.persist(c);
+        
         System.out.println("Fim do projeto");
         System.out.println("Consulta");
         List<Endereco> enderecos = dao.consultaPorEstado("PR");

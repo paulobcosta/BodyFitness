@@ -10,5 +10,9 @@ package bodyfitness.pessoas.cliente.treino;
  * @author paulo
  */
 public enum RotuloDeTreino {
-    LEVE,INTENDO,ABC,FOCO_PERNA,FOCO_BRACO,AEROBICO
+    LEVE,INTENDO,ABC,FOCO_PERNA,FOCO_BRACO,AEROBICO;
+    
+    public String getRotulo() {
+        return this.toString();
+    }
 }

@@ -10,5 +10,9 @@ package bodyfitness.pessoas.caracteristicas;
  * @author batista
  */
 public enum SituacaoFinanceira {
-    ADIMPLENTE,INADIMPLENTE
+    ADIMPLENTE,INADIMPLENTE;
+    
+    public String getSituacao() {
+        return this.toString();
+    }
 }

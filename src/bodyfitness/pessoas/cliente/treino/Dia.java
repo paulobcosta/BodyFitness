@@ -10,5 +10,9 @@ package bodyfitness.pessoas.cliente.treino;
  * @author paulo
  */
 public enum Dia {
-    UM,DOIS,TRES,QUATRO,CINCO,SEIS,SETE
+    UM,DOIS,TRES,QUATRO,CINCO,SEIS,SETE;
+    
+    public String getDia() {
+        return this.toString();
+    }
 }

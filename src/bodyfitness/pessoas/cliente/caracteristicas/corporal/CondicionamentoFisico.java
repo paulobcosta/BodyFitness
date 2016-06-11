@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,6 +25,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "condicionamentos_fisicos")
+@NamedQueries({
+    
+})
 public class CondicionamentoFisico implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

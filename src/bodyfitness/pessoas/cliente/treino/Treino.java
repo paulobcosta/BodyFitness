@@ -6,13 +6,10 @@
 package bodyfitness.pessoas.cliente.treino;
 
 import bodyfitness.dao.base.EntidadeBase;
-import bodyfitness.pessoas.generico.TipoDePessoa;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
