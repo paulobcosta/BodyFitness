@@ -15,11 +15,11 @@
     <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.Indices</class>
     <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.MembrosSuperiores</class>
     <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.MembrosInferiores</class>
-    <class>bodyfitness.pessoas.cliente.caracteristicas.corporal.Cliente</class>
     <class>bodyfitness.pessoas.cliente.treino.Serie</class>
     <class>bodyfitness.pessoas.cliente.treino.Treino</class>
+    <class>bodyfitness.administracao.Pagamento</class>
+    <class>bodyfitness.pessoas.cliente.Cliente</class>
     <shared-cache-mode>ALL</shared-cache-mode>
-    <validation-mode>NONE</validation-mode>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bodyfitness"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
