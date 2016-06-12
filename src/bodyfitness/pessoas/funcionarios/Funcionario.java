@@ -19,6 +19,8 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,16 +31,27 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "funcionarios")
 @DiscriminatorValue("FUNCIONARIO")
+@NamedQueries({
+    @NamedQuery(name = "Funcionario.consultarTodos",query = "SELECT f FROM Funcionario f"),
+    @NamedQuery(name = "Funcionario.consultarPorNome",query = "SELECT f FROM Funcionario f WHERE f.nome = :nome"),
+    @NamedQuery(name = "Funcionario.consultarPorId",query = "SELECT f FROM Funcionario f WHERE f.id = :id"),
+    @NamedQuery(name = "Funcionario.consultarPorMaiorFaixaSalarial",query = "SELECT f FROM Funcionario f WHERE f.salario > :salario ORDER BY f.salario DESC"),
+    @NamedQuery(name = "Funcionario.consultarPorMenorFaixaSalarial",query = "SELECT f FROM Funcionario f WHERE f.salario < :salario ORDER BY f.salario ASC"),
+    @NamedQuery(name = "Funcionario.consultaPorIdCargo",query = "SELECT f FROM Funcionario f WHERE f.cargo.id = :idcargo"),
+    @NamedQuery(name = "Funcionario.consultaPorUsuario",query = "SELECT f FROM Funcionario f WHERE f.usuario = :usuario")    
+    
+})
 public class Funcionario extends Pessoa implements Serializable, EntidadeBase {
     
     @JoinColumn(nullable = false,name = "cargo")
     @OneToOne
     private Cargo cargo;
-    
+    @Column(nullable = false,name = "salario")
+    private Double salario;
     @Column(nullable = false,name = "permissao")
-    private Permissao permissao;
+    private String permissao;
     @Column(nullable = false,name = "turno")
-    private Turno turno;
+    private String turno;
     @Column(nullable = false, unique = true,name = "nome_de_usuario")
     private String usuario;
     @Column(nullable = false,name = "senha")
@@ -51,27 +64,27 @@ public class Funcionario extends Pessoa implements Serializable, EntidadeBase {
     public Funcionario(String nome, Cargo funcao) {
         setNome(nome);
         this.cargo = funcao;
-        this.permissao = Permissao.COMUM;
+        this.permissao = Permissao.COMUM.getPermissao();
     }
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
 
-    public Permissao getPermissao() {
+    public String getPermissao() {
         return permissao;
     }
 
     public void setPermissao(Permissao permissao) {
-        this.permissao = permissao;
+        this.permissao = permissao.getPermissao();
     }
 
-    public Turno getTurno() {
+    public String getTurno() {
         return turno;
     }
 
     public void setTurno(Turno turno) {
-        this.turno = turno;
+        this.turno = turno.name();
     }
 
     public String getUsuario() {
@@ -110,6 +123,14 @@ public class Funcionario extends Pessoa implements Serializable, EntidadeBase {
     @Override
     public Long getId() {
         return this.id;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Double salario) {
+        this.salario = salario;
     }
 
     

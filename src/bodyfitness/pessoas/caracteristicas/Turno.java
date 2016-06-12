@@ -10,5 +10,9 @@ package bodyfitness.pessoas.caracteristicas;
  * @author batista
  */
 public enum Turno {
-    MATUTINO,VESPERTINO,NOTURNO
+    MATUTINO,VESPERTINO,NOTURNO;
+    
+    public String getTurno() {
+        return this.toString();
+    }
 }

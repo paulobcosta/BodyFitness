@@ -10,5 +10,9 @@ package bodyfitness.pessoas.caracteristicas;
  * @author batista
  */
 public enum Permissao {
-    ADMIN,GERENCIAL,COMUM
+    ADMIN,GERENCIAL,COMUM;
+    
+    public String getPermissao() {
+        return this.toString();
+    }
 }

@@ -25,9 +25,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "condicionamentos_fisicos")
-@NamedQueries({
-    
-})
+
 public class CondicionamentoFisico implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,6 +25,13 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "pagamentos")
+@NamedQueries({
+    @NamedQuery(name = "Pagamento.consultarTodos",query = "SELECT p FROM Pagamento p"),
+    @NamedQuery(name = "Pagamento.consultaNaoQuitado",query = "SELECT p FROM Pagamento p WHERE p.quitado = false"),
+    @NamedQuery(name = "Pagamento.consultaQuitado",query = "SELECT p FROM Pagamento p WHERE p.quitado = true"),
+    @NamedQuery(name = "Pagamento.consultaPagamentosAtrasados",query = "SELECT p FROM Pagamento p WHERE p.quitado = false AND p.vencimento < CURRENT_DATE")
+      
+})
 public class Pagamento implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

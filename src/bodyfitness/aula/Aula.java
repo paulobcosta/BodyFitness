@@ -6,15 +6,23 @@
 package bodyfitness.aula;
 
 import bodyfitness.dao.base.EntidadeBase;
+import bodyfitness.pessoas.cliente.Cliente;
 import bodyfitness.pessoas.funcionarios.Funcionario;
+import com.sun.istack.internal.Nullable;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -45,7 +53,9 @@ public class Aula implements Serializable, EntidadeBase{
     @OneToOne
     @JoinColumn(name = "categoria_de_aula",nullable = false)
     private CategoriaDeAula categoria;
-
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable(name = "aula_clientes",joinColumns = {@JoinColumn(name="aula_id",referencedColumnName = "id")})
+    private ArrayList<Cliente> clientes;
     public Aula() {
     }
 
@@ -56,6 +66,14 @@ public class Aula implements Serializable, EntidadeBase{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(ArrayList<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
     

@@ -37,7 +37,7 @@ public class Serie implements Serializable, EntidadeBase {
     @Column(name = "numero_de_series",nullable = false)
     private int quantidadeDeSeries;
     @Column(name = "dia",nullable = false)
-    private Dia dia;
+    private String dia;
     
     public Serie() {
     }
@@ -47,12 +47,12 @@ public class Serie implements Serializable, EntidadeBase {
         return id;
     }
 
-    public Dia getDia() {
+    public String getDia() {
         return dia;
     }
 
     public void setDia(Dia dia) {
-        this.dia = dia;
+        this.dia = dia.getDia();
     }
 
     

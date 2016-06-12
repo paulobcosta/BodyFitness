@@ -34,7 +34,7 @@ public class Treino implements Serializable, EntidadeBase {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private ArrayList<Serie> series;
     @Column(name = "rotulo",nullable = false)
-    private RotuloDeTreino rotulo;
+    private String rotulo;
 
     public Treino() {
     }
@@ -60,12 +60,12 @@ public class Treino implements Serializable, EntidadeBase {
         this.series = series;
     }
 
-    public RotuloDeTreino getRotulo() {
-        return rotulo;
+    public String getRotulo() {
+        return this.rotulo;
     }
 
     public void setRotulo(RotuloDeTreino rotulo) {
-        this.rotulo = rotulo;
+        this.rotulo = rotulo.getRotulo();
     }
     
     

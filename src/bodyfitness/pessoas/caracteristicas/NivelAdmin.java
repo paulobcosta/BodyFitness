@@ -10,5 +10,9 @@ package bodyfitness.pessoas.caracteristicas;
  * @author batista
  */
 public enum NivelAdmin {
-    GERENTE,ADMINISTRADOR
+    GERENTE,ADMINISTRADOR;
+    
+    public String getNivel() {
+        return this.toString();
+    }
 }
