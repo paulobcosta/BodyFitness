@@ -29,7 +29,8 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Pagamento.consultarTodos",query = "SELECT p FROM Pagamento p"),
     @NamedQuery(name = "Pagamento.consultaNaoQuitado",query = "SELECT p FROM Pagamento p WHERE p.quitado = false"),
     @NamedQuery(name = "Pagamento.consultaQuitado",query = "SELECT p FROM Pagamento p WHERE p.quitado = true"),
-    @NamedQuery(name = "Pagamento.consultaPagamentosAtrasados",query = "SELECT p FROM Pagamento p WHERE p.quitado = false AND p.vencimento < CURRENT_DATE")
+    @NamedQuery(name = "Pagamento.consultaPagamentosAtrasados",query = "SELECT p FROM Pagamento p WHERE p.quitado = false AND p.vencimento < CURRENT_DATE"),
+    @NamedQuery(name = "Pagamento.consultaNaoQuitadoEmDia",query = "SELECT p FROM Pagamento p WHERE p.quitado = false AND p.vencimento > CURRENT_DATE")
       
 })
 public class Pagamento implements Serializable, EntidadeBase {
