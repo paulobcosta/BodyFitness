@@ -37,7 +37,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Funcionario.consultarPorId",query = "SELECT f FROM Funcionario f WHERE f.id = :id"),
     @NamedQuery(name = "Funcionario.consultarPorMaiorFaixaSalarial",query = "SELECT f FROM Funcionario f WHERE f.salario > :salario ORDER BY f.salario DESC"),
     @NamedQuery(name = "Funcionario.consultarPorMenorFaixaSalarial",query = "SELECT f FROM Funcionario f WHERE f.salario < :salario ORDER BY f.salario ASC"),
-    @NamedQuery(name = "Funcionario.consultaPorIdCargo",query = "SELECT f FROM Funcionario f WHERE f.cargo.id = :idcargo"),
+    @NamedQuery(name = "Funcionario.consultaPorIdCargo",query = "SELECT f FROM Funcionario f WHERE f.cargo.id = :idCargo"),
     @NamedQuery(name = "Funcionario.consultaPorUsuario",query = "SELECT f FROM Funcionario f WHERE f.usuario = :usuario")    
     
 })

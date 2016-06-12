@@ -128,7 +128,7 @@ public class AulaDAO extends GenericDAO<Aula> {
         return aulas;
     }
     /*@NamedQuery(name = "Aula.consultarPorCliente",query = "SELECT a FROM Aula a WHERE a.clientes.id = :idCliente"),*/
-    public List<Aula> consultarPorCliente(Long idCliente) {
+    /*public List<Aula> consultarPorCliente(Long idCliente) {
         EntityManager em = getEntityManager();
         List<Aula> aulas = new ArrayList<>();
         try {
@@ -142,7 +142,7 @@ public class AulaDAO extends GenericDAO<Aula> {
             em.close();
         }
         return aulas;
-    }
+    }*/
     /*@NamedQuery(name = "Aula.consultarPorDiaEHorario",query = "SELECT a FROM Aula a WHERE a.dia = :dia AND :horario BETWEEN a.horaDeInicio AND a.horaDeTermino")*/
     public List<Aula> consultarPorDiaEHorario(Date dia, Date horario) {
         EntityManager em = getEntityManager();
@@ -177,7 +177,7 @@ public class AulaDAO extends GenericDAO<Aula> {
         return aulas;
     }
     /*@NamedQuery(name = "Aula.consultarAulasFuturasPorCliente",query = "SELECT a FROM Aula a WHERE a.clientes.id = :idCliente AND (a.dia > CURRENT_DATE OR a.horaDeInicio > CURRENT_TIME)")*/
-    public List<Aula> consultarAulasFuturasPorCliente(Long idCliente) {
+  /*  public List<Aula> consultarAulasFuturasPorCliente(Long idCliente) {
         EntityManager em = getEntityManager();
         List<Aula> aulas = new ArrayList<>();
         try {
@@ -191,7 +191,7 @@ public class AulaDAO extends GenericDAO<Aula> {
             em.close();
         }
         return aulas;
-    }
+    }*/
         
 
 }
