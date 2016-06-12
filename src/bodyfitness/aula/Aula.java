@@ -8,7 +8,6 @@ package bodyfitness.aula;
 import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.pessoas.cliente.Cliente;
 import bodyfitness.pessoas.funcionarios.Funcionario;
-import com.sun.istack.internal.Nullable;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +20,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -34,6 +34,19 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "aulas")
+@NamedQueries({
+    @NamedQuery(name = "Aula.consultarTodos",query = "SELECT a FROM Aula a"),
+    @NamedQuery(name = "Aula.consultarPorId",query = "SELECT a FROM Aula a WHERE a.id = :id"),
+    @NamedQuery(name = "Aula.consultarPorDia",query = "SELECT a FROM Aula a WHERE a.dia = :dia"),
+    @NamedQuery(name = "Aula.consultarPorProfessor",query = "SELECT a FROM Aula a WHERE a.professor.id = :idProfessor"),
+    @NamedQuery(name = "Aula.consultarAulasFuturas",query = "SELECT a FROM Aula a WHERE a.dia > CURRENT_DATE"),
+    @NamedQuery(name = "Aula.consultarAulasFuturasPorProfessor",query = "SELECT a FROM Aula a WHERE a.professor.id = :idProfessor AND (a.dia > CURRENT_DATE OR a.horaDeInicio > CURRENT_TIME)"),
+    @NamedQuery(name = "Aula.consultarPorCategoriaDeAula",query = "SELECT a FROM Aula a WHERE a.categoria.categoria = :categoria"),
+    @NamedQuery(name = "Aula.consultarPorCliente",query = "SELECT a FROM Aula a WHERE a.clientes.id = :idCliente"),
+    @NamedQuery(name = "Aula.consultarPorDiaEHorario",query = "SELECT a FROM Aula a WHERE a.dia = :dia AND :horario BETWEEN a.horaDeInicio AND a.horaDeTermino"),
+    @NamedQuery(name = "Aula.consultarAulasFuturasFuturasPorCategoria",query = "SELECT a FROM Aula a WHERE a.categoria.categoria = :categoria AND (a.dia > CURRENT_DATE OR a.horaDeInicio > CURRENT_TIME)"),
+    @NamedQuery(name = "Aula.consultarAulasFuturasPorCliente",query = "SELECT a FROM Aula a WHERE a.clientes.id = :idCliente AND (a.dia > CURRENT_DATE OR a.horaDeInicio > CURRENT_TIME)")    
+})
 public class Aula implements Serializable, EntidadeBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
