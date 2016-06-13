@@ -104,6 +104,10 @@ public class Endereco implements Serializable, EntidadeBase{
         this.numero = numero;
     }
     
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
     
     
 }

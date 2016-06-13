@@ -75,7 +75,11 @@ public class Cliente extends Pessoa implements EntidadeBase{
     public void setSituacaoFinanceira(SituacaoFinanceira situacaoFinanceira) {
         this.situacaoFinanceira = situacaoFinanceira.getSituacao();
     }
-
+    
+    public void setSituacaoFinanceira(String situacaoFinanceira) {
+        this.situacaoFinanceira = situacaoFinanceira;
+    }
+    
     public CondicionamentoFisico getCondicionamentoFisico() {
         return condicionamentoFisico;
     }
