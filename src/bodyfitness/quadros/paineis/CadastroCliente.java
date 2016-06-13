@@ -59,7 +59,6 @@ public class CadastroCliente extends javax.swing.JFrame {
         nomeClienteLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         nomeClienteLabel.setForeground(new java.awt.Color(254, 254, 254));
         nomeClienteLabel.setText("Nome :");
-        nomeClienteLabel.setMinimumSize(new java.awt.Dimension(76, 24));
         ImagemPanel.add(nomeClienteLabel);
         nomeClienteLabel.setBounds(70, 130, 80, 50);
 
@@ -124,6 +123,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         numeroTField.setBounds(630, 230, 260, 50);
 
         estadoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC ", "AL", "AP ", "AM", "BA", "CE ", "DF ", "ES ", "GO  ", "MA  ", "MT", "MS ", "MG ", "PA", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", " " }));
+        estadoCBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estadoCBoxActionPerformed(evt);
+            }
+        });
         ImagemPanel.add(estadoCBox);
         estadoCBox.setBounds(630, 330, 150, 50);
 
@@ -150,6 +154,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void dataNascimentoTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataNascimentoTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dataNascimentoTFieldActionPerformed
+
+    private void estadoCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoCBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_estadoCBoxActionPerformed
 
     /**
      * @param args the command line arguments
