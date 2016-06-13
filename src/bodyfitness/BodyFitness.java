@@ -5,8 +5,10 @@
  */
 package bodyfitness;
 
+import bodyfitness.controlador.cadastro.CadastroCargo;
 import bodyfitness.dao.ClienteDAO;
 import bodyfitness.dao.EnderecoDAO;
+import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Endereco;
 import bodyfitness.pessoas.caracteristicas.Estado;
 import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
@@ -25,11 +27,17 @@ public class BodyFitness {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // TODO code application logic here
         System.out.println("Iniciando o Projeto");
+        CadastroCargo cg = new CadastroCargo();
+        //cg.cadastrar("copeiro");
+        //cg.cadastrar("mecanico");
+        //cg.cadastrar("domestica");
+        //cg.dao.delete(Cargo.class, new Long(1));
+        cg.alterar("capiroto", "mecanico");
         //GenericDAO dao = new GenericDAO();
-        EnderecoDAO dao = new EnderecoDAO();
+        /* EnderecoDAO dao = new EnderecoDAO();
         Endereco endereco = new Endereco();
         endereco.setRua("Sidney Vianna");
         endereco.setNumero("223");
@@ -77,6 +85,7 @@ public class BodyFitness {
             System.out.println(end.getBairro());
             System.out.println(end.getRua());
             System.out.println(end.getNumero());
-    }
+    }*/
 
+    }
 }

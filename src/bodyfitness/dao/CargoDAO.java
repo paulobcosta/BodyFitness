@@ -41,7 +41,7 @@ public class CargoDAO extends GenericDAO<Cargo> {
             cargo = (Cargo) q.getSingleResult();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            cargo = new Cargo();
+            cargo = null;
         } finally {
             em.close();
         }
@@ -58,7 +58,7 @@ public class CargoDAO extends GenericDAO<Cargo> {
             cargo = (Cargo) q.getSingleResult();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            cargo = new Cargo();
+            cargo = null;
         } finally {
             em.close();
         }
