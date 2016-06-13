@@ -8,6 +8,7 @@ package bodyfitness.pessoas.generico;
 import bodyfitness.pessoas.caracteristicas.Endereco;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -37,7 +38,7 @@ public abstract class Pessoa implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataDeNascimento;
     @JoinColumn(nullable = false,name = "endereco")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
     @Column(name = "tipo_de_pessoa",nullable = false)
     protected TipoDePessoa tipoDePessoa;

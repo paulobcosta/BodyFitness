@@ -7,10 +7,15 @@ package bodyfitness;
 
 import bodyfitness.dao.ClienteDAO;
 import bodyfitness.dao.EnderecoDAO;
+import bodyfitness.dao.FuncionarioDAO;
+import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Endereco;
 import bodyfitness.pessoas.caracteristicas.Estado;
+import bodyfitness.pessoas.caracteristicas.Permissao;
 import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
+import bodyfitness.pessoas.caracteristicas.Turno;
 import bodyfitness.pessoas.cliente.Cliente;
+import bodyfitness.pessoas.funcionarios.Funcionario;
 import bodyfitness.pessoas.generico.TipoDePessoa;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -40,18 +45,20 @@ public class BodyFitness {
         endereco.setNumero("1300");
         endereco.setCidade("campo mourao");
         endereco.setEstado(Estado.PR.getSigla());
-        Cliente cliente = new Cliente();
-        cliente.setNome("Paulo B");
-        cliente.setSituacaoFinanceira(SituacaoFinanceira.ADIMPLENTE.getSituacao());
-        cliente.setDataDeNascimento(dataParaBanco);
-        cliente.setTipoDePessoa(TipoDePessoa.CLIENTE);
-        cliente.setEndereco(endereco);
-        ClienteDAO dao = new ClienteDAO();
-        EnderecoDAO end = new EnderecoDAO();
-        end.persist(endereco);
-        cliente.setEndereco(endereco);
-        dao.persist(cliente);
-        
+        FuncionarioDAO dao = new FuncionarioDAO();
+        Funcionario funcionario = new Funcionario();
+        funcionario.setEndereco(endereco);
+        funcionario.setNome("Paulo B");
+        funcionario.setDataDeNascimento(dataParaBanco);
+        funcionario.setTurno(Turno.NOTURNO);
+        funcionario.setPermissao(Permissao.COMUM);
+        funcionario.setTipoDePessoa(TipoDePessoa.FUNCIONARIO);
+        funcionario.setSalario(new Double("800.00"));
+        funcionario.setUsuario("paulobcosta");
+        Cargo cargo = new Cargo("professor");
+        funcionario.setSenha("123");
+        funcionario.setCargo(cargo);
+        dao.persist(funcionario);
 
     }
 }
