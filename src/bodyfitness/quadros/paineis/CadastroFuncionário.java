@@ -152,7 +152,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         CadastroFuncPanel.add(estadoCBox);
         estadoCBox.setBounds(180, 510, 210, 50);
 
-        turnoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        turnoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "noturno", "diurno", "vespertino" }));
         CadastroFuncPanel.add(turnoCBox);
         turnoCBox.setBounds(540, 510, 150, 50);
 

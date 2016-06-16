@@ -169,7 +169,12 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         CadastroAdmPanel.add(estadoCBox);
         estadoCBox.setBounds(180, 510, 210, 50);
 
-        turnoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        turnoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "noturno", "diurno", "vespertino" }));
+        turnoCBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                turnoCBoxActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(turnoCBox);
         turnoCBox.setBounds(540, 510, 150, 50);
 
@@ -239,6 +244,10 @@ public class CadastroAdministradores extends javax.swing.JFrame {
     private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastroButtonActionPerformed
+
+    private void turnoCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnoCBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_turnoCBoxActionPerformed
 
     /**
      * @param args the command line arguments
