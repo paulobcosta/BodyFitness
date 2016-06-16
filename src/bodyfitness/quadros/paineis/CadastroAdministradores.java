@@ -27,6 +27,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         CadastroAdmPanel = new javax.swing.JPanel();
         dataNascimentoLabel = new javax.swing.JLabel();
         permissaoLabel = new javax.swing.JLabel();
@@ -43,7 +44,6 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         numeroTField = new javax.swing.JTextField();
         bairroTField = new javax.swing.JTextField();
         ruaTField = new javax.swing.JTextField();
-        datanascTField = new javax.swing.JTextField();
         senhaTField = new javax.swing.JPasswordField();
         confsenhaTField = new javax.swing.JPasswordField();
         salarioTField = new javax.swing.JTextField();
@@ -54,7 +54,19 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         nivelPerCBox = new javax.swing.JComboBox<>();
         cadastroButton = new javax.swing.JButton();
         head = new javax.swing.JLabel();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
         image = new javax.swing.JLabel();
+
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -137,8 +149,6 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         bairroTField.setBounds(140, 190, 250, 50);
         CadastroAdmPanel.add(ruaTField);
         ruaTField.setBounds(140, 270, 250, 50);
-        CadastroAdmPanel.add(datanascTField);
-        datanascTField.setBounds(700, 110, 230, 50);
         CadastroAdmPanel.add(senhaTField);
         senhaTField.setBounds(580, 270, 350, 50);
         CadastroAdmPanel.add(confsenhaTField);
@@ -169,11 +179,16 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         CadastroAdmPanel.add(estadoLabel);
         estadoLabel.setBounds(50, 510, 120, 50);
 
-        nivelPerCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "item 1" }));
+        nivelPerCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "administrador", "gerente" }));
         CadastroAdmPanel.add(nivelPerCBox);
         nivelPerCBox.setBounds(700, 430, 230, 50);
 
         cadastroButton.setText("Cadastrar");
+        cadastroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroButtonActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(cadastroButton);
         cadastroButton.setBounds(750, 510, 160, 50);
 
@@ -182,6 +197,14 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         head.setText("Cadastro de Administradores");
         CadastroAdmPanel.add(head);
         head.setBounds(50, 20, 700, 60);
+
+        try {
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        CadastroAdmPanel.add(jFormattedTextField2);
+        jFormattedTextField2.setBounds(700, 110, 230, 50);
 
         image.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         image.setForeground(new java.awt.Color(254, 254, 254));
@@ -208,6 +231,14 @@ public class CadastroAdministradores extends javax.swing.JFrame {
     private void nomeTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTFieldActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+
+    private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadastroButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,11 +285,12 @@ public class CadastroAdministradores extends javax.swing.JFrame {
     private javax.swing.JLabel confirmacaoLabel;
     private javax.swing.JPasswordField confsenhaTField;
     private javax.swing.JLabel dataNascimentoLabel;
-    private javax.swing.JTextField datanascTField;
     private javax.swing.JComboBox<String> estadoCBox;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel head;
     private javax.swing.JLabel image;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JComboBox<String> nivelPerCBox;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JTextField nomeTField;
