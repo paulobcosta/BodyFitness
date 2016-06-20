@@ -63,11 +63,11 @@ public class ConsultaEndereçoCliente extends javax.swing.JFrame {
         buscaEndereçoPanel.add(buscaPane);
         buscaPane.setBounds(20, 230, 960, 400);
 
-        headerLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        headerLabel.setFont(new java.awt.Font("Cantarell", 0, 36)); // NOI18N
         headerLabel.setForeground(new java.awt.Color(254, 254, 254));
         headerLabel.setText("Consultar Endereço do Cliente");
         buscaEndereçoPanel.add(headerLabel);
-        headerLabel.setBounds(350, 30, 340, 50);
+        headerLabel.setBounds(260, 30, 510, 50);
 
         buscaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         buscaLabel.setForeground(new java.awt.Color(254, 254, 254));
