@@ -42,6 +42,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cadastroCargo = new javax.swing.JMenuItem();
         cadastroFunc = new javax.swing.JMenuItem();
         cadastroCliente = new javax.swing.JMenuItem();
+        sairMenu = new javax.swing.JMenu();
+        mudarUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 650));
@@ -137,6 +139,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         barraPrincipalMBar.add(cadastroMenu);
 
+        sairMenu.setText("Sair");
+
+        mudarUsuario.setText("Trocar de Usuário");
+        mudarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mudarUsuarioActionPerformed(evt);
+            }
+        });
+        sairMenu.add(mudarUsuario);
+
+        barraPrincipalMBar.add(sairMenu);
+
         setJMenuBar(barraPrincipalMBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,6 +239,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         consultaPag.setVisible(true);
     }//GEN-LAST:event_consultaPagamentoActionPerformed
 
+    private void mudarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mudarUsuarioActionPerformed
+        // TODO add your handling code here:
+        
+        JFrame loginSistema = new LoginSistema();
+        
+        this.setVisible(false);
+        loginSistema.setVisible(true);
+    }//GEN-LAST:event_mudarUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +297,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu consultasMenu;
     private javax.swing.JLabel image;
     private javax.swing.JPanel menuPanel;
+    private javax.swing.JMenuItem mudarUsuario;
+    private javax.swing.JMenu sairMenu;
     // End of variables declaration//GEN-END:variables
 
 
