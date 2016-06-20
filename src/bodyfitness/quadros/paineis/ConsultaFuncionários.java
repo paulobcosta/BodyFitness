@@ -29,8 +29,8 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
 
         consultaFunc = new javax.swing.JPanel();
         header = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        listaConsultaPane = new javax.swing.JScrollPane();
+        listaConsultaTable = new javax.swing.JTable();
         tipoBuscaCBox = new javax.swing.JComboBox<>();
         tipoBuscaLabel = new javax.swing.JLabel();
         critérioLabel = new javax.swing.JLabel();
@@ -51,7 +51,7 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
         consultaFunc.add(header);
         header.setBounds(300, 20, 410, 50);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        listaConsultaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -70,11 +70,11 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setOpaque(false);
-        jScrollPane1.setViewportView(jTable1);
+        listaConsultaTable.setOpaque(false);
+        listaConsultaPane.setViewportView(listaConsultaTable);
 
-        consultaFunc.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 220, 960, 410);
+        consultaFunc.add(listaConsultaPane);
+        listaConsultaPane.setBounds(20, 220, 960, 410);
 
         tipoBuscaCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "funcionário", "gerente" }));
         consultaFunc.add(tipoBuscaCBox);
@@ -98,7 +98,7 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
 
         buscaButton.setText("Buscar");
         consultaFunc.add(buscaButton);
-        buscaButton.setBounds(750, 90, 190, 50);
+        buscaButton.setBounds(750, 90, 200, 50);
 
         buscaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         buscaLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -181,8 +181,8 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
     private javax.swing.JLabel critérioLabel;
     private javax.swing.JLabel header;
     private javax.swing.JLabel imagem;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane listaConsultaPane;
+    private javax.swing.JTable listaConsultaTable;
     private javax.swing.JComboBox<String> tipoBuscaCBox;
     private javax.swing.JLabel tipoBuscaLabel;
     // End of variables declaration//GEN-END:variables
