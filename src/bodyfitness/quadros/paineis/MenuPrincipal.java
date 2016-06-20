@@ -36,6 +36,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         consultaCliente = new javax.swing.JMenuItem();
         consultaFunc = new javax.swing.JMenuItem();
         consultaEndereço = new javax.swing.JMenuItem();
+        consultaPagamento = new javax.swing.JMenuItem();
         cadastroMenu = new javax.swing.JMenu();
         cadastroAdm = new javax.swing.JMenuItem();
         cadastroCargo = new javax.swing.JMenuItem();
@@ -89,6 +90,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         consultasMenu.add(consultaEndereço);
+
+        consultaPagamento.setText("Consulta Pagamento");
+        consultaPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaPagamentoActionPerformed(evt);
+            }
+        });
+        consultasMenu.add(consultaPagamento);
 
         barraPrincipalMBar.add(consultasMenu);
 
@@ -208,6 +217,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cadastroFunc.setVisible(true);
     }//GEN-LAST:event_cadastroFuncActionPerformed
 
+    private void consultaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaPagamentoActionPerformed
+        // TODO add your handling code here:
+        
+        JFrame consultaPag = new ConsultaPagamento();
+        
+        consultaPag.setVisible(true);
+    }//GEN-LAST:event_consultaPagamentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -253,6 +270,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultaCliente;
     private javax.swing.JMenuItem consultaEndereço;
     private javax.swing.JMenuItem consultaFunc;
+    private javax.swing.JMenuItem consultaPagamento;
     private javax.swing.JMenu consultasMenu;
     private javax.swing.JLabel image;
     private javax.swing.JPanel menuPanel;
