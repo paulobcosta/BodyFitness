@@ -41,7 +41,7 @@ public class ConsultaCliente extends javax.swing.JFrame {
 
         jLabel4.setText("jLabel4");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         consultaPanel.setLayout(null);
@@ -107,7 +107,7 @@ public class ConsultaCliente extends javax.swing.JFrame {
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
         consultaPanel.add(image);
-        image.setBounds(-50, -70, 1971, 1080);
+        image.setBounds(-50, -70, 1969, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

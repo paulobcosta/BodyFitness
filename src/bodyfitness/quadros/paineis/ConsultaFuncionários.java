@@ -40,7 +40,7 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
         buscaTField = new javax.swing.JTextField();
         imagem = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         consultaFunc.setLayout(null);

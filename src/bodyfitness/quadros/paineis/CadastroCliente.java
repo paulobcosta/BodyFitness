@@ -47,7 +47,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         cadastroButton = new javax.swing.JButton();
         imagem = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -72,7 +72,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setText("Cadastro de Clientes");
         ImagemPanel.add(jLabel1);
-        jLabel1.setBounds(275, 40, 450, 48);
+        jLabel1.setBounds(275, 40, 450, 62);
 
         ruaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         ruaLabel.setForeground(new java.awt.Color(254, 254, 254));

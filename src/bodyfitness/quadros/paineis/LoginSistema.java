@@ -5,6 +5,8 @@
  */
 package bodyfitness.quadros.paineis;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -33,10 +35,11 @@ public class LoginSistema extends javax.swing.JFrame {
         senhaLabel = new javax.swing.JLabel();
         senhaTField = new javax.swing.JPasswordField();
         usuarioTField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         loginPanel.setLayout(null);
 
@@ -62,14 +65,19 @@ public class LoginSistema extends javax.swing.JFrame {
         loginPanel.add(usuarioTField);
         usuarioTField.setBounds(220, 230, 290, 50);
 
-        jButton1.setText("Entrar");
-        loginPanel.add(jButton1);
-        jButton1.setBounds(320, 380, 80, 50);
+        loginButton.setText("Entrar");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+        loginPanel.add(loginButton);
+        loginButton.setBounds(320, 380, 80, 50);
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
         loginPanel.add(image);
-        image.setBounds(-650, -80, 1971, 830);
+        image.setBounds(-650, -80, 1969, 830);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,6 +92,17 @@ public class LoginSistema extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        
+        this.setVisible(false);
+        
+        JFrame menu = new MenuPrincipal();
+        
+        menu.setVisible(true);
+        
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,7 +142,7 @@ public class LoginSistema extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel headerLabel;
     private javax.swing.JLabel image;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton loginButton;
     private javax.swing.JLabel loginLabel;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel senhaLabel;

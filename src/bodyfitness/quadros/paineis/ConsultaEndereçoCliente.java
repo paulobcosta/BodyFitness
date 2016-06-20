@@ -35,7 +35,8 @@ public class ConsultaEndereçoCliente extends javax.swing.JFrame {
         buscaTField = new javax.swing.JTextField();
         image = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         buscaEndereçoPanel.setLayout(null);
 
