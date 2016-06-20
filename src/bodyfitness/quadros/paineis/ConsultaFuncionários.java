@@ -31,6 +31,13 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
         header = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        tipoBuscaCBox = new javax.swing.JComboBox<>();
+        tipoBuscaLabel = new javax.swing.JLabel();
+        critérioLabel = new javax.swing.JLabel();
+        critérioCBox = new javax.swing.JComboBox<>();
+        buscaButton = new javax.swing.JButton();
+        buscaLabel = new javax.swing.JLabel();
+        buscaTField = new javax.swing.JTextField();
         imagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,24 +49,70 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
         header.setForeground(new java.awt.Color(254, 254, 254));
         header.setText("Consulta de Funcionários");
         consultaFunc.add(header);
-        header.setBounds(330, 20, 400, 50);
+        header.setBounds(300, 20, 410, 50);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nome", "Idade", "Salário", "Turno", "Endereço"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
         consultaFunc.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 200, 960, 410);
+        jScrollPane1.setBounds(20, 220, 960, 410);
+
+        tipoBuscaCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "funcionário", "gerente" }));
+        consultaFunc.add(tipoBuscaCBox);
+        tipoBuscaCBox.setBounds(140, 90, 200, 50);
+
+        tipoBuscaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        tipoBuscaLabel.setForeground(new java.awt.Color(254, 254, 254));
+        tipoBuscaLabel.setText("Cargo :");
+        consultaFunc.add(tipoBuscaLabel);
+        tipoBuscaLabel.setBounds(50, 90, 80, 50);
+
+        critérioLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        critérioLabel.setForeground(new java.awt.Color(254, 254, 254));
+        critérioLabel.setText("Critério : ");
+        consultaFunc.add(critérioLabel);
+        critérioLabel.setBounds(390, 90, 100, 50);
+
+        critérioCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "nome", "turno", "salários", "endereço" }));
+        consultaFunc.add(critérioCBox);
+        critérioCBox.setBounds(500, 90, 210, 50);
+
+        buscaButton.setText("Buscar");
+        consultaFunc.add(buscaButton);
+        buscaButton.setBounds(750, 90, 190, 50);
+
+        buscaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        buscaLabel.setForeground(new java.awt.Color(254, 254, 254));
+        buscaLabel.setText("Busca :");
+        consultaFunc.add(buscaLabel);
+        buscaLabel.setBounds(50, 160, 80, 50);
+
+        buscaTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaTFieldActionPerformed(evt);
+            }
+        });
+        consultaFunc.add(buscaTField);
+        buscaTField.setBounds(140, 160, 810, 50);
 
         imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         imagem.setText("jLabel1");
@@ -79,6 +132,10 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buscaTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscaTFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,10 +173,17 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscaButton;
+    private javax.swing.JLabel buscaLabel;
+    private javax.swing.JTextField buscaTField;
     private javax.swing.JPanel consultaFunc;
+    private javax.swing.JComboBox<String> critérioCBox;
+    private javax.swing.JLabel critérioLabel;
     private javax.swing.JLabel header;
     private javax.swing.JLabel imagem;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<String> tipoBuscaCBox;
+    private javax.swing.JLabel tipoBuscaLabel;
     // End of variables declaration//GEN-END:variables
 }
