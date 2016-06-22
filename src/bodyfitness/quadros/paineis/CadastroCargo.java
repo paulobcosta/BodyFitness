@@ -5,6 +5,10 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.CargoDAO;
+import bodyfitness.pessoas.caracteristicas.Cargo;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -48,6 +52,11 @@ public class CadastroCargo extends javax.swing.JFrame {
         nomeCargoTField.setBounds(100, 270, 310, 50);
 
         cargoButton.setText("Criar Cargo");
+        cargoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargoButtonActionPerformed(evt);
+            }
+        });
         CadastroCargoPanel.add(cargoButton);
         cargoButton.setBounds(150, 350, 210, 40);
 
@@ -65,11 +74,11 @@ public class CadastroCargo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CadastroCargoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(CadastroCargoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CadastroCargoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(CadastroCargoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
         );
 
         pack();
@@ -81,6 +90,23 @@ public class CadastroCargo extends javax.swing.JFrame {
         String field = nomeCargoTField.getText();
         System.out.println(field);
     }//GEN-LAST:event_nomeCargoTFieldActionPerformed
+
+    private void cargoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoButtonActionPerformed
+        // TODO add your handling code here:
+        CargoDAO dao = new CargoDAO();
+        if(this.nomeCargoTField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo de Cargos em Branco", "Erro", JOptionPane.ERROR_MESSAGE);
+        } 
+        else if(dao.consultarPorFuncao(this.nomeCargoTField.getText().toLowerCase()) != null) {
+             JOptionPane.showMessageDialog(null, "Cargo já existe", "Erro", JOptionPane.ERROR_MESSAGE);
+             this.nomeCargoTField.setText("");
+        }
+        else {
+            dao.persist(new Cargo(this.nomeCargoTField.getText()));
+            JOptionPane.showMessageDialog(null, "Cargo adicionado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+            this.CadastroCargoPanel.setToolTipText("");
+        }
+    }//GEN-LAST:event_cargoButtonActionPerformed
 
     /**
      * @param args the command line arguments

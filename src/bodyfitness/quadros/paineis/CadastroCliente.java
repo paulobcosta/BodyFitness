@@ -72,7 +72,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setText("Cadastro de Clientes");
         ImagemPanel.add(jLabel1);
-        jLabel1.setBounds(275, 40, 450, 62);
+        jLabel1.setBounds(275, 40, 450, 57);
 
         ruaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         ruaLabel.setForeground(new java.awt.Color(254, 254, 254));
