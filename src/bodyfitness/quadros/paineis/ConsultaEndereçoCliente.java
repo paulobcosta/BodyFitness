@@ -33,6 +33,7 @@ public class ConsultaEndereçoCliente extends javax.swing.JFrame {
         headerLabel = new javax.swing.JLabel();
         buscaLabel = new javax.swing.JLabel();
         buscaTField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -74,9 +75,13 @@ public class ConsultaEndereçoCliente extends javax.swing.JFrame {
         buscaLabel.setForeground(new java.awt.Color(254, 254, 254));
         buscaLabel.setText("Busca :");
         buscaEndereçoPanel.add(buscaLabel);
-        buscaLabel.setBounds(90, 140, 80, 50);
+        buscaLabel.setBounds(20, 140, 80, 50);
         buscaEndereçoPanel.add(buscaTField);
-        buscaTField.setBounds(180, 140, 750, 50);
+        buscaTField.setBounds(110, 140, 750, 50);
+
+        jButton1.setText("Buscar");
+        buscaEndereçoPanel.add(jButton1);
+        jButton1.setBounds(870, 140, 110, 50);
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
@@ -140,5 +145,6 @@ public class ConsultaEndereçoCliente extends javax.swing.JFrame {
     private javax.swing.JTable buscatTable;
     private javax.swing.JLabel headerLabel;
     private javax.swing.JLabel image;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
