@@ -5,6 +5,12 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.AdministradorDAO;
+import bodyfitness.pessoas.caracteristicas.NivelAdmin;
+import bodyfitness.pessoas.funcionarios.Administrador;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -54,7 +60,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         nivelPerCBox = new javax.swing.JComboBox<>();
         cadastroButton = new javax.swing.JButton();
         head = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        datanascimentoTField = new javax.swing.JFormattedTextField();
         image = new javax.swing.JLabel();
 
         try {
@@ -141,18 +147,60 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         cidadeLabel.setText("Cidade :");
         CadastroAdmPanel.add(cidadeLabel);
         cidadeLabel.setBounds(50, 430, 120, 50);
+
+        cidadeTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cidadeTFieldActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(cidadeTField);
         cidadeTField.setBounds(180, 430, 210, 50);
+
+        numeroTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroTFieldActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(numeroTField);
         numeroTField.setBounds(180, 350, 210, 50);
+
+        bairroTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bairroTFieldActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(bairroTField);
         bairroTField.setBounds(140, 190, 250, 50);
+
+        ruaTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ruaTFieldActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(ruaTField);
         ruaTField.setBounds(140, 270, 250, 50);
+
+        senhaTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                senhaTFieldActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(senhaTField);
         senhaTField.setBounds(580, 270, 350, 50);
+
+        confsenhaTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confsenhaTFieldActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(confsenhaTField);
         confsenhaTField.setBounds(660, 350, 270, 50);
+
+        salarioTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salarioTFieldActionPerformed(evt);
+            }
+        });
         CadastroAdmPanel.add(salarioTField);
         salarioTField.setBounds(580, 190, 350, 50);
 
@@ -189,6 +237,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         nivelPerCBox.setBounds(700, 430, 230, 50);
 
         cadastroButton.setText("Cadastrar");
+        cadastroButton.setDefaultCapable(false);
         cadastroButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastroButtonActionPerformed(evt);
@@ -204,12 +253,17 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         head.setBounds(50, 20, 700, 60);
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            datanascimentoTField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        CadastroAdmPanel.add(jFormattedTextField2);
-        jFormattedTextField2.setBounds(700, 110, 230, 50);
+        datanascimentoTField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datanascimentoTFieldActionPerformed(evt);
+            }
+        });
+        CadastroAdmPanel.add(datanascimentoTField);
+        datanascimentoTField.setBounds(700, 110, 230, 50);
 
         image.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         image.setForeground(new java.awt.Color(254, 254, 254));
@@ -235,6 +289,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
 
     private void nomeTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTFieldActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_nomeTFieldActionPerformed
 
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
@@ -243,11 +298,59 @@ public class CadastroAdministradores extends javax.swing.JFrame {
 
     private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
         // TODO add your handling code here:
+
+        AdministradorDAO admDAO = new AdministradorDAO();
+        if (this.nomeTField.getText().isEmpty()
+                || this.numeroTField.getText().isEmpty()
+                || this.bairroTField.getText().isEmpty()
+                || this.ruaTField.getText().isEmpty()
+                || this.cidadeTField.getText().isEmpty()
+                || this.senhaTField.getPassword().toString().isEmpty()
+                || this.datanascimentoTField.getText().isEmpty()
+                || this.confsenhaTField.getPassword().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo de Cargos em Branco", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if (this.nivelPerCBox.getSelectedItem().toString().equals("gerente")) {
+            admDAO.persist(new Administrador(this.nomeTField.getText(), NivelAdmin.GERENTE));
+            JOptionPane.showMessageDialog(null, "Adm adicionado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_cadastroButtonActionPerformed
 
     private void turnoCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnoCBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_turnoCBoxActionPerformed
+
+    private void datanascimentoTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datanascimentoTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_datanascimentoTFieldActionPerformed
+
+    private void bairroTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairroTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bairroTFieldActionPerformed
+
+    private void ruaTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ruaTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ruaTFieldActionPerformed
+
+    private void numeroTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeroTFieldActionPerformed
+
+    private void cidadeTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cidadeTFieldActionPerformed
+
+    private void salarioTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salarioTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salarioTFieldActionPerformed
+
+    private void senhaTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_senhaTFieldActionPerformed
+
+    private void confsenhaTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confsenhaTFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confsenhaTFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,12 +397,12 @@ public class CadastroAdministradores extends javax.swing.JFrame {
     private javax.swing.JLabel confirmacaoLabel;
     private javax.swing.JPasswordField confsenhaTField;
     private javax.swing.JLabel dataNascimentoLabel;
+    private javax.swing.JFormattedTextField datanascimentoTField;
     private javax.swing.JComboBox<String> estadoCBox;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel head;
     private javax.swing.JLabel image;
     private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JComboBox<String> nivelPerCBox;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JTextField nomeTField;
