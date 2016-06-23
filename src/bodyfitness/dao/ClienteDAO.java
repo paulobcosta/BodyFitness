@@ -112,6 +112,7 @@ public class ClienteDAO extends GenericDAO<Cliente> {
         return cliente;
     }
 
+   
     public List<Cliente> consultarPesoIdeal() {
         EntityManager em = getEntityManager();
         List<Cliente> clientes = new ArrayList<>();

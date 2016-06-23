@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/todos/alunos/cm/a1509950/BodyFitness/src/bodyfitness/BodyFitness.java</file>
-            <file>file:/home/todos/alunos/cm/a1509950/BodyFitness/src/bodyfitness/administracao/Pagamento.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/controlador/cadastro/CadastroCliente.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/util/UtilBodyfitness.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/BodyFitness.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/dao/ClienteDAO.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/controlador/cadastro/CadastroAdministrador.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/controlador/cadastro/CadastroCargo.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroCliente.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroFuncionário.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroCargo.java</file>
         </group>
     </open-files>
 </project-private>

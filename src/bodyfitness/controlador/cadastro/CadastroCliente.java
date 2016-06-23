@@ -12,7 +12,9 @@ import bodyfitness.pessoas.cliente.Cliente;
 import bodyfitness.pessoas.generico.TipoDePessoa;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -29,9 +31,9 @@ public class CadastroCliente {
    public void cadastrarNovoCliente(String nome, String data, Endereco endereco) throws ParseException {
         Cliente cliente = new Cliente();
         cliente.setNome(nome);
-        
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date dataDeNascimento = formato.parse(data);
+        
         cliente.setDataDeNascimento(dataDeNascimento);
         cliente.setEndereco(endereco);
         cliente.setTipoDePessoa(TipoDePessoa.CLIENTE);
@@ -41,6 +43,8 @@ public class CadastroCliente {
         
         
     }
+   
+     
    
    public void alterar(Cliente cliente) {
        this.dao.persist(cliente);

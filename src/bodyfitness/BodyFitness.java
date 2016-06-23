@@ -5,16 +5,12 @@
  */
 package bodyfitness;
 
-import bodyfitness.dao.ClienteDAO;
-import bodyfitness.dao.EnderecoDAO;
 import bodyfitness.dao.FuncionarioDAO;
 import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Endereco;
 import bodyfitness.pessoas.caracteristicas.Estado;
 import bodyfitness.pessoas.caracteristicas.Permissao;
-import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
 import bodyfitness.pessoas.caracteristicas.Turno;
-import bodyfitness.pessoas.cliente.Cliente;
 import bodyfitness.pessoas.funcionarios.Funcionario;
 import bodyfitness.pessoas.generico.TipoDePessoa;
 import java.text.SimpleDateFormat;

@@ -5,6 +5,15 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.pessoas.caracteristicas.Endereco;
+import bodyfitness.util.UtilBodyfitness;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -132,6 +141,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         estadoCBox.setBounds(630, 330, 150, 50);
 
         cadastroButton.setText("Cadastrar");
+        cadastroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroButtonActionPerformed(evt);
+            }
+        });
         ImagemPanel.add(cadastroButton);
         cadastroButton.setBounds(450, 550, 150, 50);
 
@@ -158,6 +172,55 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void estadoCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoCBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_estadoCBoxActionPerformed
+
+    private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
+        // TODO add your handling code here:
+           // TODO add your handling code here:
+        bodyfitness.controlador.cadastro.CadastroCliente cadastrarCliente = new bodyfitness.controlador.cadastro.CadastroCliente();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date dataDeNascimento = formato.parse(this.dataNascimentoTField.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (this.cidadeTField.getText().isEmpty() || this.nomeTField.getText().isEmpty() || this.dataNascimentoTField.getText().isEmpty() || this.numeroTField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "campo vazio", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                if(!this.dataNascimentoTField.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+                    JOptionPane.showMessageDialog(null, "Erro no formato da data", "Erro", JOptionPane.ERROR_MESSAGE);
+                    this.dataNascimentoTField.setText("");
+                }
+                else if (UtilBodyfitness.getDiferencaEmAnos(formato.parse(this.dataNascimentoTField.getText())) < new Long(14)) {
+                   JOptionPane.showMessageDialog(null, "abaixo de 14 anos", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    Endereco end = new Endereco();
+                    end.setBairro(this.bairroTField.getText());
+                    if(!this.numeroTField.getText().matches("[0-9]*")) {
+                        JOptionPane.showMessageDialog(null, "número no formato errado", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                    else {
+                        end.setNumero(this.numeroTField.getText());
+                        this.numeroTField.setText("");
+                    }
+                    
+                    end.setRua(this.ruaTField.getText());
+                    end.setCidade(this.cidadeTField.getText());
+                    end.setEstado(this.estadoCBox.getSelectedItem().toString());
+                    cadastrarCliente.cadastrarNovoCliente(nomeTField.getText(),this.dataNascimentoTField.getText(),end);
+                    JOptionPane.showMessageDialog(null, "Cadastro de cliente concluído com sucesso!","sucesso",JOptionPane.INFORMATION_MESSAGE);
+                    this.bairroTField.setText("");
+                    this.ruaTField.setText("");
+                    this.numeroTField.setText("");
+                    this.nomeTField.setText("");
+                    this.cidadeTField.setText("");
+                    this.dataNascimentoTField.setText("");
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(CadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_cadastroButtonActionPerformed
 
     /**
      * @param args the command line arguments
