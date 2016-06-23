@@ -57,7 +57,6 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
 
         CadastroFuncPanel.setLayout(null);
@@ -179,7 +178,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         CadastroFuncPanel.add(cargoLabel);
         cargoLabel.setBounds(450, 430, 80, 50);
 
-        cargoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cargoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         CadastroFuncPanel.add(cargoCBox);
         cargoCBox.setBounds(540, 430, 390, 50);
 
