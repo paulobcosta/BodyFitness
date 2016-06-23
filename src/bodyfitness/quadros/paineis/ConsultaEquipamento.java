@@ -46,7 +46,7 @@ public class ConsultaEquipamento extends javax.swing.JFrame {
         headerLabel.setForeground(new java.awt.Color(254, 254, 254));
         headerLabel.setText("Consulta de Equipamentos");
         consultaPanel.add(headerLabel);
-        headerLabel.setBounds(250, 20, 460, 50);
+        headerLabel.setBounds(290, 20, 460, 50);
 
         buscaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         buscaLabel.setForeground(new java.awt.Color(254, 254, 254));
