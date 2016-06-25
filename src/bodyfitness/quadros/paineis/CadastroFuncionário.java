@@ -5,6 +5,26 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.controlador.cadastro.CadastroFuncionario;
+import bodyfitness.dao.CargoDAO;
+import bodyfitness.pessoas.caracteristicas.Cargo;
+import bodyfitness.pessoas.caracteristicas.Endereco;
+import bodyfitness.pessoas.caracteristicas.Permissao;
+import bodyfitness.pessoas.caracteristicas.Turno;
+import bodyfitness.pessoas.funcionarios.Funcionario;
+import bodyfitness.pessoas.generico.TipoDePessoa;
+import bodyfitness.util.UtilBodyfitness;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author a1509950
@@ -16,6 +36,12 @@ public class CadastroFuncionário extends javax.swing.JFrame {
      */
     public CadastroFuncionário() {
         initComponents();
+        CargoDAO dao = new CargoDAO();
+        List<Cargo> cargos = new ArrayList<>();
+        cargos = dao.consultarTodos();
+        for(Cargo c : cargos) {
+            this.cargoCBox.addItem(c.getFuncao());
+        }
     }
 
     /**
@@ -54,6 +80,8 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         head = new javax.swing.JLabel();
         cargoLabel = new javax.swing.JLabel();
         cargoCBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        usuarioTField = new javax.swing.JTextField();
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -78,7 +106,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         senhaLabel.setForeground(new java.awt.Color(254, 254, 254));
         senhaLabel.setText("Senha :");
         CadastroFuncPanel.add(senhaLabel);
-        senhaLabel.setBounds(450, 270, 80, 50);
+        senhaLabel.setBounds(450, 340, 80, 50);
 
         nomeLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         nomeLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -90,13 +118,13 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         confirmacaoLabel.setForeground(new java.awt.Color(254, 254, 254));
         confirmacaoLabel.setText("Confirmar Senha :");
         CadastroFuncPanel.add(confirmacaoLabel);
-        confirmacaoLabel.setBounds(450, 350, 200, 50);
+        confirmacaoLabel.setBounds(450, 400, 200, 50);
 
         turnoLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         turnoLabel.setForeground(new java.awt.Color(254, 254, 254));
         turnoLabel.setText("Turno :");
         CadastroFuncPanel.add(turnoLabel);
-        turnoLabel.setBounds(450, 510, 80, 50);
+        turnoLabel.setBounds(450, 550, 80, 50);
 
         ruaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         ruaLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -133,9 +161,9 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         CadastroFuncPanel.add(datanascTField);
         datanascTField.setBounds(700, 110, 230, 50);
         CadastroFuncPanel.add(senhaTField);
-        senhaTField.setBounds(580, 270, 350, 50);
+        senhaTField.setBounds(580, 340, 350, 50);
         CadastroFuncPanel.add(confsenhaTField);
-        confsenhaTField.setBounds(660, 350, 270, 50);
+        confsenhaTField.setBounds(660, 400, 270, 50);
         CadastroFuncPanel.add(salarioTField);
         salarioTField.setBounds(580, 190, 350, 50);
 
@@ -154,7 +182,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
 
         turnoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "noturno", "diurno", "vespertino" }));
         CadastroFuncPanel.add(turnoCBox);
-        turnoCBox.setBounds(540, 510, 150, 50);
+        turnoCBox.setBounds(540, 550, 150, 50);
 
         estadoLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         estadoLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -163,8 +191,13 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         estadoLabel.setBounds(50, 510, 120, 50);
 
         cadastroButton.setText("Cadastrar");
+        cadastroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroButtonActionPerformed(evt);
+            }
+        });
         CadastroFuncPanel.add(cadastroButton);
-        cadastroButton.setBounds(750, 510, 160, 50);
+        cadastroButton.setBounds(750, 550, 160, 50);
 
         head.setFont(new java.awt.Font("Cantarell", 0, 48)); // NOI18N
         head.setForeground(new java.awt.Color(254, 254, 254));
@@ -176,11 +209,19 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         cargoLabel.setForeground(new java.awt.Color(254, 254, 254));
         cargoLabel.setText("Cargo :");
         CadastroFuncPanel.add(cargoLabel);
-        cargoLabel.setBounds(450, 430, 80, 50);
+        cargoLabel.setBounds(450, 460, 80, 50);
 
         cargoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         CadastroFuncPanel.add(cargoCBox);
-        cargoCBox.setBounds(540, 430, 390, 50);
+        cargoCBox.setBounds(540, 460, 390, 50);
+
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel1.setText("Usuário");
+        CadastroFuncPanel.add(jLabel1);
+        jLabel1.setBounds(450, 290, 110, 29);
+        CadastroFuncPanel.add(usuarioTField);
+        usuarioTField.setBounds(580, 277, 350, 40);
 
         image.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         image.setForeground(new java.awt.Color(254, 254, 254));
@@ -206,6 +247,91 @@ public class CadastroFuncionário extends javax.swing.JFrame {
     private void nomeTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTFieldActionPerformed
+
+    private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
+        // TODO add your handling code here:
+        CadastroFuncionario cadastro = new CadastroFuncionario();
+        
+        Funcionario funcionario = new Funcionario();
+        Endereco endereco = new Endereco();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataDeNascimento = new Date();
+        try {
+             dataDeNascimento = formato.parse(this.datanascTField.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroFuncionário.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(nomeTField.getText().equals("") || cargoCBox.getSelectedItem().toString().equals("") || usuarioTField.getText().isEmpty() || salarioTField.getText().isEmpty() || cidadeTField.getText().isEmpty() || confsenhaTField.getText().isEmpty() || senhaTField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "existem campos vazios","Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!senhaTField.getText().equals(confsenhaTField.getText())) {
+            JOptionPane.showMessageDialog(null,"senha não confere", "Erro", JOptionPane.ERROR_MESSAGE);
+            senhaTField.setText("");
+            confsenhaTField.setText("");
+        }
+        else if(!this.datanascTField.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+                    JOptionPane.showMessageDialog(null, "Erro no formato da data", "Erro", JOptionPane.ERROR_MESSAGE);
+                    this.datanascTField.setText("");
+                    this.datanascTField.setText("");
+        }
+        else if(!this.numeroTField.getText().matches("[0-9]*")) {
+            JOptionPane.showMessageDialog(null, "Erro no campo de número", "Erro", JOptionPane.ERROR_MESSAGE);
+            this.numeroTField.setText("");
+        }
+        else if(!this.salarioTField.getText().matches("[0-9]+\\.[0-9][0-9]")) {
+            JOptionPane.showMessageDialog(null, "Erro no campo de salario", "Erro", JOptionPane.ERROR_MESSAGE);
+            this.salarioTField.setText("");
+        }
+        else if(UtilBodyfitness.getDiferencaEmAnos(dataDeNascimento) < new Long(16)) {
+            JOptionPane.showMessageDialog(null,"não é permitido funcionário abaixo de 16 anos!", "Erro", JOptionPane.ERROR_MESSAGE);
+            this.datanascTField.setText("");
+        }
+        else {
+            bodyfitness.controlador.cadastro.CadastroCargo pcargo = new bodyfitness.controlador.cadastro.CadastroCargo();
+            
+            CadastroFuncionario cfunc = new CadastroFuncionario();
+            Double salario = Double.valueOf(this.salarioTField.getText());
+            Endereco end = new Endereco();
+            end.setRua(this.ruaTField.getText());
+            end.setBairro(this.bairroTField.getText());
+            end.setNumero(this.numeroTField.getText());
+            end.setCidade(this.cidadeTField.getText());
+            end.setEstado(this.estadoCBox.getSelectedItem().toString());
+            Turno t;
+            if(this.turnoCBox.getSelectedItem().toString().toLowerCase().equals("vespertino")) {
+                t = Turno.VESPERTINO;
+            }
+            else if(this.turnoCBox.getSelectedItem().toString().toLowerCase().equals("matutino")) {
+                t = Turno.MATUTINO;
+            }
+            else {
+                t = Turno.NOTURNO;
+            }
+            try {
+                cfunc.cadastrarFuncionario(this.nomeTField.getText(),pcargo.dao.consultarPorFuncao(this.cargoCBox.getSelectedItem().toString()) , t, salario, end, this.datanascTField.getText(), this.usuarioTField.getText(), this.senhaTField.getText());
+                JOptionPane.showMessageDialog(null, "Funcionário cadastrado com Sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+                this.bairroTField.setText("");
+                this.cidadeTField.setText("");
+                this.confsenhaTField.setText("");
+                this.senhaTField.setText("");
+                this.datanascTField.setText("");
+                this.numeroTField.setText("");
+                this.nomeTField.setText("");
+                this.ruaTField.setText("");
+                this.usuarioTField.setText("");
+                this.salarioTField.setText("");
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(CadastroFuncionário.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(CadastroFuncionário.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ParseException ex) {
+                Logger.getLogger(CadastroFuncionário.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+        
+    }//GEN-LAST:event_cadastroButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,6 +385,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel head;
     private javax.swing.JLabel image;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JTextField nomeTField;
     private javax.swing.JLabel numeroLabel;
@@ -271,5 +398,6 @@ public class CadastroFuncionário extends javax.swing.JFrame {
     private javax.swing.JPasswordField senhaTField;
     private javax.swing.JComboBox<String> turnoCBox;
     private javax.swing.JLabel turnoLabel;
+    private javax.swing.JTextField usuarioTField;
     // End of variables declaration//GEN-END:variables
 }

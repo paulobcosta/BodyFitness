@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "indices")        
-class Indices implements Serializable, EntidadeBase{
+public class Indices implements Serializable, EntidadeBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -36,11 +36,16 @@ class Indices implements Serializable, EntidadeBase{
     private Double massaGorda;
 
     public Indices() {
+        this.imc = null;
+        this.percentualGorduraAtual = null;
+        this.percentualGorduraIdeal = null;
+        this.massaMagra = null;
+        this.massaGorda = null;
     }
 
     
     public Double getImc() {
-        return imc;
+        return this.imc;
     }
 
     public void setImc(Double imc) {

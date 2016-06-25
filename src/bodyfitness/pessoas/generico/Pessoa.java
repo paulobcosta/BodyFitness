@@ -6,6 +6,7 @@
 package bodyfitness.pessoas.generico;
 
 import bodyfitness.pessoas.caracteristicas.Endereco;
+import bodyfitness.util.UtilBodyfitness;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
@@ -94,6 +95,10 @@ public abstract class Pessoa implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public Long getIdade() {
+        return UtilBodyfitness.getDiferencaEmAnos(dataDeNascimento);
     }
     
     

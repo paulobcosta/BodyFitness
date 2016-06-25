@@ -64,7 +64,7 @@ public class Aula implements Serializable, EntidadeBase{
     @OneToOne
     @JoinColumn(name = "categoria_de_aula",nullable = false)
     private CategoriaDeAula categoria;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinTable(name = "aula_clientes",joinColumns = {@JoinColumn(name="aula_id",referencedColumnName = "id")})
     private ArrayList<Cliente> clientes;
     public Aula() {

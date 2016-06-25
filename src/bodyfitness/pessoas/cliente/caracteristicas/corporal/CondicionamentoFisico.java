@@ -7,6 +7,7 @@ package bodyfitness.pessoas.cliente.caracteristicas.corporal;
 
 import bodyfitness.dao.base.EntidadeBase;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.eclipse.persistence.jpa.config.Cascade;
 
 
 
@@ -30,20 +32,24 @@ public class CondicionamentoFisico implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true,name = "indices_corporais")
     private Indices composicaoCorporal;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true,name = "dobras_cutaneas")
     private DobrasCutaneas dobrasCutaneas;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true,name = "membros_superiores")
     private MembrosSuperiores membrosSuperiores;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true,name="membros_inferiores")
     private MembrosInferiores membrosInferiores;
 
     public CondicionamentoFisico() {
+           this.composicaoCorporal = new Indices();
+           this.dobrasCutaneas = new DobrasCutaneas();
+           this.membrosInferiores = new MembrosInferiores();
+           this.membrosSuperiores = new MembrosSuperiores();
     }
 
     

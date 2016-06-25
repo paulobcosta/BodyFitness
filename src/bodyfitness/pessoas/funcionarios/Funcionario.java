@@ -20,6 +20,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -45,7 +46,7 @@ import javax.persistence.Table;
 public class Funcionario extends Pessoa implements Serializable, EntidadeBase {
     
     @JoinColumn(nullable = false,name = "cargo")
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Cargo cargo;
     @Column(nullable = false,name = "salario")
     private Double salario;

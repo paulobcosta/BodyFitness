@@ -12,9 +12,7 @@ import bodyfitness.pessoas.cliente.Cliente;
 import bodyfitness.pessoas.generico.TipoDePessoa;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  *

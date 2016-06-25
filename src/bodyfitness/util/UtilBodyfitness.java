@@ -5,9 +5,7 @@
  */
 package bodyfitness.util;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  *
@@ -18,6 +16,7 @@ public class UtilBodyfitness {
       public static long getDiferencaEmAnos(Date nascimento){  
         long diferencaAnos = ((new Date().getTime() - nascimento.getTime()) / (1000*60*60*24) / 30) / 12;
         return diferencaAnos;
-    }  
+    } 
+      
     
 }

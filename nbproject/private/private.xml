@@ -2,20 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/controlador/cadastro/CadastroCliente.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/util/UtilBodyfitness.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/BodyFitness.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/dao/ClienteDAO.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/controlador/cadastro/CadastroAdministrador.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/controlador/cadastro/CadastroCargo.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroCliente.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroFuncionário.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroCargo.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/cliente/Cliente.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/cliente/caracteristicas/corporal/CondicionamentoFisico.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/cliente/caracteristicas/corporal/Indices.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/ConsultaCliente.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/generico/Pessoa.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 2fb76999fad429f92c0e422ffa130b5ed498c0c6
     </open-files>
 </project-private>

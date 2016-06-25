@@ -54,14 +54,16 @@ public class Cliente extends Pessoa implements EntidadeBase{
    
     @Column(nullable = false,name = "situacao_financeira")
     private String situacaoFinanceira;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true,name = "condicionamento_fisico")
     private CondicionamentoFisico condicionamentoFisico;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "clientes_pagamentos",joinColumns = {@JoinColumn(name="cliente_id",referencedColumnName = "id")})
     private ArrayList<Pagamento> pagamentos;
     
     public Cliente() {
+        this.condicionamentoFisico = null;
+        this.pagamentos = null;
     }
 
     public Cliente(String nome) {
@@ -81,7 +83,7 @@ public class Cliente extends Pessoa implements EntidadeBase{
     }
     
     public CondicionamentoFisico getCondicionamentoFisico() {
-        return condicionamentoFisico;
+        return this.condicionamentoFisico;
     }
 
     public void setCondicionamentoFisico(CondicionamentoFisico condicionamentoFisico) {

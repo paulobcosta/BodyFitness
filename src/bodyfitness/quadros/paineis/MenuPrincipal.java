@@ -179,7 +179,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void consultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaClienteActionPerformed
         // TODO add your handling code here:
-        JFrame consultaCliente = new ConsultaCliente();
+        JFrame consultaCliente = new PainelConsultaCliente();
         
         consultaCliente.setVisible(true);
     }//GEN-LAST:event_consultaClienteActionPerformed
@@ -202,7 +202,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
         // TODO add your handling code here:
         
-        JFrame cadastroCliente = new CadastroCliente();
+        JFrame cadastroCliente = new PainelCadastroCliente();
         
         cadastroCliente.setVisible(true);
     }//GEN-LAST:event_cadastroClienteActionPerformed
