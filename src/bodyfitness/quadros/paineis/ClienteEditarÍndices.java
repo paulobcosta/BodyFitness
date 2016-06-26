@@ -9,12 +9,12 @@ package bodyfitness.quadros.paineis;
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
  */
-public class ClienteAvaliação extends javax.swing.JFrame {
+public class ClienteEditarÍndices extends javax.swing.JFrame {
 
     /**
      * Creates new form ClienteAvaliação
      */
-    public ClienteAvaliação() {
+    public ClienteEditarÍndices() {
         initComponents();
     }
 
@@ -160,20 +160,21 @@ public class ClienteAvaliação extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteAvaliação.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteEditarÍndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteAvaliação.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteEditarÍndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteAvaliação.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteEditarÍndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteAvaliação.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteEditarÍndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteAvaliação().setVisible(true);
+                new ClienteEditarÍndices().setVisible(true);
             }
         });
     }
