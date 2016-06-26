@@ -35,6 +35,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
         msuperioresButton = new javax.swing.JButton();
         minferioresButton = new javax.swing.JButton();
         dcutaneaButton = new javax.swing.JButton();
+        editarTreinoButton = new javax.swing.JButton();
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -63,7 +64,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
             }
         });
         menuAvaliaçãoPanel.add(msuperioresButton);
-        msuperioresButton.setBounds(150, 390, 300, 75);
+        msuperioresButton.setBounds(150, 350, 300, 75);
 
         minferioresButton.setText("Editar Membros Inferiores");
         minferioresButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +82,17 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
             }
         });
         menuAvaliaçãoPanel.add(dcutaneaButton);
-        dcutaneaButton.setBounds(540, 390, 300, 75);
+        dcutaneaButton.setBounds(540, 350, 300, 75);
+
+        editarTreinoButton.setText("Editar Treino");
+        editarTreinoButton.setToolTipText("");
+        editarTreinoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarTreinoButtonActionPerformed(evt);
+            }
+        });
+        menuAvaliaçãoPanel.add(editarTreinoButton);
+        editarTreinoButton.setBounds(350, 500, 300, 75);
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
@@ -134,6 +145,14 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
         indices.setVisible(true);
     }//GEN-LAST:event_dcutaneaButtonActionPerformed
 
+    private void editarTreinoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTreinoButtonActionPerformed
+        // TODO add your handling code here:
+        
+        ClienteEditarTreino indices = new ClienteEditarTreino();
+        indices.setVisible(true);
+        
+    }//GEN-LAST:event_editarTreinoButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,6 +190,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dcutaneaButton;
+    private javax.swing.JButton editarTreinoButton;
     private javax.swing.JLabel header;
     private javax.swing.JLabel image;
     private javax.swing.JButton indicesButton;
