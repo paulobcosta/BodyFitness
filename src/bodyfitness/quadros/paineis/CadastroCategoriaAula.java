@@ -63,7 +63,7 @@ public class CadastroCategoriaAula extends javax.swing.JFrame {
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         CadastroCAulaPanel.add(image);
-        image.setBounds(-570, -120, 2030, 970);
+        image.setBounds(-690, -170, 2030, 970);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,19 +88,6 @@ public class CadastroCategoriaAula extends javax.swing.JFrame {
 
     private void aulaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aulaButtonActionPerformed
         // TODO add your handling code here:
-        CargoDAO dao = new CargoDAO();
-        if(this.nomeCAulaTField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campo de Cargos em Branco", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-        else if(dao.consultarPorFuncao(this.nomeCAulaTField.getText().toLowerCase()) != null) {
-            JOptionPane.showMessageDialog(null, "Cargo já existe", "Erro", JOptionPane.ERROR_MESSAGE);
-            this.nomeCAulaTField.setText("");
-        }
-        else {
-            dao.persist(new Cargo(this.nomeCAulaTField.getText()));
-            JOptionPane.showMessageDialog(null, "Cargo adicionado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-            this.CadastroCAulaPanel.setToolTipText("");
-        }
     }//GEN-LAST:event_aulaButtonActionPerformed
 
     /**
