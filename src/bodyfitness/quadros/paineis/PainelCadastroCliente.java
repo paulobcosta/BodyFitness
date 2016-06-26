@@ -54,6 +54,8 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
         numeroTField = new javax.swing.JTextField();
         estadoCBox = new javax.swing.JComboBox<>();
         cadastroButton = new javax.swing.JButton();
+        idLabel = new javax.swing.JLabel();
+        idTField = new javax.swing.JTextField();
         imagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -80,7 +82,7 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setText("Cadastro de Clientes");
         ImagemPanel.add(jLabel1);
-        jLabel1.setBounds(275, 40, 450, 57);
+        jLabel1.setBounds(275, 40, 450, 48);
 
         ruaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         ruaLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -137,7 +139,7 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
             }
         });
         ImagemPanel.add(estadoCBox);
-        estadoCBox.setBounds(630, 330, 150, 50);
+        estadoCBox.setBounds(630, 330, 260, 50);
 
         cadastroButton.setText("Cadastrar");
         cadastroButton.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +149,14 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
         });
         ImagemPanel.add(cadastroButton);
         cadastroButton.setBounds(450, 550, 150, 50);
+
+        idLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        idLabel.setForeground(new java.awt.Color(254, 254, 254));
+        idLabel.setText("ID :");
+        ImagemPanel.add(idLabel);
+        idLabel.setBounds(500, 430, 50, 50);
+        ImagemPanel.add(idTField);
+        idTField.setBounds(560, 430, 330, 50);
 
         imagem.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         imagem.setForeground(new java.awt.Color(254, 254, 254));
@@ -269,6 +279,8 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JTextField dataNascimentoTField;
     private javax.swing.JComboBox<String> estadoCBox;
     private javax.swing.JLabel estadoLabel;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTField;
     private javax.swing.JLabel imagem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nomeClienteLabel;

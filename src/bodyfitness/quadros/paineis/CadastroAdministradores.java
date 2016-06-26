@@ -61,6 +61,8 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         cadastroButton = new javax.swing.JButton();
         head = new javax.swing.JLabel();
         datanascimentoTField = new javax.swing.JFormattedTextField();
+        idLabel = new javax.swing.JLabel();
+        idTField = new javax.swing.JTextField();
         image = new javax.swing.JLabel();
 
         try {
@@ -84,69 +86,69 @@ public class CadastroAdministradores extends javax.swing.JFrame {
         dataNascimentoLabel.setText("Data de Nascimento :");
         dataNascimentoLabel.setToolTipText("");
         CadastroAdmPanel.add(dataNascimentoLabel);
-        dataNascimentoLabel.setBounds(450, 110, 240, 50);
+        dataNascimentoLabel.setBounds(450, 80, 240, 50);
 
         permissaoLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         permissaoLabel.setForeground(new java.awt.Color(254, 254, 254));
         permissaoLabel.setText("Nivel de Permissão :");
         permissaoLabel.setToolTipText("");
         CadastroAdmPanel.add(permissaoLabel);
-        permissaoLabel.setBounds(450, 430, 240, 50);
+        permissaoLabel.setBounds(450, 400, 240, 50);
 
         salarioLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         salarioLabel.setForeground(new java.awt.Color(254, 254, 254));
         salarioLabel.setText("Salário :");
         CadastroAdmPanel.add(salarioLabel);
-        salarioLabel.setBounds(450, 190, 120, 50);
+        salarioLabel.setBounds(450, 160, 120, 50);
 
         senhaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         senhaLabel.setForeground(new java.awt.Color(254, 254, 254));
         senhaLabel.setText("Senha :");
         CadastroAdmPanel.add(senhaLabel);
-        senhaLabel.setBounds(450, 270, 80, 50);
+        senhaLabel.setBounds(450, 240, 80, 50);
 
         nomeLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         nomeLabel.setForeground(new java.awt.Color(254, 254, 254));
         nomeLabel.setText("Nome :");
         CadastroAdmPanel.add(nomeLabel);
-        nomeLabel.setBounds(50, 110, 80, 50);
+        nomeLabel.setBounds(50, 80, 80, 50);
 
         confirmacaoLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         confirmacaoLabel.setForeground(new java.awt.Color(254, 254, 254));
         confirmacaoLabel.setText("Confirmar Senha :");
         CadastroAdmPanel.add(confirmacaoLabel);
-        confirmacaoLabel.setBounds(450, 350, 200, 50);
+        confirmacaoLabel.setBounds(450, 320, 200, 50);
 
         turnoLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         turnoLabel.setForeground(new java.awt.Color(254, 254, 254));
         turnoLabel.setText("Turno :");
         CadastroAdmPanel.add(turnoLabel);
-        turnoLabel.setBounds(450, 510, 80, 50);
+        turnoLabel.setBounds(450, 480, 80, 50);
 
         ruaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         ruaLabel.setForeground(new java.awt.Color(254, 254, 254));
         ruaLabel.setText("Rua :");
         ruaLabel.setToolTipText("");
         CadastroAdmPanel.add(ruaLabel);
-        ruaLabel.setBounds(50, 270, 80, 50);
+        ruaLabel.setBounds(50, 240, 80, 50);
 
         bairroLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         bairroLabel.setForeground(new java.awt.Color(254, 254, 254));
         bairroLabel.setText("Bairro :");
         CadastroAdmPanel.add(bairroLabel);
-        bairroLabel.setBounds(50, 190, 80, 50);
+        bairroLabel.setBounds(50, 160, 80, 50);
 
         numeroLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         numeroLabel.setForeground(new java.awt.Color(254, 254, 254));
         numeroLabel.setText("Número :");
         CadastroAdmPanel.add(numeroLabel);
-        numeroLabel.setBounds(50, 350, 120, 50);
+        numeroLabel.setBounds(50, 320, 120, 50);
 
         cidadeLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         cidadeLabel.setForeground(new java.awt.Color(254, 254, 254));
         cidadeLabel.setText("Cidade :");
         CadastroAdmPanel.add(cidadeLabel);
-        cidadeLabel.setBounds(50, 430, 120, 50);
+        cidadeLabel.setBounds(50, 400, 120, 50);
 
         cidadeTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,7 +156,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(cidadeTField);
-        cidadeTField.setBounds(180, 430, 210, 50);
+        cidadeTField.setBounds(180, 400, 210, 50);
 
         numeroTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +164,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(numeroTField);
-        numeroTField.setBounds(180, 350, 210, 50);
+        numeroTField.setBounds(180, 320, 210, 50);
 
         bairroTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +172,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(bairroTField);
-        bairroTField.setBounds(140, 190, 250, 50);
+        bairroTField.setBounds(140, 160, 250, 50);
 
         ruaTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +180,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(ruaTField);
-        ruaTField.setBounds(140, 270, 250, 50);
+        ruaTField.setBounds(140, 240, 250, 50);
 
         senhaTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,7 +188,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(senhaTField);
-        senhaTField.setBounds(580, 270, 350, 50);
+        senhaTField.setBounds(580, 240, 350, 50);
 
         confsenhaTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +196,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(confsenhaTField);
-        confsenhaTField.setBounds(660, 350, 270, 50);
+        confsenhaTField.setBounds(660, 320, 270, 50);
 
         salarioTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +204,7 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(salarioTField);
-        salarioTField.setBounds(580, 190, 350, 50);
+        salarioTField.setBounds(580, 160, 350, 50);
 
         nomeTField.setVerifyInputWhenFocusTarget(false);
         nomeTField.addActionListener(new java.awt.event.ActionListener() {
@@ -211,11 +213,11 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(nomeTField);
-        nomeTField.setBounds(140, 110, 250, 50);
+        nomeTField.setBounds(140, 80, 250, 50);
 
         estadoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC ", "AL", "AP ", "AM", "BA", "CE ", "DF ", "ES ", "GO  ", "MA  ", "MT", "MS ", "MG ", "PA", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", " " }));
         CadastroAdmPanel.add(estadoCBox);
-        estadoCBox.setBounds(180, 510, 210, 50);
+        estadoCBox.setBounds(180, 480, 210, 50);
 
         turnoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "noturno", "diurno", "vespertino" }));
         turnoCBox.addActionListener(new java.awt.event.ActionListener() {
@@ -224,17 +226,17 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(turnoCBox);
-        turnoCBox.setBounds(540, 510, 150, 50);
+        turnoCBox.setBounds(540, 480, 390, 50);
 
         estadoLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         estadoLabel.setForeground(new java.awt.Color(254, 254, 254));
         estadoLabel.setText("Estado :");
         CadastroAdmPanel.add(estadoLabel);
-        estadoLabel.setBounds(50, 510, 120, 50);
+        estadoLabel.setBounds(50, 480, 120, 50);
 
         nivelPerCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "administrador", "gerente" }));
         CadastroAdmPanel.add(nivelPerCBox);
-        nivelPerCBox.setBounds(700, 430, 230, 50);
+        nivelPerCBox.setBounds(700, 400, 230, 50);
 
         cadastroButton.setText("Cadastrar");
         cadastroButton.setDefaultCapable(false);
@@ -244,13 +246,13 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(cadastroButton);
-        cadastroButton.setBounds(750, 510, 160, 50);
+        cadastroButton.setBounds(450, 560, 160, 50);
 
         head.setFont(new java.awt.Font("Cantarell", 0, 48)); // NOI18N
         head.setForeground(new java.awt.Color(254, 254, 254));
         head.setText("Cadastro de Administradores");
         CadastroAdmPanel.add(head);
-        head.setBounds(50, 20, 700, 60);
+        head.setBounds(60, 10, 700, 60);
 
         try {
             datanascimentoTField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -263,7 +265,15 @@ public class CadastroAdministradores extends javax.swing.JFrame {
             }
         });
         CadastroAdmPanel.add(datanascimentoTField);
-        datanascimentoTField.setBounds(700, 110, 230, 50);
+        datanascimentoTField.setBounds(700, 80, 230, 50);
+
+        idLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        idLabel.setForeground(new java.awt.Color(254, 254, 254));
+        idLabel.setText("ID :");
+        CadastroAdmPanel.add(idLabel);
+        idLabel.setBounds(50, 560, 50, 50);
+        CadastroAdmPanel.add(idTField);
+        idTField.setBounds(110, 560, 280, 50);
 
         image.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         image.setForeground(new java.awt.Color(254, 254, 254));
@@ -401,6 +411,8 @@ public class CadastroAdministradores extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> estadoCBox;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel head;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTField;
     private javax.swing.JLabel image;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JComboBox<String> nivelPerCBox;

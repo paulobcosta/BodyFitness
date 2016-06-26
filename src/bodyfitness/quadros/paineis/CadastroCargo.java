@@ -38,7 +38,6 @@ public class CadastroCargo extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
 
         CadastroCargoPanel.setLayout(null);

@@ -82,6 +82,8 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         cargoCBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         usuarioTField = new javax.swing.JTextField();
+        idTField = new javax.swing.JTextField();
+        idLabel = new javax.swing.JLabel();
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -106,7 +108,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         senhaLabel.setForeground(new java.awt.Color(254, 254, 254));
         senhaLabel.setText("Senha :");
         CadastroFuncPanel.add(senhaLabel);
-        senhaLabel.setBounds(450, 340, 80, 50);
+        senhaLabel.setBounds(460, 350, 80, 50);
 
         nomeLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         nomeLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -118,13 +120,13 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         confirmacaoLabel.setForeground(new java.awt.Color(254, 254, 254));
         confirmacaoLabel.setText("Confirmar Senha :");
         CadastroFuncPanel.add(confirmacaoLabel);
-        confirmacaoLabel.setBounds(450, 400, 200, 50);
+        confirmacaoLabel.setBounds(450, 430, 200, 50);
 
         turnoLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         turnoLabel.setForeground(new java.awt.Color(254, 254, 254));
         turnoLabel.setText("Turno :");
         CadastroFuncPanel.add(turnoLabel);
-        turnoLabel.setBounds(450, 550, 80, 50);
+        turnoLabel.setBounds(440, 590, 80, 50);
 
         ruaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         ruaLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -153,7 +155,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         CadastroFuncPanel.add(cidadeTField);
         cidadeTField.setBounds(180, 430, 210, 50);
         CadastroFuncPanel.add(numeroTField);
-        numeroTField.setBounds(180, 350, 210, 50);
+        numeroTField.setBounds(190, 350, 210, 50);
         CadastroFuncPanel.add(bairroTField);
         bairroTField.setBounds(140, 190, 250, 50);
         CadastroFuncPanel.add(ruaTField);
@@ -161,9 +163,9 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         CadastroFuncPanel.add(datanascTField);
         datanascTField.setBounds(700, 110, 230, 50);
         CadastroFuncPanel.add(senhaTField);
-        senhaTField.setBounds(580, 340, 350, 50);
+        senhaTField.setBounds(570, 350, 360, 50);
         CadastroFuncPanel.add(confsenhaTField);
-        confsenhaTField.setBounds(660, 400, 270, 50);
+        confsenhaTField.setBounds(660, 440, 270, 50);
         CadastroFuncPanel.add(salarioTField);
         salarioTField.setBounds(580, 190, 350, 50);
 
@@ -182,7 +184,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
 
         turnoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "noturno", "diurno", "vespertino" }));
         CadastroFuncPanel.add(turnoCBox);
-        turnoCBox.setBounds(540, 550, 150, 50);
+        turnoCBox.setBounds(530, 590, 150, 50);
 
         estadoLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         estadoLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -197,7 +199,7 @@ public class CadastroFuncionário extends javax.swing.JFrame {
             }
         });
         CadastroFuncPanel.add(cadastroButton);
-        cadastroButton.setBounds(750, 550, 160, 50);
+        cadastroButton.setBounds(740, 590, 160, 50);
 
         head.setFont(new java.awt.Font("Cantarell", 0, 48)); // NOI18N
         head.setForeground(new java.awt.Color(254, 254, 254));
@@ -209,19 +211,27 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         cargoLabel.setForeground(new java.awt.Color(254, 254, 254));
         cargoLabel.setText("Cargo :");
         CadastroFuncPanel.add(cargoLabel);
-        cargoLabel.setBounds(450, 460, 80, 50);
+        cargoLabel.setBounds(450, 510, 80, 50);
 
         cargoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         CadastroFuncPanel.add(cargoCBox);
-        cargoCBox.setBounds(540, 460, 390, 50);
+        cargoCBox.setBounds(540, 510, 390, 50);
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setText("Usuário");
         CadastroFuncPanel.add(jLabel1);
-        jLabel1.setBounds(450, 290, 110, 29);
+        jLabel1.setBounds(450, 270, 110, 50);
         CadastroFuncPanel.add(usuarioTField);
-        usuarioTField.setBounds(580, 277, 350, 40);
+        usuarioTField.setBounds(570, 270, 360, 50);
+        CadastroFuncPanel.add(idTField);
+        idTField.setBounds(110, 590, 280, 50);
+
+        idLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        idLabel.setForeground(new java.awt.Color(254, 254, 254));
+        idLabel.setText("ID :");
+        CadastroFuncPanel.add(idLabel);
+        idLabel.setBounds(50, 590, 50, 50);
 
         image.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         image.setForeground(new java.awt.Color(254, 254, 254));
@@ -384,6 +394,8 @@ public class CadastroFuncionário extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> estadoCBox;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel head;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTField;
     private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nomeLabel;

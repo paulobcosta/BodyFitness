@@ -42,6 +42,8 @@ public class CadastroAula extends javax.swing.JFrame {
         dataLabel = new javax.swing.JLabel();
         clienteLabel = new javax.swing.JLabel();
         header = new javax.swing.JLabel();
+        idTField = new javax.swing.JTextField();
+        idLabel = new javax.swing.JLabel();
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +77,7 @@ public class CadastroAula extends javax.swing.JFrame {
 
         cadastroButton.setText("Cadastrar");
         CadastroAulaPanel.add(cadastroButton);
-        cadastroButton.setBounds(460, 510, 80, 50);
+        cadastroButton.setBounds(510, 470, 80, 50);
 
         professorLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         professorLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -118,6 +120,14 @@ public class CadastroAula extends javax.swing.JFrame {
         header.setText("Cadastro de Aulas\n");
         CadastroAulaPanel.add(header);
         header.setBounds(350, 20, 310, 60);
+        CadastroAulaPanel.add(idTField);
+        idTField.setBounds(190, 470, 280, 50);
+
+        idLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        idLabel.setForeground(new java.awt.Color(254, 254, 254));
+        idLabel.setText("ID :");
+        CadastroAulaPanel.add(idLabel);
+        idLabel.setBounds(130, 470, 50, 50);
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
@@ -191,6 +201,8 @@ public class CadastroAula extends javax.swing.JFrame {
     private javax.swing.JLabel horarioLabel;
     private javax.swing.JComboBox<String> horarioTerminoCBox;
     private javax.swing.JLabel horarioTerminoLabel;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTField;
     private javax.swing.JLabel image;
     private javax.swing.JComboBox<String> professorCBox;
     private javax.swing.JLabel professorLabel;

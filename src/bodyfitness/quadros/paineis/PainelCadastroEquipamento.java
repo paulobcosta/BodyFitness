@@ -34,6 +34,8 @@ public class PainelCadastroEquipamento extends javax.swing.JFrame {
 
         cadastroEquipamentoPanel = new javax.swing.JPanel();
         nomeLabel = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
+        idTField = new javax.swing.JTextField();
         pmaximoLabel = new javax.swing.JLabel();
         pminimoLabel = new javax.swing.JLabel();
         cadastroButton = new javax.swing.JButton();
@@ -73,7 +75,7 @@ public class PainelCadastroEquipamento extends javax.swing.JFrame {
             }
         });
         cadastroEquipamentoPanel.add(cadastroButton);
-        cadastroButton.setBounds(710, 280, 80, 50);
+        cadastroButton.setBounds(710, 280, 110, 50);
 
         headerLabel.setFont(new java.awt.Font("Cantarell", 0, 36)); // NOI18N
         headerLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -83,13 +85,22 @@ public class PainelCadastroEquipamento extends javax.swing.JFrame {
         cadastroEquipamentoPanel.add(nomeTField);
         nomeTField.setBounds(180, 180, 460, 50);
 
-        pemaximoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80" }));
+        pemaximoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80"}));
         cadastroEquipamentoPanel.add(pemaximoCBox);
         pemaximoCBox.setBounds(260, 280, 380, 50);
 
-        pminimoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80" }));
+        pminimoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80"}));
         cadastroEquipamentoPanel.add(pminimoCBox);
         pminimoCBox.setBounds(250, 380, 390, 50);
+
+        idLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        idLabel.setForeground(new java.awt.Color(254, 254, 254));
+        idLabel.setText("ID :");
+        cadastroEquipamentoPanel.add(idLabel);
+        idLabel.setBounds(100, 480, 80, 50);
+
+        cadastroEquipamentoPanel.add(idTField);
+        idTField.setBounds(190, 480, 460, 50);
 
         imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         imagem.setText("jLabel1");
@@ -99,12 +110,12 @@ public class PainelCadastroEquipamento extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cadastroEquipamentoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(cadastroEquipamentoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cadastroEquipamentoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(cadastroEquipamentoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -113,13 +124,11 @@ public class PainelCadastroEquipamento extends javax.swing.JFrame {
     private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
         // TODO add your handling code here:
         EquipamentoDAO dao = new EquipamentoDAO();
-        if(this.nomeTField.getText().isEmpty()) {
+        if (this.nomeTField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nome do equipamento está vazio", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-        else if(!this.nomeTField.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$")) {
+        } else if (!this.nomeTField.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$")) {
             JOptionPane.showMessageDialog(null, "Nome incompatível!", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
+        } else {
             Equipamento equipamento = new Equipamento();
             equipamento.setNome(this.nomeTField.getText());
             equipamento.setPesoMinimo(this.pminimoCBox.getSelectedItem().toString());
@@ -173,8 +182,10 @@ public class PainelCadastroEquipamento extends javax.swing.JFrame {
     private javax.swing.JPanel cadastroEquipamentoPanel;
     private javax.swing.JLabel headerLabel;
     private javax.swing.JLabel imagem;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JTextField nomeTField;
+    private javax.swing.JTextField idTField;
     private javax.swing.JComboBox<String> pemaximoCBox;
     private javax.swing.JLabel pmaximoLabel;
     private javax.swing.JComboBox<String> pminimoCBox;
