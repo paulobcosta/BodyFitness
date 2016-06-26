@@ -31,8 +31,8 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Equipamento.consultarPorNome",query = "SELECT e FROM Equipamento e WHERE e.nome = :nome"),
     @NamedQuery(name = "Equipamento.consultaPorId",query = "SELECT e FROM Equipamento e WHERE e.id = :id"),
     @NamedQuery(name = "Equipamento.consultaPorEquipamentoSemManutencao", query = "SELECT e FROM Equipamento e WHERE e.dataDaProximaManutencao < CURRENT_DATE"),
-    @NamedQuery(name = "Equipamento.consultaPorEquipamentoNaoHabilitado", query = "SELECT e FROM Equipamento e WHERE e.habilitado = true"),
-    @NamedQuery(name = "Equipamento.consultaPorEquipamentoHabilitado", query = "SELECT e FROM Equipamento e WHERE e.habilitado = false")
+    @NamedQuery(name = "Equipamento.consultaPorEquipamentoNaoHabilitado", query = "SELECT e FROM Equipamento e WHERE e.habilitado = 'false'"),
+    @NamedQuery(name = "Equipamento.consultaPorEquipamentoHabilitado", query = "SELECT e FROM Equipamento e WHERE e.habilitado = 'true'")
 })
 public class Equipamento implements Serializable, EntidadeBase {
     @Id
