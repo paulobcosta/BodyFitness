@@ -50,7 +50,7 @@ public class ClienteEditarMembrosSuperiores extends javax.swing.JFrame {
         relacaoCinturaXQuadrilTField = new javax.swing.JTextField();
         image = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         avaliaçãoPanel.setPreferredSize(new java.awt.Dimension(1000, 650));
         avaliaçãoPanel.setLayout(null);
