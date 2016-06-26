@@ -8,6 +8,7 @@ package bodyfitness.quadros.paineis;
 import bodyfitness.controlador.cadastro.CadastroCliente;
 import bodyfitness.pessoas.cliente.Cliente;
 import java.util.List;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -53,7 +54,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
         headerLabel.setForeground(new java.awt.Color(254, 254, 254));
         headerLabel.setText("Consulta de Clientes");
         consultaPanel.add(headerLabel);
-        headerLabel.setBounds(360, 20, 350, 50);
+        headerLabel.setBounds(340, 20, 350, 50);
 
         buscaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         buscaLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -104,23 +105,35 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 "ID", "Nome", "IMC", "S.Financeira", "Idade"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        buscaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buscaTableMouseClicked(evt);
+            }
+        });
         buscaPane.setViewportView(buscaTable);
 
         consultaPanel.add(buscaPane);
-        buscaPane.setBounds(0, 250, 960, 380);
+        buscaPane.setBounds(20, 250, 960, 380);
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
         consultaPanel.add(image);
-        image.setBounds(-50, -70, 1968, 1080);
+        image.setBounds(-50, -70, 1971, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,9 +160,9 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
         if (criterioCBox.getSelectedItem().toString().equals("todos")) {
             List<Cliente> clientes = cadastro.dao.consultarTodos();
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -166,13 +179,12 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 }
             });
 
-        }
-        else if(this.criterioCBox.getSelectedItem().toString().equals("nome")){
+        } else if (this.criterioCBox.getSelectedItem().toString().equals("nome")) {
             List<Cliente> clientes = cadastro.dao.consultarPorNome(this.buscaTField.getText());
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -188,15 +200,14 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-            
-        }
-        else if(this.criterioCBox.getSelectedItem().toString().equals("adimplentes")) {
+
+        } else if (this.criterioCBox.getSelectedItem().toString().equals("adimplentes")) {
             List<Cliente> clientes = cadastro.dao.consultarAdimplentes();
-         
+
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -212,13 +223,12 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-        }
-        else if(this.criterioCBox.getSelectedItem().toString().equals("inadimplentes")) {
+        } else if (this.criterioCBox.getSelectedItem().toString().equals("inadimplentes")) {
             List<Cliente> clientes = cadastro.dao.consultarInadimplentes();
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -234,13 +244,12 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-        }
-        else if(this.criterioCBox.getSelectedItem().toString().equals("peso ideal")) {
+        } else if (this.criterioCBox.getSelectedItem().toString().equals("peso ideal")) {
             List<Cliente> clientes = cadastro.dao.consultarPesoIdeal();
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -256,13 +265,12 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-        }
-        else if(this.criterioCBox.getSelectedItem().toString().equals("abaixo do peso")) {
+        } else if (this.criterioCBox.getSelectedItem().toString().equals("abaixo do peso")) {
             List<Cliente> clientes = cadastro.dao.consultarAbaixoDoPeso();
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -278,13 +286,12 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-        }
-        else if(this.criterioCBox.getSelectedItem().toString().equals("sobrepeso")) {
+        } else if (this.criterioCBox.getSelectedItem().toString().equals("sobrepeso")) {
             List<Cliente> clientes = cadastro.dao.consultarSobrePeso();
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -300,13 +307,12 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-        }
-        else if(this.criterioCBox.getSelectedItem().toString().equals("obesidade 1")) {
+        } else if (this.criterioCBox.getSelectedItem().toString().equals("obesidade 1")) {
             List<Cliente> clientes = cadastro.dao.consultarObesidadeI();
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -322,13 +328,12 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-        }
-        else if(this.criterioCBox.getSelectedItem().toString().equals("obesidade 2")) {
+        } else if (this.criterioCBox.getSelectedItem().toString().equals("obesidade 2")) {
             List<Cliente> clientes = cadastro.dao.consultarObsidadeII();
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -344,13 +349,12 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                     return canEdit[columnIndex];
                 }
             });
-        }
-        else if(criterioCBox.getSelectedItem().toString().equals("obesidade 3")) {
+        } else if (criterioCBox.getSelectedItem().toString().equals("obesidade 3")) {
             List<Cliente> clientes = cadastro.dao.consultarObesidadeIII();
             String[][] resultado = new String[clientes.size()][5];
-            for (int i = 0; i < clientes.size();i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(),clientes.get(i).getNome(),clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString() ,clientes.get(i).getSituacaoFinanceira(),clientes.get(i).getIdade().toString()};
+            for (int i = 0; i < clientes.size(); i++) {
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -367,20 +371,25 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 }
             });
         }
-        
-            
+
+
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void criterioCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criterioCBoxActionPerformed
         // TODO add your handling code here:
-        if(this.criterioCBox.getSelectedItem().toString().equals("nome") || this.criterioCBox.getSelectedItem().toString().equals("id")) {
+        if (this.criterioCBox.getSelectedItem().toString().equals("nome") || this.criterioCBox.getSelectedItem().toString().equals("id")) {
             this.buscaTField.setEnabled(true);
-        }
-        else {
+        } else {
             this.buscaTField.setEnabled(false);
         }
-        
+
     }//GEN-LAST:event_criterioCBoxActionPerformed
+
+    private void buscaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscaTableMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_buscaTableMouseClicked
 
     /**
      * @param args the command line arguments
