@@ -5,7 +5,9 @@
  */
 package bodyfitness;
 
+import bodyfitness.dao.EquipamentoDAO;
 import bodyfitness.dao.FuncionarioDAO;
+import bodyfitness.equipamentos.Equipamento;
 import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Endereco;
 import bodyfitness.pessoas.caracteristicas.Estado;
@@ -28,33 +30,20 @@ public class BodyFitness {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        String data = ("27/02/1993");
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("Iniciando o Projeto");
-        Calendar c = Calendar.getInstance();
-        Date dataParaBanco = formato.parse(data);
-        //CadastroCargo cg = new CadastroCargo();
-        //Cargo cargoTeste = new Cargo("professor");
-        Endereco endereco = new Endereco();
-        endereco.setBairro("Centro");
-        endereco.setRua("Prefeito Roberto Brzezinski");
-        endereco.setNumero("1300");
-        endereco.setCidade("campo mourao");
-        endereco.setEstado(Estado.PR.getSigla());
-        FuncionarioDAO dao = new FuncionarioDAO();
-        Funcionario funcionario = new Funcionario();
-        funcionario.setEndereco(endereco);
-        funcionario.setNome("Paulo B");
-        funcionario.setDataDeNascimento(dataParaBanco);
-        funcionario.setTurno(Turno.NOTURNO);
-        funcionario.setPermissao(Permissao.COMUM);
-        funcionario.setTipoDePessoa(TipoDePessoa.FUNCIONARIO);
-        funcionario.setSalario(new Double("800.00"));
-        funcionario.setUsuario("paulobcosta");
-        Cargo cargo = new Cargo("professor");
-        funcionario.setSenha("123");
-        funcionario.setCargo(cargo);
-        dao.persist(funcionario);
+        Equipamento equipamento = new Equipamento();
+        equipamento.setNome("teste");
+      
+        equipamento.setHabilitado(true);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        Date data = formato.parse(formato.format(new Date()));
+        equipamento.setDataDaUltimaManutencao(data);
+        equipamento.setDataDaProximaManutencao();
+        equipamento.setPesoMaximo("45");
+        equipamento.setPesoMinimo("5");
+        System.out.println(data);
+        
+        EquipamentoDAO dao = new EquipamentoDAO();
+        dao.persist(equipamento);
 
     }
 }

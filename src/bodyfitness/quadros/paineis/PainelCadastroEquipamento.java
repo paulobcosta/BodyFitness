@@ -5,16 +5,21 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.EquipamentoDAO;
+import bodyfitness.equipamentos.Equipamento;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author a1509950
  */
-public class CadastroEquipamento extends javax.swing.JFrame {
+public class PainelCadastroEquipamento extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastroEquipamento
      */
-    public CadastroEquipamento() {
+    public PainelCadastroEquipamento() {
         initComponents();
     }
 
@@ -62,6 +67,11 @@ public class CadastroEquipamento extends javax.swing.JFrame {
         pminimoLabel.setBounds(90, 380, 160, 50);
 
         cadastroButton.setText("Cadastrar");
+        cadastroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroButtonActionPerformed(evt);
+            }
+        });
         cadastroEquipamentoPanel.add(cadastroButton);
         cadastroButton.setBounds(710, 280, 80, 50);
 
@@ -100,6 +110,28 @@ public class CadastroEquipamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
+        // TODO add your handling code here:
+        EquipamentoDAO dao = new EquipamentoDAO();
+        if(this.nomeTField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nome do equipamento está vazio", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!this.nomeTField.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$")) {
+            JOptionPane.showMessageDialog(null, "Nome incompatível!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            Equipamento equipamento = new Equipamento();
+            equipamento.setNome(this.nomeTField.getText());
+            equipamento.setPesoMinimo(this.pminimoCBox.getSelectedItem().toString());
+            equipamento.setPesoMaximo(this.pemaximoCBox.getSelectedItem().toString());
+            equipamento.setDataDaUltimaManutencao(new Date());
+            equipamento.setDataDaProximaManutencao();
+            equipamento.setHabilitado(true);
+            dao.persist(equipamento);
+            JOptionPane.showMessageDialog(null, "Equipamento Cadastrado com Sucesso!", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_cadastroButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -117,20 +149,21 @@ public class CadastroEquipamento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelCadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelCadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelCadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelCadastroEquipamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroEquipamento().setVisible(true);
+                new PainelCadastroEquipamento().setVisible(true);
             }
         });
     }

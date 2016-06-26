@@ -106,7 +106,7 @@ public class Equipamento implements Serializable, EntidadeBase {
         return dataDaProximaManutencao;
     }
 
-    public void setDataDaProximaManutencao(Date dataDaUltimaManutencao) {
+    public void setDataDaProximaManutencao() {
         Calendar c = Calendar.getInstance();
         c.setTime(this.dataDaUltimaManutencao);
         c.add(Calendar.MONTH, 2);

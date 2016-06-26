@@ -18,6 +18,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -57,13 +58,13 @@ public class Cliente extends Pessoa implements EntidadeBase{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true,name = "condicionamento_fisico")
     private CondicionamentoFisico condicionamentoFisico;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "clientes_pagamentos",joinColumns = {@JoinColumn(name="cliente_id",referencedColumnName = "id")})
-    private ArrayList<Pagamento> pagamentos;
+   /*@OneToMany(cascade = CascadeType.PERSIST)
+   @JoinTable(name = "clientes_pagamentos",joinColumns = {@JoinColumn(name="cliente_id",referencedColumnName = "id")})
+    private ArrayList<Pagamento> pagamentos;*/
     
     public Cliente() {
         this.condicionamentoFisico = null;
-        this.pagamentos = null;
+        //this.pagamentos = null;
     }
 
     public Cliente(String nome) {
@@ -90,13 +91,13 @@ public class Cliente extends Pessoa implements EntidadeBase{
         this.condicionamentoFisico = condicionamentoFisico;
     }
 
-    public ArrayList<Pagamento> getPagamentos() {
+   /* public ArrayList<Pagamento> getPagamentos() {
         return pagamentos;
     }
 
     public void setPagamentos(ArrayList<Pagamento> pagamentos) {
         this.pagamentos = pagamentos;
-    }
+    */
 
     @Override
     public Long getId() {
