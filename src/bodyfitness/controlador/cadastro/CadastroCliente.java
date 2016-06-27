@@ -41,7 +41,21 @@ public class CadastroCliente {
         
         
     }
-   
+   public void cadastrarNovoCliente(Long id,String nome, String data, Endereco endereco) throws ParseException {
+        Cliente cliente = new Cliente();
+        cliente.setNome(nome);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataDeNascimento = formato.parse(data);
+        cliente.setId(id);
+        cliente.setDataDeNascimento(dataDeNascimento);
+        cliente.setEndereco(endereco);
+        cliente.setTipoDePessoa(TipoDePessoa.CLIENTE);
+        cliente.setSituacaoFinanceira(SituacaoFinanceira.ADIMPLENTE);
+        
+        this.dao.persist(cliente);
+        
+        
+    }
      
    
    public void alterar(Cliente cliente) {

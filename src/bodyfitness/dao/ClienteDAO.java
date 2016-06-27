@@ -96,11 +96,11 @@ public class ClienteDAO extends GenericDAO<Cliente> {
         return clientes;
     }
 
-    public Cliente consultarPorId() {
+    public Cliente consultarPorId(Long id) {
         EntityManager em = getEntityManager();
         Cliente cliente = new Cliente();
         try {
-            Query q = em.createNamedQuery("Cliente.consultarAdimplentes");
+            Query q = em.createNamedQuery("Cliente.consultarPorId");
 
             cliente = (Cliente) q.getSingleResult();
         } catch (Exception e) {

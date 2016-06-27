@@ -5,6 +5,7 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.ClienteDAO;
 import bodyfitness.pessoas.caracteristicas.Endereco;
 import bodyfitness.util.UtilBodyfitness;
 import java.text.ParseException;
@@ -184,7 +185,7 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
 
     private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroButtonActionPerformed
         // TODO add your handling code here:
-           // TODO add your handling code here:
+        // TODO add your handling code here:
         bodyfitness.controlador.cadastro.CadastroCliente cadastrarCliente = new bodyfitness.controlador.cadastro.CadastroCliente();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
@@ -196,34 +197,53 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "campo vazio", "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
-                if(!this.dataNascimentoTField.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+                if (!this.dataNascimentoTField.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
                     JOptionPane.showMessageDialog(null, "Erro no formato da data", "Erro", JOptionPane.ERROR_MESSAGE);
                     this.dataNascimentoTField.setText("");
-                }
-                else if (UtilBodyfitness.getDiferencaEmAnos(formato.parse(this.dataNascimentoTField.getText())) < new Long(14)) {
-                   JOptionPane.showMessageDialog(null, "abaixo de 14 anos", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else if (UtilBodyfitness.getDiferencaEmAnos(formato.parse(this.dataNascimentoTField.getText())) < new Long(14)) {
+                    JOptionPane.showMessageDialog(null, "abaixo de 14 anos", "Erro", JOptionPane.ERROR_MESSAGE);
                 } else {
                     Endereco end = new Endereco();
                     end.setBairro(this.bairroTField.getText());
-                    if(!this.numeroTField.getText().matches("[0-9]*")) {
+                    if (!this.numeroTField.getText().matches("[0-9]*")) {
                         JOptionPane.showMessageDialog(null, "número no formato errado", "Erro", JOptionPane.ERROR_MESSAGE);
-                    }
-                    else {
+                    } else {
                         end.setNumero(this.numeroTField.getText());
                         this.numeroTField.setText("");
                     }
-                    
+
                     end.setRua(this.ruaTField.getText());
                     end.setCidade(this.cidadeTField.getText());
                     end.setEstado(this.estadoCBox.getSelectedItem().toString());
-                    cadastrarCliente.cadastrarNovoCliente(nomeTField.getText(),this.dataNascimentoTField.getText(),end);
-                    JOptionPane.showMessageDialog(null, "Cadastro de cliente concluído com sucesso!","sucesso",JOptionPane.INFORMATION_MESSAGE);
-                    this.bairroTField.setText("");
-                    this.ruaTField.setText("");
-                    this.numeroTField.setText("");
-                    this.nomeTField.setText("");
-                    this.cidadeTField.setText("");
-                    this.dataNascimentoTField.setText("");
+                    if (this.idTField.getText().isEmpty()) {
+                        cadastrarCliente.cadastrarNovoCliente(nomeTField.getText(), this.dataNascimentoTField.getText(), end);
+
+                        JOptionPane.showMessageDialog(null, "Cadastro de cliente concluído com sucesso!", "sucesso", JOptionPane.INFORMATION_MESSAGE);
+                        this.bairroTField.setText("");
+                        this.ruaTField.setText("");
+                        this.numeroTField.setText("");
+                        this.nomeTField.setText("");
+                        this.cidadeTField.setText("");
+                        this.dataNascimentoTField.setText("");
+                    } else if (!this.idTField.getText().matches("[0-9]*")) {
+                        JOptionPane.showMessageDialog(null, "Erro no campo ID", "Erro", JOptionPane.ERROR_MESSAGE);
+                        this.idTField.setText("");
+                    } else {
+                        ClienteDAO dao = new ClienteDAO();
+                        if (dao.consultarPorId(Long.valueOf(this.idTField.getText())) == null) {
+                            JOptionPane.showMessageDialog(null, "ID inexistente", "Erro", JOptionPane.ERROR_MESSAGE);
+                            this.idTField.setText("");
+                        }
+                        cadastrarCliente.cadastrarNovoCliente(Long.valueOf(this.idTField.getText()), this.nomeTField.getText(), this.dataNascimentoTField.getText(), end);
+                        JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+                        this.bairroTField.setText("");
+                        this.ruaTField.setText("");
+                        this.numeroTField.setText("");
+                        this.nomeTField.setText("");
+                        this.cidadeTField.setText("");
+                        this.dataNascimentoTField.setText("");
+                    }
+
                 }
             } catch (ParseException ex) {
                 Logger.getLogger(PainelCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
