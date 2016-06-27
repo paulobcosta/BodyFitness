@@ -5,6 +5,12 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.ClienteDAO;
+import bodyfitness.pessoas.cliente.Cliente;
+import bodyfitness.pessoas.cliente.caracteristicas.corporal.MembrosInferiores;
+import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -14,8 +20,20 @@ public class ClienteEditarMembrosInferiores extends javax.swing.JFrame {
     /**
      * Creates new form ClienteEditarMembrosInferiores
      */
-    public ClienteEditarMembrosInferiores() {
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public ClienteEditarMembrosInferiores(Long id) {
         initComponents();
+        this.id = id;
+        this.idTField.setEditable(false);
+        this.idTField.setText(id.toString());
     }
 
     /**
@@ -97,6 +115,13 @@ public class ClienteEditarMembrosInferiores extends javax.swing.JFrame {
                 anteBracoDireitoTFieldActionPerformed(evt);
             }
         });
+        
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
+      
+            public void actionPerformed(ActionEvent e) {
+                editarButtonTFieldActionPerformed(e);
+            }
+        });
         avaliaçãoPanel.add(anteBracoDireitoTField);
         anteBracoDireitoTField.setBounds(240, 160, 200, 50);
         avaliaçãoPanel.add(idTField);
@@ -152,7 +177,37 @@ public class ClienteEditarMembrosInferiores extends javax.swing.JFrame {
     private void anteBracoDireitoTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteBracoDireitoTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_anteBracoDireitoTFieldActionPerformed
-
+    private void editarButtonTFieldActionPerformed(java.awt.event.ActionEvent evt) {
+        ClienteDAO dao = new ClienteDAO();
+        Cliente cliente = dao.consultarPorId(this.getId());
+        MembrosInferiores minf = new MembrosInferiores();
+        if(this.anteBracoDireitoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            minf.setAnteBracoDireito(Double.valueOf(this.anteBracoDireitoTField.getText()));
+            JOptionPane.showMessageDialog(null, "antebraço alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(this.bracoContraidoDireitoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            minf.setBracoContraidoDireito(Double.valueOf(this.bracoContraidoDireitoTField.getText()));
+            JOptionPane.showMessageDialog(null, "braço direito contráido alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(this.bracoRelaxadoEsquerdoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            minf.setBracoRelaxadoEsquerdo(Double.valueOf(this.bracoRelaxadoEsquerdoTField.getText()));
+            JOptionPane.showMessageDialog(null, "braço esquerdo relaxado alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+      
+        if(this.coxaEsquerdoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            minf.setCoxaEsquerdo(Double.valueOf(this.coxaEsquerdoTField.getText()));
+            JOptionPane.showMessageDialog(null, "coxa esquerda alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(this.panturrilhaDireitoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            minf.setPanturrilhaDireito(Double.valueOf(this.panturrilhaDireitoTField.getText()));
+            JOptionPane.showMessageDialog(null, "panturrilha direita contráido alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        cliente.getCondicionamentoFisico().setMembrosInferiores(minf);
+        dao.persist(cliente);
+        
+        JOptionPane.showMessageDialog(null, "membros inferiores atualizados","Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+    }
     /**
      * @param args the command line arguments
      */
@@ -183,7 +238,7 @@ public class ClienteEditarMembrosInferiores extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteEditarMembrosInferiores().setVisible(true);
+                //new ClienteEditarMembrosInferiores().setVisible(true);
             }
         });
     }

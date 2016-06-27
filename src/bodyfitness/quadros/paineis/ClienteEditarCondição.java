@@ -144,7 +144,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
     private void minferioresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minferioresButtonActionPerformed
         // TODO add your handling code here:
         
-        ClienteEditarMembrosInferiores indices = new ClienteEditarMembrosInferiores();
+        ClienteEditarMembrosInferiores indices = new ClienteEditarMembrosInferiores(this.getId());
         indices.setVisible(true);
     }//GEN-LAST:event_minferioresButtonActionPerformed
 

@@ -88,6 +88,7 @@ public class Cliente extends Pessoa implements EntidadeBase{
         Calendar c = Calendar.getInstance();
         c.add(Calendar.MONTH, 1);
         Date data = c.getTime();
+       
         this.dataDePagamento = data;
         this.pago = false;
         //this.pagamentos = null;

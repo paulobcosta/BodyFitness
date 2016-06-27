@@ -33,6 +33,7 @@ public class PainelClienteEditarIndices extends javax.swing.JFrame {
         initComponents();
         this.id = id;
         this.idTField.setText(id.toString());
+        this.idTField.setEditable(false);
     }
 
     /**
@@ -176,18 +177,23 @@ public class PainelClienteEditarIndices extends javax.swing.JFrame {
         }
         if(this.imcTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
             cond.getComposicaoCorporal().setImc(Double.valueOf(this.imcTField.getText()));
+            JOptionPane.showMessageDialog(null, "IMC alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
         if(this.massaGordaTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
             cond.getComposicaoCorporal().setMassaGorda(Double.valueOf(this.massaGordaTField.getText()));
+            JOptionPane.showMessageDialog(null, "massa gorda alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
         if(this.massaMagraTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
             cond.getComposicaoCorporal().setMassaMagra(Double.valueOf(this.massaMagraTField.getText()));
+            JOptionPane.showMessageDialog(null, "massa magra contráido alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
         if(this.pdgiTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
             cond.getComposicaoCorporal().setPercentualGorduraIdeal(Double.valueOf(this.pdgiTField.getText()));
+            JOptionPane.showMessageDialog(null, "percentual gordura ideal alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
         if(this.pgiTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
             cond.getComposicaoCorporal().setPercentualGorduraAtual(Double.valueOf(this.pgiTField.getText()));
+            JOptionPane.showMessageDialog(null, "percentual gordura atual alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
         cliente.setCondicionamentoFisico(cond);
         dao.persist(cliente);
