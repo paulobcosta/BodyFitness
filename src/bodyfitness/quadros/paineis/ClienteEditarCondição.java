@@ -136,7 +136,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
     private void msuperioresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msuperioresButtonActionPerformed
         // TODO add your handling code here:
         
-        ClienteEditarMembrosSuperiores indices = new ClienteEditarMembrosSuperiores();
+        PainelClienteEditarMembrosSuperiores indices = new PainelClienteEditarMembrosSuperiores(this.getId());
         indices.setVisible(true);
         
     }//GEN-LAST:event_msuperioresButtonActionPerformed
@@ -144,7 +144,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
     private void minferioresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minferioresButtonActionPerformed
         // TODO add your handling code here:
         
-        ClienteEditarMembrosInferiores indices = new ClienteEditarMembrosInferiores(this.getId());
+        PainelClienteEditarMembrosInferiores indices = new PainelClienteEditarMembrosInferiores(this.getId());
         indices.setVisible(true);
     }//GEN-LAST:event_minferioresButtonActionPerformed
 
