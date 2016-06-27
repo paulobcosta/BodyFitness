@@ -21,6 +21,7 @@ public class PainelClienteEditarMembrosSuperiores extends javax.swing.JFrame {
      * Creates new form PainelClienteEditarMembrosSuperiores
      */
     private Long id;
+    private boolean alterou;
 
     public Long getId() {
         return id;
@@ -33,6 +34,7 @@ public class PainelClienteEditarMembrosSuperiores extends javax.swing.JFrame {
     public PainelClienteEditarMembrosSuperiores(Long id) {
         initComponents();
         this.id = id;
+        this.alterou = false;
     }
 
     /**
@@ -201,46 +203,60 @@ public class PainelClienteEditarMembrosSuperiores extends javax.swing.JFrame {
         ClienteDAO dao = new ClienteDAO();
         Cliente cliente = dao.consultarPorId(this.getId());
         MembrosSuperiores ms = new MembrosSuperiores();
+        ms = cliente.getCondicionamentoFisico().getMembrosSuperiores();
         if (this.abdomeTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             ms.setAbdome(Double.valueOf(this.abdomeTField.getText()));
             JOptionPane.showMessageDialog(null, "Abdome atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
         if (this.cinturaTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             ms.setCintura(Double.valueOf(this.cinturaTField.getText()));
             JOptionPane.showMessageDialog(null, "Cintura atualizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 
         }
         if (this.ombroTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             ms.setOmbro(Double.valueOf(this.ombroTField.getText()));
             JOptionPane.showMessageDialog(null, "Ombro atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
         //JOptionPane.showMessageDialog(null, "Pescoço atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-        if(this.pescocoTField.getText().matches("[0-9]*\\.[0-9]*")) {
-           ms.setPescoco(Double.valueOf(this.pescocoTField.getText()));
-           JOptionPane.showMessageDialog(null, "Pescoço atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-           
+        if (this.pescocoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            ms.setPescoco(Double.valueOf(this.pescocoTField.getText()));
+            JOptionPane.showMessageDialog(null, "Pescoço atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+
         }
-        if(this.quadrilTField.getText().matches("[0-9]*\\.[0-9]*")) {
+        if (this.quadrilTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             ms.setQuadril(Double.valueOf(this.quadrilTField.getText()));
             JOptionPane.showMessageDialog(null, "Quadril atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        if(this.relacaoCinturaXQuadrilTField.getText().matches("[0-9]*\\.[0-9]*")) {
+        if (this.relacaoCinturaXQuadrilTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             ms.setRelacaoCinturaXQuadril(Double.valueOf(this.relacaoCinturaXQuadrilTField.getText()));
             JOptionPane.showMessageDialog(null, "relação cintura x quadril atualizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-            
+
         }
-        if(this.toraxInspiradoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+        if (this.toraxInspiradoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             ms.setToraxInspirado(Double.valueOf(this.toraxInspiradoTField.getText()));
             JOptionPane.showMessageDialog(null, "Torax inspirado atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        if(this.toraxRelaxadoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+
+        if (this.toraxRelaxadoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             ms.setToraxRelaxado(Double.valueOf(this.toraxRelaxadoTField.getText()));
             JOptionPane.showMessageDialog(null, "Torax relaxado atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        cliente.getCondicionamentoFisico().setMembrosSuperiores(ms);
-        dao.persist(cliente);
-        JOptionPane.showMessageDialog(null, "Membros superiores tiveram suas medidas atualizadas", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        if (this.alterou == true) {
+            cliente.getCondicionamentoFisico().setMembrosSuperiores(ms);
+            dao.persist(cliente);
+            JOptionPane.showMessageDialog(null, "Membros superiores tiveram suas medidas atualizadas", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Nenhuma alteração realizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
         this.dispose();
     }
 

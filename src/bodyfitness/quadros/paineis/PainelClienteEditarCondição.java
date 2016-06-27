@@ -11,10 +11,10 @@ import javax.swing.JFrame;
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
  */
-public class ClienteEditarCondição extends javax.swing.JFrame {
+public class PainelClienteEditarCondição extends javax.swing.JFrame {
 
     /**
-     * Creates new form ClienteEditarCondição
+     * Creates new form PainelClienteEditarCondição
      */
     private Long id;
 
@@ -25,7 +25,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
     public void setId(Long id) {
         this.id = id;
     }
-    public ClienteEditarCondição(Long id) {
+    public PainelClienteEditarCondição(Long id) {
         initComponents();
         this.id = id;
     }
@@ -151,7 +151,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
     private void dcutaneaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dcutaneaButtonActionPerformed
         // TODO add your handling code here:
         
-        ClienteEditarDCutaneas indices = new ClienteEditarDCutaneas();
+        PainelClienteEditarDCutaneas indices = new PainelClienteEditarDCutaneas(this.getId());
         indices.setVisible(true);
     }//GEN-LAST:event_dcutaneaButtonActionPerformed
 
@@ -180,20 +180,21 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarCondição.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarCondição.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarCondição.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarCondição.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarCondição.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarCondição.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarCondição.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarCondição.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ClienteEditarCondição().setVisible(true);
+                //new PainelClienteEditarCondição().setVisible(true);
             }
         });
     }

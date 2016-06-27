@@ -21,6 +21,7 @@ public class PainelClienteEditarMembrosInferiores extends javax.swing.JFrame {
      * Creates new form PainelClienteEditarMembrosInferiores
      */
     private Long id;
+    private boolean alterou;
 
     public Long getId() {
         return id;
@@ -29,11 +30,13 @@ public class PainelClienteEditarMembrosInferiores extends javax.swing.JFrame {
     public void setId(Long id) {
         this.id = id;
     }
+
     public PainelClienteEditarMembrosInferiores(Long id) {
         initComponents();
         this.id = id;
         this.idTField.setEditable(false);
         this.idTField.setText(id.toString());
+        this.alterou = false;
     }
 
     /**
@@ -115,9 +118,9 @@ public class PainelClienteEditarMembrosInferiores extends javax.swing.JFrame {
                 anteBracoDireitoTFieldActionPerformed(evt);
             }
         });
-        
+
         editarButton.addActionListener(new java.awt.event.ActionListener() {
-      
+
             public void actionPerformed(ActionEvent e) {
                 editarButtonTFieldActionPerformed(e);
             }
@@ -157,18 +160,18 @@ public class PainelClienteEditarMembrosInferiores extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -177,37 +180,50 @@ public class PainelClienteEditarMembrosInferiores extends javax.swing.JFrame {
     private void anteBracoDireitoTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteBracoDireitoTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_anteBracoDireitoTFieldActionPerformed
+
     private void editarButtonTFieldActionPerformed(java.awt.event.ActionEvent evt) {
         ClienteDAO dao = new ClienteDAO();
         Cliente cliente = dao.consultarPorId(this.getId());
         MembrosInferiores minf = new MembrosInferiores();
-        if(this.anteBracoDireitoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        minf = cliente.getCondicionamentoFisico().getMembrosInferiores();
+        if (this.anteBracoDireitoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             minf.setAnteBracoDireito(Double.valueOf(this.anteBracoDireitoTField.getText()));
             JOptionPane.showMessageDialog(null, "antebraço alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        if(this.bracoContraidoDireitoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        if (this.bracoContraidoDireitoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             minf.setBracoContraidoDireito(Double.valueOf(this.bracoContraidoDireitoTField.getText()));
             JOptionPane.showMessageDialog(null, "braço direito contráido alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        if(this.bracoRelaxadoEsquerdoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        if (this.bracoRelaxadoEsquerdoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             minf.setBracoRelaxadoEsquerdo(Double.valueOf(this.bracoRelaxadoEsquerdoTField.getText()));
             JOptionPane.showMessageDialog(null, "braço esquerdo relaxado alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-      
-        if(this.coxaEsquerdoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+
+        if (this.coxaEsquerdoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             minf.setCoxaEsquerdo(Double.valueOf(this.coxaEsquerdoTField.getText()));
             JOptionPane.showMessageDialog(null, "coxa esquerda alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        if(this.panturrilhaDireitoTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        if (this.panturrilhaDireitoTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             minf.setPanturrilhaDireito(Double.valueOf(this.panturrilhaDireitoTField.getText()));
             JOptionPane.showMessageDialog(null, "panturrilha direita contráido alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        cliente.getCondicionamentoFisico().setMembrosInferiores(minf);
-        dao.persist(cliente);
-        
-        JOptionPane.showMessageDialog(null, "membros inferiores atualizados","Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        if (this.alterou == true) {
+            cliente.getCondicionamentoFisico().setMembrosInferiores(minf);
+            dao.persist(cliente);
+
+            JOptionPane.showMessageDialog(null, "membros inferiores atualizados", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else  {
+            JOptionPane.showMessageDialog(null,"Sem alterações realizadas", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
         this.dispose();
     }
+
     /**
      * @param args the command line arguments
      */

@@ -422,7 +422,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
     private void buscaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscaTableMouseClicked
         // TODO add your handling code here:
         int linha = this.buscaTable.getSelectedRow();
-        ClienteEditarCondição indices = new ClienteEditarCondição(Long.valueOf(this.buscaTable.getValueAt(linha, 0).toString()));
+        PainelClienteEditarCondição indices = new PainelClienteEditarCondição(Long.valueOf(this.buscaTable.getValueAt(linha, 0).toString()));
 
         indices.setVisible(true);
 
