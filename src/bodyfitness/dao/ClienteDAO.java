@@ -101,7 +101,7 @@ public class ClienteDAO extends GenericDAO<Cliente> {
         Cliente cliente = new Cliente();
         try {
             Query q = em.createNamedQuery("Cliente.consultarPorId");
-
+            q.setParameter("id", id);
             cliente = (Cliente) q.getSingleResult();
         } catch (Exception e) {
             System.out.println(e.getMessage());

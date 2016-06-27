@@ -5,17 +5,34 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.ClienteDAO;
+import bodyfitness.pessoas.cliente.Cliente;
+import bodyfitness.pessoas.cliente.caracteristicas.corporal.CondicionamentoFisico;
+import bodyfitness.pessoas.cliente.caracteristicas.corporal.Indices;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
  */
-public class ClienteEditarÍndices extends javax.swing.JFrame {
+public class PainelClienteEditarIndices extends javax.swing.JFrame {
 
     /**
      * Creates new form ClienteAvaliação
      */
-    public ClienteEditarÍndices() {
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public PainelClienteEditarIndices(Long id) {
         initComponents();
+        this.id = id;
+        this.idTField.setText(id.toString());
     }
 
     /**
@@ -101,6 +118,11 @@ public class ClienteEditarÍndices extends javax.swing.JFrame {
                 imcTFieldActionPerformed(evt);
             }
         });
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt){
+               editarButtonActionPerformed(evt);
+           }
+        });
         avaliaçãoPanel.add(imcTField);
         imcTField.setBounds(130, 180, 310, 50);
         avaliaçãoPanel.add(idTField);
@@ -138,11 +160,45 @@ public class ClienteEditarÍndices extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        //JOptionPane.showMessageDialog(null, "deu certo","Certo",JOptionPane.INFORMATION_MESSAGE);
+        ClienteDAO dao = new ClienteDAO();
+        Cliente cliente = dao.consultarPorId(this.getId());
+        CondicionamentoFisico cond = new CondicionamentoFisico();
+        cond.setComposicaoCorporal(new Indices());
+        boolean hasId = false;
+        try {
+            if(cliente.getCondicionamentoFisico() != null) {
+                hasId = true;
+            }
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+        if(this.imcTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            cond.getComposicaoCorporal().setImc(Double.valueOf(this.imcTField.getText()));
+        }
+        if(this.massaGordaTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            cond.getComposicaoCorporal().setMassaGorda(Double.valueOf(this.massaGordaTField.getText()));
+        }
+        if(this.massaMagraTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            cond.getComposicaoCorporal().setMassaMagra(Double.valueOf(this.massaMagraTField.getText()));
+        }
+        if(this.pdgiTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            cond.getComposicaoCorporal().setPercentualGorduraIdeal(Double.valueOf(this.pdgiTField.getText()));
+        }
+        if(this.pgiTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+            cond.getComposicaoCorporal().setPercentualGorduraAtual(Double.valueOf(this.pgiTField.getText()));
+        }
+        cliente.setCondicionamentoFisico(cond);
+        dao.persist(cliente);
+        JOptionPane.showMessageDialog(null, "Indices atualizados", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+    }
     private void imcTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imcTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_imcTFieldActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -160,21 +216,23 @@ public class ClienteEditarÍndices extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarÍndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarIndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarÍndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarIndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarÍndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarIndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarÍndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarIndices.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteEditarÍndices().setVisible(true);
+                //new PainelClienteEditarIndices().setVisible(true);
             }
         });
     }

@@ -16,8 +16,18 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
     /**
      * Creates new form ClienteEditarCondição
      */
-    public ClienteEditarCondição() {
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public ClienteEditarCondição(Long id) {
         initComponents();
+        this.id = id;
     }
 
     /**
@@ -118,7 +128,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
     private void indicesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicesButtonActionPerformed
         // TODO add your handling code here:
 
-        ClienteEditarÍndices indices = new ClienteEditarÍndices();
+        PainelClienteEditarIndices indices = new PainelClienteEditarIndices(this.getId());
         indices.setVisible(true);
 
     }//GEN-LAST:event_indicesButtonActionPerformed
@@ -183,7 +193,7 @@ public class ClienteEditarCondição extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteEditarCondição().setVisible(true);
+                //new ClienteEditarCondição().setVisible(true);
             }
         });
     }
