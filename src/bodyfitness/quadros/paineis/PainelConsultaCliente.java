@@ -8,6 +8,7 @@ package bodyfitness.quadros.paineis;
 import bodyfitness.controlador.cadastro.CadastroCliente;
 import bodyfitness.pessoas.cliente.Cliente;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -20,6 +21,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
      */
     public PainelConsultaCliente() {
         initComponents();
+        //this.buscaTable = new JTable();
     }
 
     /**
@@ -156,13 +158,27 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
         // TODO add your handling code here:
         CadastroCliente cadastro = new CadastroCliente();
-        this.buscaTField.setEnabled(false);
+        //this.buscaTField.setEnabled(false);
         if (criterioCBox.getSelectedItem().toString().equals("todos")) {
             List<Cliente> clientes = cadastro.dao.consultarTodos();
             String[][] resultado = new String[clientes.size()][5];
+            System.out.println(clientes.get(0).getNome());
+            System.out.println(clientes.get(0).getId());
+            //System.out.println(clientes.get(0).getIdade());
+            //  System.out.println(clientes.get(0).getCondicionamentoFisico().getComposicaoCorporal().getImc());
             for (int i = 0; i < clientes.size(); i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
+                String imc;
+
+                //imc = "--";
+
+                try {
+                    imc = clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    imc = "--";
+                }
+
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), imc, clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -173,18 +189,24 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
             });
-            
+
         } else if (this.criterioCBox.getSelectedItem().toString().equals("nome")) {
             List<Cliente> clientes = cadastro.dao.consultarPorNome(this.buscaTField.getText());
             String[][] resultado = new String[clientes.size()][5];
+            String imc = "--";
             for (int i = 0; i < clientes.size(); i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
+                try {
+                    imc = clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString();
+                }catch(Exception e) {
+                    System.out.println(e.getMessage());
+                    imc = "--";
+                }
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), imc, clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -195,19 +217,25 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
             });
-            
+
         } else if (this.criterioCBox.getSelectedItem().toString().equals("adimplentes")) {
             List<Cliente> clientes = cadastro.dao.consultarAdimplentes();
-            
+            String imc = "--";
             String[][] resultado = new String[clientes.size()][5];
             for (int i = 0; i < clientes.size(); i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
+                    try{
+                        imc = clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString();
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                        imc = "--";
+                    }
+            
+                   resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), imc, clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -218,7 +246,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
@@ -226,9 +254,15 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
         } else if (this.criterioCBox.getSelectedItem().toString().equals("inadimplentes")) {
             List<Cliente> clientes = cadastro.dao.consultarInadimplentes();
             String[][] resultado = new String[clientes.size()][5];
+            String imc = "--";
             for (int i = 0; i < clientes.size(); i++) {
-                
-                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
+                try {
+                    imc = clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString();
+                }catch(Exception e) {
+                    System.out.println(e.getMessage());
+                    imc = "--";
+                }
+                resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), imc, clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
                     resultado,
@@ -239,7 +273,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
@@ -248,7 +282,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
             List<Cliente> clientes = cadastro.dao.consultarPesoIdeal();
             String[][] resultado = new String[clientes.size()][5];
             for (int i = 0; i < clientes.size(); i++) {
-                
+
                 resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -260,7 +294,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
@@ -269,7 +303,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
             List<Cliente> clientes = cadastro.dao.consultarAbaixoDoPeso();
             String[][] resultado = new String[clientes.size()][5];
             for (int i = 0; i < clientes.size(); i++) {
-                
+
                 resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -281,7 +315,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
@@ -290,7 +324,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
             List<Cliente> clientes = cadastro.dao.consultarSobrePeso();
             String[][] resultado = new String[clientes.size()][5];
             for (int i = 0; i < clientes.size(); i++) {
-                
+
                 resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -302,7 +336,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
@@ -311,7 +345,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
             List<Cliente> clientes = cadastro.dao.consultarObesidadeI();
             String[][] resultado = new String[clientes.size()][5];
             for (int i = 0; i < clientes.size(); i++) {
-                
+
                 resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -323,7 +357,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
@@ -332,7 +366,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
             List<Cliente> clientes = cadastro.dao.consultarObsidadeII();
             String[][] resultado = new String[clientes.size()][5];
             for (int i = 0; i < clientes.size(); i++) {
-                
+
                 resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -344,7 +378,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
@@ -353,7 +387,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
             List<Cliente> clientes = cadastro.dao.consultarObesidadeIII();
             String[][] resultado = new String[clientes.size()][5];
             for (int i = 0; i < clientes.size(); i++) {
-                
+
                 resultado[i] = new String[]{clientes.get(i).getId().toString(), clientes.get(i).getNome(), clientes.get(i).getCondicionamentoFisico().getComposicaoCorporal().getImc().toString(), clientes.get(i).getSituacaoFinanceira(), clientes.get(i).getIdade().toString()};
             }
             this.buscaTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -365,13 +399,13 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
                 boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
                 };
-                
+
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return canEdit[columnIndex];
                 }
             });
         }
-        
+
 
     }//GEN-LAST:event_buscarButtonActionPerformed
 
@@ -388,7 +422,7 @@ public class PainelConsultaCliente extends javax.swing.JFrame {
     private void buscaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscaTableMouseClicked
         // TODO add your handling code here:
         ClienteEditarCondição indices = new ClienteEditarCondição();
-        
+
         indices.setVisible(true);
 
     }//GEN-LAST:event_buscaTableMouseClicked

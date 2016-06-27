@@ -36,7 +36,7 @@ public class Indices implements Serializable, EntidadeBase{
     private Double massaGorda;
 
     public Indices() {
-        this.imc = null;
+        //this.imc = null;
         this.percentualGorduraAtual = null;
         this.percentualGorduraIdeal = null;
         this.massaMagra = null;

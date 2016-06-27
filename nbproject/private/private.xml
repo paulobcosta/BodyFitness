@@ -3,12 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/controlador/cadastro/CadastroCliente.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/dao/ClienteDAO.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/PainelConsultaCliente.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroCategoriaAula.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/ConsultaFuncionários.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/util/UtilBodyfitness.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/cliente/Cliente.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/cliente/caracteristicas/corporal/CondicionamentoFisico.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/cliente/caracteristicas/corporal/Indices.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/ConsultaCliente.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/generico/Pessoa.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/PainelConsultaEquipamento.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/PainelCadastroEquipamento.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/PainelCadastroCliente.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroFuncionário.java</file>
         </group>
     </open-files>
 </project-private>

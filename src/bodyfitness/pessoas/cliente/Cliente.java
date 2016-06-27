@@ -5,25 +5,22 @@
  */
 package bodyfitness.pessoas.cliente;
 
-import bodyfitness.administracao.Pagamento;
 import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
 import bodyfitness.pessoas.cliente.caracteristicas.corporal.CondicionamentoFisico;
 import bodyfitness.pessoas.generico.Pessoa;
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -58,12 +55,41 @@ public class Cliente extends Pessoa implements EntidadeBase{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = true,name = "condicionamento_fisico")
     private CondicionamentoFisico condicionamentoFisico;
+    @Column(name="data_de_pagamento",nullable=false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataDePagamento;
+    @Column(name = "pago",nullable = false)
+    private boolean pago;
+
+    
+    
+    public boolean isPago() {
+        return pago;
+    }
+
+    public void setPago(boolean pago) {
+        this.pago = pago;
+    }
+    
    /*@OneToMany(cascade = CascadeType.PERSIST)
    @JoinTable(name = "clientes_pagamentos",joinColumns = {@JoinColumn(name="cliente_id",referencedColumnName = "id")})
     private ArrayList<Pagamento> pagamentos;*/
+
+    public Date getDataDePagamento() {
+        return dataDePagamento;
+    }
+
+    public void setDataDePagamento(Date dataDePagamento) {
+        this.dataDePagamento = dataDePagamento;
+    }
     
     public Cliente() {
-        this.condicionamentoFisico = null;
+        this.condicionamentoFisico = null;//new CondicionamentoFisico();
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.MONTH, 1);
+        Date data = c.getTime();
+        this.dataDePagamento = data;
+        this.pago = false;
         //this.pagamentos = null;
     }
 
@@ -84,6 +110,7 @@ public class Cliente extends Pessoa implements EntidadeBase{
     }
     
     public CondicionamentoFisico getCondicionamentoFisico() {
+        
         return this.condicionamentoFisico;
     }
 
