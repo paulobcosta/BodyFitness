@@ -21,6 +21,7 @@ public class PainelClienteEditarIndices extends javax.swing.JFrame {
      * Creates new form ClienteAvaliação
      */
     private Long id;
+    private boolean alterou;
 
     public Long getId() {
         return id;
@@ -29,10 +30,13 @@ public class PainelClienteEditarIndices extends javax.swing.JFrame {
     public void setId(Long id) {
         this.id = id;
     }
+
     public PainelClienteEditarIndices(Long id) {
         initComponents();
         this.id = id;
         this.idTField.setText(id.toString());
+        this.idTField.setEditable(false);
+        this.alterou = false;
     }
 
     /**
@@ -119,9 +123,9 @@ public class PainelClienteEditarIndices extends javax.swing.JFrame {
             }
         });
         editarButton.addActionListener(new java.awt.event.ActionListener() {
-           public void actionPerformed(java.awt.event.ActionEvent evt){
-               editarButtonActionPerformed(evt);
-           }
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarButtonActionPerformed(evt);
+            }
         });
         avaliaçãoPanel.add(imcTField);
         imcTField.setBounds(130, 180, 310, 50);
@@ -144,61 +148,77 @@ public class PainelClienteEditarIndices extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {
         //JOptionPane.showMessageDialog(null, "deu certo","Certo",JOptionPane.INFORMATION_MESSAGE);
         ClienteDAO dao = new ClienteDAO();
         Cliente cliente = dao.consultarPorId(this.getId());
         CondicionamentoFisico cond = new CondicionamentoFisico();
         cond.setComposicaoCorporal(new Indices());
-        boolean hasId = false;
-        try {
-            if(cliente.getCondicionamentoFisico() != null) {
+        // boolean hasId = false;
+        /* try {
+            if (cliente.getCondicionamentoFisico() != null) {
                 hasId = true;
             }
-        }catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
-        if(this.imcTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        }*/
+        cond = cliente.getCondicionamentoFisico();
+        if (this.imcTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             cond.getComposicaoCorporal().setImc(Double.valueOf(this.imcTField.getText()));
+            JOptionPane.showMessageDialog(null, "IMC alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        if(this.massaGordaTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        if (this.massaGordaTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             cond.getComposicaoCorporal().setMassaGorda(Double.valueOf(this.massaGordaTField.getText()));
+            JOptionPane.showMessageDialog(null, "massa gorda alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        if(this.massaMagraTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        if (this.massaMagraTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             cond.getComposicaoCorporal().setMassaMagra(Double.valueOf(this.massaMagraTField.getText()));
+            JOptionPane.showMessageDialog(null, "massa magra contráido alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        if(this.pdgiTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        if (this.pdgiTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             cond.getComposicaoCorporal().setPercentualGorduraIdeal(Double.valueOf(this.pdgiTField.getText()));
+            JOptionPane.showMessageDialog(null, "percentual gordura ideal alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        if(this.pgiTField.getText().matches("[0-9][0-9]\\.[0-9][0-9]")) {
+        if (this.pgiTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
             cond.getComposicaoCorporal().setPercentualGorduraAtual(Double.valueOf(this.pgiTField.getText()));
+            JOptionPane.showMessageDialog(null, "percentual gordura atual alterado", "confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
-        cliente.setCondicionamentoFisico(cond);
-        dao.persist(cliente);
-        JOptionPane.showMessageDialog(null, "Indices atualizados", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        if (this.alterou == true) {
+            cliente.setCondicionamentoFisico(cond);
+            dao.persist(cliente);
+            JOptionPane.showMessageDialog(null, "Indices atualizados", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Sem Alterações realizadas", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
         this.dispose();
     }
+
     private void imcTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imcTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_imcTFieldActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */

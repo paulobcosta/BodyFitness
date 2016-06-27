@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "membros_superiores")
-class MembrosSuperiores implements Serializable, EntidadeBase{
+public class MembrosSuperiores implements Serializable, EntidadeBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

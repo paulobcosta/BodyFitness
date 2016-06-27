@@ -5,17 +5,38 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.ClienteDAO;
+import bodyfitness.pessoas.cliente.Cliente;
+import bodyfitness.pessoas.cliente.caracteristicas.corporal.DobrasCutaneas;
+import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
  */
-public class ClienteEditarDCutaneas extends javax.swing.JFrame {
+public class PainelClienteEditarDCutaneas extends javax.swing.JFrame {
 
     /**
-     * Creates new form ClienteEditarDCutaneas
+     * Creates new form PainelClienteEditarDCutaneas
      */
-    public ClienteEditarDCutaneas() {
+    private Long id;
+    private boolean alterou;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public PainelClienteEditarDCutaneas(Long id) {
         initComponents();
+        this.id = id;
+        this.idTField.setEditable(false);
+        this.idTField.setText(id.toString());
+        this.alterou = false;
     }
 
     /**
@@ -109,6 +130,13 @@ public class ClienteEditarDCutaneas extends javax.swing.JFrame {
                 subescapularTFieldActionPerformed(evt);
             }
         });
+
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                editarButtonActionPerformed(e);
+            }
+        });
         avaliaçãoPanel.add(subescapularTField);
         subescapularTField.setBounds(230, 100, 210, 50);
         avaliaçãoPanel.add(idTField);
@@ -162,18 +190,18 @@ public class ClienteEditarDCutaneas extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(avaliaçãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,6 +210,68 @@ public class ClienteEditarDCutaneas extends javax.swing.JFrame {
     private void subescapularTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subescapularTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_subescapularTFieldActionPerformed
+
+    private void editarButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        ClienteDAO dao = new ClienteDAO();
+        Cliente cliente = dao.consultarPorId(this.getId());
+        DobrasCutaneas dc = new DobrasCutaneas();
+        dc = cliente.getCondicionamentoFisico().getDobrasCutaneas();
+        if (this.AbdominalTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setAbdominal(Double.valueOf(this.AbdominalTField.getText()));
+            JOptionPane.showMessageDialog(null, "abdominal atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.axilarMediaTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setAxilarMedia(Double.valueOf(this.axilarMediaTField.getText()));
+            JOptionPane.showMessageDialog(null, "axilar media atualizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.bicipitalTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setBicipital(Double.valueOf(this.bicipitalTField.getText()));
+            JOptionPane.showMessageDialog(null, "bicipital atualizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.coxaTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setCoxa(Double.valueOf(this.coxaTField.getText()));
+            JOptionPane.showMessageDialog(null, "coxa atualizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.panturrilhaTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setPanturrilha(Double.valueOf(this.panturrilhaTField.getText()));
+            JOptionPane.showMessageDialog(null, "panturrilha atualizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.peitoralTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setPeitoral(Double.valueOf(this.peitoralTField.getText()));
+            JOptionPane.showMessageDialog(null, "peitoral atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.subescapularTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setSubescapular(Double.valueOf(this.subescapularTField.getText()));
+            JOptionPane.showMessageDialog(null, "subescapular atualizado", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.supraIliacaTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setSupraIliaca(Double.valueOf(this.supraIliacaTField.getText()));
+            JOptionPane.showMessageDialog(null, "supra iliaca atualizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.tricipitalTField.getText().matches("[0-9]*\\.[0-9]*")) {
+            this.alterou = true;
+            dc.setTricipital(Double.valueOf(this.tricipitalTField.getText()));
+            JOptionPane.showMessageDialog(null, "tricipital atualizada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (this.alterou == true) {
+            cliente.getCondicionamentoFisico().setDobrasCutaneas(dc);
+            dao.persist(cliente);
+            JOptionPane.showMessageDialog(null, "Medidas atualizadas com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showConfirmDialog(null, "Sem alterações", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        this.dispose();
+
+    }
 
     /**
      * @param args the command line arguments
@@ -200,20 +290,21 @@ public class ClienteEditarDCutaneas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarDCutaneas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarDCutaneas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarDCutaneas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarDCutaneas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarDCutaneas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarDCutaneas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteEditarDCutaneas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelClienteEditarDCutaneas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteEditarDCutaneas().setVisible(true);
+                // new PainelClienteEditarDCutaneas().setVisible(true);
             }
         });
     }

@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "dobras_cutaneas")
-class DobrasCutaneas implements Serializable, EntidadeBase {
+public class DobrasCutaneas implements Serializable, EntidadeBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
