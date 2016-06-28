@@ -5,6 +5,12 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.aula.Aula;
+import bodyfitness.aula.CategoriaDeAula;
+import bodyfitness.dao.AulaDAO;
+import bodyfitness.dao.CategoriaDeAulaDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -88,6 +94,18 @@ public class CadastroCategoriaAula extends javax.swing.JFrame {
 
     private void aulaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aulaButtonActionPerformed
         // TODO add your handling code here:
+        if(this.nomeCAulaTField.getText().matches("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$")) {
+            CategoriaDeAula cat = new CategoriaDeAula();
+            cat.setCategoria(this.nomeCAulaTField.getText());
+            CategoriaDeAulaDAO dao = new CategoriaDeAulaDAO();
+            dao.persist(cat);
+            JOptionPane.showMessageDialog(null, "categoria de aula salva com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+            this.nomeCAulaTField.setText("");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Erro no nome da categoria de aula", "Erro", JOptionPane.INFORMATION_MESSAGE);
+            this.nomeCAulaTField.setText("");
+        }
     }//GEN-LAST:event_aulaButtonActionPerformed
 
     /**
