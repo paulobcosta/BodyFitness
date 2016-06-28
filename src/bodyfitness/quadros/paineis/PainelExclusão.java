@@ -27,26 +27,61 @@ public class PainelExclusão extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        exclusãoPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        excluirButton = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        image = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setLayout(null);
+        exclusãoPanel.setLayout(null);
 
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(43, 36, 45, 20);
+        jLabel1.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel1.setText("Categoria :");
+        exclusãoPanel.add(jLabel1);
+        jLabel1.setBounds(180, 300, 130, 50);
+
+        jLabel2.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setText("ID :");
+        exclusãoPanel.add(jLabel2);
+        jLabel2.setBounds(220, 200, 50, 50);
+
+        jLabel3.setFont(new java.awt.Font("Cantarell", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel3.setText("Exclusão de Dados");
+        exclusãoPanel.add(jLabel3);
+        jLabel3.setBounds(370, 40, 310, 50);
+
+        excluirButton.setText("Excluir");
+        exclusãoPanel.add(excluirButton);
+        excluirButton.setBounds(480, 460, 80, 50);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "administrador", "gerente", "funcionario", "cliente", "aula", "maquina" }));
+        exclusãoPanel.add(jComboBox1);
+        jComboBox1.setBounds(310, 300, 470, 50);
+        exclusãoPanel.add(jTextField1);
+        jTextField1.setBounds(290, 200, 490, 50);
+
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
+        image.setText("jLabel2");
+        exclusãoPanel.add(image);
+        image.setBounds(-30, -30, 1310, 840);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(exclusãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(exclusãoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -88,7 +123,13 @@ public class PainelExclusão extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton excluirButton;
+    private javax.swing.JPanel exclusãoPanel;
+    private javax.swing.JLabel image;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
