@@ -5,16 +5,25 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.AdministradorDAO;
+import bodyfitness.dao.EnderecoDAO;
+import bodyfitness.dao.FuncionarioDAO;
+import bodyfitness.pessoas.caracteristicas.Endereco;
+import bodyfitness.pessoas.funcionarios.Administrador;
+import bodyfitness.pessoas.funcionarios.Funcionario;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author a1509950
  */
-public class ConsultaFuncionários extends javax.swing.JFrame {
+public class PainelConsultaFuncionarios extends javax.swing.JFrame {
 
     /**
      * Creates new form ConsultaFuncionários
      */
-    public ConsultaFuncionários() {
+    public PainelConsultaFuncionarios() {
         initComponents();
     }
 
@@ -92,11 +101,16 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
         consultaFunc.add(critérioLabel);
         critérioLabel.setBounds(390, 90, 100, 50);
 
-        critérioCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "nome", "turno", "salários", "endereço" }));
+        critérioCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "id", "nome" }));
         consultaFunc.add(critérioCBox);
         critérioCBox.setBounds(500, 90, 210, 50);
 
         buscaButton.setText("Buscar");
+        buscaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaButtonActionPerformed(evt);
+            }
+        });
         consultaFunc.add(buscaButton);
         buscaButton.setBounds(750, 90, 200, 50);
 
@@ -137,6 +151,111 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscaTFieldActionPerformed
 
+    private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
+        // TODO add your handling code here:a
+        if (this.tipoBuscaCBox.getSelectedItem().toString().equals("funcionário")) {
+            FuncionarioDAO dao = new FuncionarioDAO();
+
+            if (this.critérioCBox.getSelectedItem().toString().equals("id")) {
+                Funcionario func = dao.consultaPorId(Long.valueOf(this.buscaTField.getText()));
+                String resultado[][] = new String[1][6];
+                EnderecoDAO edao = new EnderecoDAO();
+                Endereco end = edao.consultaPorId(func.getEndereco().getId());
+                resultado[0] = new String[]{func.getId().toString(), func.getNome(), func.getIdade().toString(), func.getSalario().toString(), func.getTurno(), end.getRua() + ", " + end.getNumero() + ", " + end.getCidade()};
+                this.listaConsultaTable.setModel(new javax.swing.table.DefaultTableModel(
+                        resultado,
+                        new String[]{
+                            "ID", "Nome", "Idade", "Salário", "Turno", "Endereço"
+                        }) {
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false, false, false
+                    };
+
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit[columnIndex];
+                    }
+                });
+
+            } else if (this.critérioCBox.getSelectedItem().toString().equals("nome")) {
+                List<Funcionario> f = dao.consultarPorNome(this.buscaTField.getText());
+                String[][] resultado = new String[f.size()][6];
+                Funcionario func;
+                Endereco end;
+                EnderecoDAO edao = new EnderecoDAO();
+                for(int i = 0; i < f.size(); i++) {
+                    func = f.get(i);
+                    end = edao.consultaPorId(f.get(i).getEndereco().getId());
+                    resultado[i] = new String[]{func.getId().toString(), func.getNome(), func.getIdade().toString(), func.getSalario().toString(), func.getTurno(), end.getRua() + ", " + end.getNumero() + ", " + end.getCidade()};
+                }
+                this.listaConsultaTable.setModel(new javax.swing.table.DefaultTableModel(
+                        resultado,
+                        new String[]{
+                            "ID", "Nome", "Idade", "Salário", "Turno", "Endereço"
+                        }) {
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false, false, false
+                    };
+
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit[columnIndex];
+                    }
+                });
+            }
+            
+
+        }else if (this.tipoBuscaCBox.getSelectedItem().toString().equals("gerente")) {
+            AdministradorDAO dao = new AdministradorDAO();
+
+            if (this.critérioCBox.getSelectedItem().toString().equals("id")) {
+                Administrador adm = dao.consultarPorId(Long.valueOf(this.buscaTField.getText()));
+                String resultado[][] = new String[1][6];
+                EnderecoDAO edao = new EnderecoDAO();
+                Endereco end = edao.consultaPorId(adm.getEndereco().getId());
+                resultado[0] = new String[]{adm.getId().toString(), adm.getNome(), adm.getIdade().toString(), adm.getSalario().toString(), adm.getTurno(), end.getRua() + ", " + end.getNumero() + ", " + end.getCidade()};
+                this.listaConsultaTable.setModel(new javax.swing.table.DefaultTableModel(
+                        resultado,
+                        new String[]{
+                            "ID", "Nome", "Idade", "Salário", "Turno", "Endereço"
+                        }) {
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false, false, false
+                    };
+
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit[columnIndex];
+                    }
+                });
+
+            } else if (this.critérioCBox.getSelectedItem().toString().equals("nome")) {
+                List<Administrador> adm = dao.consultarPorNome(this.buscaTField.getText());
+                String[][] resultado = new String[adm.size()][6];
+                Administrador admin;
+                Endereco end;
+                EnderecoDAO edao = new EnderecoDAO();
+                for(int i = 0; i < adm.size(); i++) {
+                    admin = adm.get(i);
+                    end = edao.consultaPorId(adm.get(i).getEndereco().getId());
+                    resultado[i] = new String[]{admin.getId().toString(), admin.getNome(), admin.getIdade().toString(), admin.getSalario().toString(), admin.getTurno(), end.getRua() + ", " + end.getNumero() + ", " + end.getCidade()};
+                }
+                this.listaConsultaTable.setModel(new javax.swing.table.DefaultTableModel(
+                        resultado,
+                        new String[]{
+                            "ID", "Nome", "Idade", "Salário", "Turno", "Endereço"
+                        }) {
+                    boolean[] canEdit = new boolean[]{
+                        false, false, false, false, false
+                    };
+
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return canEdit[columnIndex];
+                    }
+                });
+            }
+        }
+
+        //System.out.println(adm.getNome());
+    }//GEN-LAST:event_buscaButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -154,20 +273,21 @@ public class ConsultaFuncionários extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFuncionários.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelConsultaFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFuncionários.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelConsultaFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFuncionários.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelConsultaFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultaFuncionários.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PainelConsultaFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaFuncionários().setVisible(true);
+                new PainelConsultaFuncionarios().setVisible(true);
             }
         });
     }

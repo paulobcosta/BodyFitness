@@ -4,9 +4,9 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-06-26T20:41:14")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-06-27T22:14:28")
 @StaticMetamodel(MembrosInferiores.class)
- class MembrosInferiores_ { 
+public class MembrosInferiores_ { 
 
     public static volatile SingularAttribute<MembrosInferiores, Double> bracoContraidoDireito;
     public static volatile SingularAttribute<MembrosInferiores, Double> anteBracoDireito;

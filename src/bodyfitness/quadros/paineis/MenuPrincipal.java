@@ -186,7 +186,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void consultaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFuncActionPerformed
         // TODO add your handling code here:
-        JFrame consultaFunc = new ConsultaFuncionários();
+        JFrame consultaFunc = new PainelConsultaFuncionarios();
         
         consultaFunc.setVisible(true);
     }//GEN-LAST:event_consultaFuncActionPerformed

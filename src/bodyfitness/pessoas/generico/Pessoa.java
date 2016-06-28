@@ -12,13 +12,16 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +32,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@DiscriminatorColumn(name ="tipo_de_pessoa")
+
+@DiscriminatorColumn(name ="tipo_de_pessoa",discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Pessoa implements Serializable {
     
     
@@ -39,12 +43,13 @@ public abstract class Pessoa implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataDeNascimento;
     @JoinColumn(nullable = false,name = "endereco")
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Endereco endereco;
     @Column(name = "tipo_de_pessoa",nullable = false)
     protected TipoDePessoa tipoDePessoa;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     protected Long id;
     
     

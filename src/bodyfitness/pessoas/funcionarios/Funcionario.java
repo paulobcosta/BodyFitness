@@ -61,12 +61,14 @@ public class Funcionario extends Pessoa implements Serializable, EntidadeBase {
    
 
     public Funcionario() {
+        this.tipoDePessoa = TipoDePessoa.FUNCIONARIO;
     }
 
     public Funcionario(String nome, Cargo funcao) {
         setNome(nome);
         this.cargo = funcao;
         this.permissao = Permissao.COMUM.getPermissao();
+        this.tipoDePessoa = TipoDePessoa.FUNCIONARIO;
     }
 
     public void setCargo(Cargo cargo) {

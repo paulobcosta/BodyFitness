@@ -8,6 +8,7 @@ package bodyfitness.pessoas.funcionarios;
 
 import bodyfitness.pessoas.caracteristicas.NivelAdmin;
 import bodyfitness.pessoas.caracteristicas.Permissao;
+import bodyfitness.pessoas.generico.TipoDePessoa;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -39,13 +40,14 @@ public class Administrador extends Funcionario implements Serializable{
     private String nivelAdmin;
 
     public Administrador() {
-        
+        this.tipoDePessoa = TipoDePessoa.ADMIN;
     }
     
     
     
     public Administrador(String nome, NivelAdmin nivel) {
         setNome(nome);
+        this.tipoDePessoa = TipoDePessoa.ADMIN;
         this.nivelAdmin = nivel.getNivel();
         if(this.nivelAdmin.equals(NivelAdmin.ADMINISTRADOR.getNivel())) {
             setPermissao(Permissao.ADMIN);
