@@ -8,6 +8,7 @@ package bodyfitness.quadros.paineis;
 import bodyfitness.dao.AdministradorDAO;
 import bodyfitness.dao.EnderecoDAO;
 import bodyfitness.dao.FuncionarioDAO;
+import bodyfitness.pessoas.caracteristicas.Cargo;
 import bodyfitness.pessoas.caracteristicas.Endereco;
 import bodyfitness.pessoas.funcionarios.Administrador;
 import bodyfitness.pessoas.funcionarios.Funcionario;
@@ -62,17 +63,17 @@ public class PainelConsultaFuncionarios extends javax.swing.JFrame {
 
         listaConsultaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Idade", "Salário", "Turno", "Endereço"
+                "ID", "Nome", "Cargo", "Idade", "Salário", "Turno", "Endereço"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, true, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -161,11 +162,11 @@ public class PainelConsultaFuncionarios extends javax.swing.JFrame {
                 String resultado[][] = new String[1][6];
                 EnderecoDAO edao = new EnderecoDAO();
                 Endereco end = edao.consultaPorId(func.getEndereco().getId());
-                resultado[0] = new String[]{func.getId().toString(), func.getNome(), func.getIdade().toString(), func.getSalario().toString(), func.getTurno(), end.getRua() + ", " + end.getNumero() + ", " + end.getCidade()};
+                resultado[0] = new String[]{func.getId().toString(), func.getNome(),func.getCargo().getFuncao(), func.getIdade().toString(), func.getSalario().toString(), func.getTurno(), end.getRua() + ", " + end.getNumero() + ", " + end.getCidade()};
                 this.listaConsultaTable.setModel(new javax.swing.table.DefaultTableModel(
                         resultado,
                         new String[]{
-                            "ID", "Nome", "Idade", "Salário", "Turno", "Endereço"
+                            "ID", "Nome", "Cargo","Idade", "Salário", "Turno", "Endereço"
                         }) {
                     boolean[] canEdit = new boolean[]{
                         false, false, false, false, false
@@ -185,12 +186,13 @@ public class PainelConsultaFuncionarios extends javax.swing.JFrame {
                 for(int i = 0; i < f.size(); i++) {
                     func = f.get(i);
                     end = edao.consultaPorId(f.get(i).getEndereco().getId());
-                    resultado[i] = new String[]{func.getId().toString(), func.getNome(), func.getIdade().toString(), func.getSalario().toString(), func.getTurno(), end.getRua() + ", " + end.getNumero() + ", " + end.getCidade()};
+                    
+                    resultado[i] = new String[]{func.getId().toString(), func.getNome(),func.getCargo().getFuncao(), func.getIdade().toString(), func.getSalario().toString(), func.getTurno(), end.getRua() + ", " + end.getNumero() + ", " + end.getCidade()};
                 }
                 this.listaConsultaTable.setModel(new javax.swing.table.DefaultTableModel(
                         resultado,
                         new String[]{
-                            "ID", "Nome", "Idade", "Salário", "Turno", "Endereço"
+                            "ID", "Nome", "Cargo","Idade", "Salário", "Turno", "Endereço"
                         }) {
                     boolean[] canEdit = new boolean[]{
                         false, false, false, false, false

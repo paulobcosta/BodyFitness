@@ -5,6 +5,12 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.EquipamentoDAO;
+import bodyfitness.equipamentos.Equipamento;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author a1509950
@@ -74,6 +80,11 @@ public class confirmaManutenção extends javax.swing.JFrame {
         critérioCBox.setBounds(160, 130, 600, 50);
 
         buscarButton.setText("Buscar");
+        buscarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarButtonActionPerformed(evt);
+            }
+        });
         consultaPanel.add(buscarButton);
         buscarButton.setBounds(800, 130, 140, 50);
 
@@ -87,13 +98,18 @@ public class confirmaManutenção extends javax.swing.JFrame {
         resultadoLabel.setBounds(30, 340, 120, 50);
 
         okButton.setText("Confirma");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
         consultaPanel.add(okButton);
         okButton.setBounds(800, 340, 140, 50);
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
         consultaPanel.add(image);
-        image.setBounds(-50, -50, 1969, 1080);
+        image.setBounds(-50, -50, 1968, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,6 +128,34 @@ public class confirmaManutenção extends javax.swing.JFrame {
     private void buscaTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaTFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscaTFieldActionPerformed
+
+    private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
+        // TODO add your handling code here:
+        if(this.critérioCBox.getSelectedItem().toString().equals("nome")) {
+            this.resultadoCBox.removeAllItems();
+            EquipamentoDAO dao = new EquipamentoDAO();
+            List<Equipamento> equipamentos = dao.consultarPorNome(this.buscaTField.getText());
+            for(Equipamento c : equipamentos) {
+                this.resultadoCBox.addItem(c.getId().toString() + " - " + c.getNome());
+            }
+        }
+        else {
+            this.resultadoCBox.removeAllItems();
+            EquipamentoDAO dao = new EquipamentoDAO();
+            Equipamento equipamento = dao.consultarPorId(Long.valueOf(this.buscaTField.getText()));
+            this.resultadoCBox.addItem(equipamento.getId() + " - " + equipamento.getNome());
+        }
+    }//GEN-LAST:event_buscarButtonActionPerformed
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        // TODO add your handling code here:
+        EquipamentoDAO dao = new EquipamentoDAO();
+        Equipamento equipamento = new Equipamento();
+        equipamento = dao.consultarPorId(Long.valueOf(this.resultadoCBox.getSelectedItem().toString().split(" - ")[0]));
+        equipamento.setDataDaUltimaManutencao(new Date());
+        JOptionPane.showMessageDialog(null, "Manutenção confirmada com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        dao.persist(equipamento);
+    }//GEN-LAST:event_okButtonActionPerformed
 
     /**
      * @param args the command line arguments

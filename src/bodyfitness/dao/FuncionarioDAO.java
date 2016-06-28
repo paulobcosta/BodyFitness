@@ -34,6 +34,23 @@ public class FuncionarioDAO extends GenericDAO<Funcionario> {
         }
         return funcionarios;
     }
+    
+    public List<Funcionario> consultarPorCargo(String cargo) {
+        List<Funcionario> funcionarios = new ArrayList<>();
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createNamedQuery("Funcionario.consultarPorCargo");
+            q.setParameter("cargo", cargo);
+            funcionarios = q.getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            funcionarios = new ArrayList<>();
+        } finally {
+            em.close();
+        }
+        return funcionarios;
+    }
+    
 //@NamedQuery(name = "Funcionario.consultarPorId",query = "SELECT f FROM Funcionario f WHERE f.id = :id"),
     public Funcionario consultaPorId(Long id) {
         Funcionario funcionario = new Funcionario();

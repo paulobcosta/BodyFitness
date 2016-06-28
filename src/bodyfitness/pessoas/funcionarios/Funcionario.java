@@ -19,6 +19,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -35,6 +36,7 @@ import javax.persistence.Table;
 @DiscriminatorValue("FUNCIONARIO")
 @NamedQueries({
     @NamedQuery(name = "Funcionario.consultarTodos",query = "SELECT f FROM Funcionario f"),
+    @NamedQuery(name = "Funcionario.consultarPorCargo",query="SELECT f FROM Funcionario f WHERE f.cargo.funcao = :cargo"),
     @NamedQuery(name = "Funcionario.consultarPorNome",query = "SELECT f FROM Funcionario f WHERE f.nome = :nome"),
     @NamedQuery(name = "Funcionario.consultarPorId",query = "SELECT f FROM Funcionario f WHERE f.id = :id"),
     @NamedQuery(name = "Funcionario.consultarPorMaiorFaixaSalarial",query = "SELECT f FROM Funcionario f WHERE f.salario > :salario ORDER BY f.salario DESC"),
@@ -46,7 +48,7 @@ import javax.persistence.Table;
 public class Funcionario extends Pessoa implements Serializable, EntidadeBase {
     
     @JoinColumn(nullable = false,name = "cargo")
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Cargo cargo;
     @Column(nullable = false,name = "salario")
     private Double salario;
@@ -86,6 +88,11 @@ public class Funcionario extends Pessoa implements Serializable, EntidadeBase {
     public String getTurno() {
         return turno;
     }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+    
 
     public void setTurno(Turno turno) {
         this.turno = turno.name();

@@ -3,15 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroAdministradores.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/BodyFitness.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/dao/ClienteDAO.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/PainelConsultaFuncionarios.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/PainelConsultaCliente.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/equipamentos/Equipamento.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/META-INF/persistence.xml</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/dao/CargoDAO.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroCategoriaAula.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/funcionarios/Funcionario.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/confirmaManutenção.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/cliente/Cliente.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/dao/FuncionarioDAO.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/dao/CategoriaDeAulaDAO.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/aula/CategoriaDeAula.java</file>
+            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroAula.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/generico/Pessoa.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/funcionarios/Administrador.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/pessoas/funcionarios/Funcionario.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/META-INF/persistence.xml</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/BodyFitness.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/ConsultaFuncionários.java</file>
-            <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/dao/ClienteDAO.java</file>
         </group>
     </open-files>
 </project-private>

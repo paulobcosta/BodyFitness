@@ -6,6 +6,8 @@
 package bodyfitness.dao;
 
 import bodyfitness.aula.CategoriaDeAula;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -14,7 +16,21 @@ import javax.persistence.Query;
  * @author batista
  */
 public class CategoriaDeAulaDAO extends GenericDAO<CategoriaDeAula>{
-    
+    public List<CategoriaDeAula> consultarTodos() {
+        EntityManager em = getEntityManager();
+        List<CategoriaDeAula> cat = new ArrayList<>();
+        try {
+            Query q = em.createNamedQuery("CategoriaDeAula.consultarTodos");
+            cat = q.getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            cat = new ArrayList<>();
+        } finally {
+            em.close();
+        }
+        return cat;
+        
+    }
     public CategoriaDeAula consultarPorNome(String nome) {
         EntityManager em = getEntityManager();
         CategoriaDeAula cat = new CategoriaDeAula();

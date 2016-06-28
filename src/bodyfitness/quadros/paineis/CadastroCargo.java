@@ -101,7 +101,7 @@ public class CadastroCargo extends javax.swing.JFrame {
              this.nomeCargoTField.setText("");
         }
         else {
-            dao.persist(new Cargo(this.nomeCargoTField.getText()));
+            dao.persist(new Cargo(this.nomeCargoTField.getText().toLowerCase()));
             JOptionPane.showMessageDialog(null, "Cargo adicionado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
             this.CadastroCargoPanel.setToolTipText("");
         }

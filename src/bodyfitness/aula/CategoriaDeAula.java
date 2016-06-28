@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -21,12 +22,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "categoria_de_aula")
-@NamedQuery(name="CategoriaDeAula.consultarPorNome",query = "SELECT c FROM CategoriaDeAula c WHERE c.categoria = :categoria")
+@NamedQueries({
+@NamedQuery(name="CategoriaDeAula.consultarPorNome",query = "SELECT c FROM CategoriaDeAula c WHERE c.categoria = :categoria"),
+@NamedQuery(name="CategoriaDeAula.consultarTodos",query = "SELECT c FROM CategoriaDeAula c")
+})
 public class CategoriaDeAula implements Serializable, EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "categoria",nullable = false)
+    @Column(name = "categoria",nullable = false,unique=true)
     private String categoria;
 
     public CategoriaDeAula() {

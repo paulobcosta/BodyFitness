@@ -5,6 +5,12 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.aula.Aula;
+import bodyfitness.dao.AulaDAO;
+import bodyfitness.dao.CategoriaDeAulaDAO;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -59,22 +65,27 @@ public class ConsultaAula extends javax.swing.JFrame {
         buscaTField.setBounds(120, 120, 670, 50);
 
         buscaTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Professor", "Horário Início", "Horário Término", "Data"
-            }
+                new Object[][]{
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null}
+                },
+                new String[]{
+                    "Professor", "Horário Início", "Horário Término", "Data"
+                }
         ) {
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                 false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
+            }
+        });
+        buscaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaButtonActionPerformed(evt);
             }
         });
         tabelaSPanel.setViewportView(buscaTable);
@@ -90,12 +101,12 @@ public class ConsultaAula extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(consultaAulaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(consultaAulaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(consultaAulaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(consultaAulaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -104,6 +115,34 @@ public class ConsultaAula extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        AulaDAO dao = new AulaDAO();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        CategoriaDeAulaDAO cdao = new CategoriaDeAulaDAO();
+        List<Aula> aulas = dao.consultarPorCategoriaDeAula(this.buscaTField.getText());
+        String[][] resultado = new String[aulas.size()][4];
+        int i = 0;
+        for (Aula a : aulas) {
+            resultado[i] = new String[]{a.getProfessor().getNome(), a.getHoraDeInicio(), a.getHoraDeTermino(), formato.format(a.getDia())};
+            i++;
+        }
+        buscaTable.setModel(new javax.swing.table.DefaultTableModel(
+                resultado,
+                new String[]{
+                    "Professor", "Horário Início", "Horário Término", "Data"
+                }
+        ) {
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

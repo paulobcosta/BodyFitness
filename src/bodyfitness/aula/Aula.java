@@ -53,11 +53,11 @@ public class Aula implements Serializable, EntidadeBase{
     @Temporal(TemporalType.DATE)
     private Date dia;
     @Column(name = "hora_inicio",nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date horaDeInicio;
+
+    private String horaDeInicio;
     @Column(name = "hora_termino",nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date horaDeTermino;
+    
+    private String horaDeTermino;
     @OneToOne
     @JoinColumn(name = "professor",nullable = false)
     private Funcionario professor;
@@ -97,19 +97,19 @@ public class Aula implements Serializable, EntidadeBase{
         this.dia = dia;
     }
 
-    public Date getHoraDeInicio() {
+    public String getHoraDeInicio() {
         return horaDeInicio;
     }
 
-    public void setHoraDeInicio(Date horaDeInicio) {
-        this.horaDeInicio = horaDeInicio;
+    public String setHoraDeInicio(String horaDeInicio) {
+        return this.horaDeInicio = horaDeInicio;
     }
 
-    public Date getHoraDeTermino() {
+    public String getHoraDeTermino() {
         return horaDeTermino;
     }
 
-    public void setHoraDeTermino(Date horaDeTermino) {
+    public void setHoraDeTermino(String horaDeTermino) {
         this.horaDeTermino = horaDeTermino;
     }
 

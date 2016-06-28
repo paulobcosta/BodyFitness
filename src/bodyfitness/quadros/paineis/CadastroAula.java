@@ -5,6 +5,21 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.aula.Aula;
+import bodyfitness.aula.CategoriaDeAula;
+import bodyfitness.dao.AulaDAO;
+import bodyfitness.dao.CategoriaDeAulaDAO;
+import bodyfitness.dao.FuncionarioDAO;
+import bodyfitness.pessoas.funcionarios.Funcionario;
+import bodyfitness.util.UtilBodyfitness;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -50,11 +65,11 @@ public class CadastroAula extends javax.swing.JFrame {
 
         CadastroAulaPanel.setLayout(null);
 
-        professorCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        professorCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{" "}));
         CadastroAulaPanel.add(professorCBox);
         professorCBox.setBounds(210, 170, 260, 50);
 
-        horarioInicioCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        horarioInicioCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{" "}));
         CadastroAulaPanel.add(horarioInicioCBox);
         horarioInicioCBox.setBounds(670, 170, 250, 50);
 
@@ -69,7 +84,7 @@ public class CadastroAula extends javax.swing.JFrame {
         CadastroAulaPanel.add(dataTField);
         dataTField.setBounds(630, 270, 290, 50);
 
-        horarioTerminoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        horarioTerminoCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{" "}));
         CadastroAulaPanel.add(horarioTerminoCBox);
         horarioTerminoCBox.setBounds(690, 370, 230, 50);
         CadastroAulaPanel.add(clienteIdTField);
@@ -137,23 +152,116 @@ public class CadastroAula extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(CadastroAulaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(CadastroAulaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(CadastroAulaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addComponent(CadastroAulaPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        /*professorCBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                professorCBoxActionPerformed(evt);
+            }
+        });*/
+        FuncionarioDAO dao = new FuncionarioDAO();
+        List<Funcionario> professores = dao.consultarPorCargo("professor");
+        this.professorCBox.removeAll();
+        for (Funcionario c : professores) {
+            this.professorCBox.addItem(c.getId().toString() + " - " + c.getNome());
+        }
+        this.horarioInicioCBox.removeAllItems();
+        this.horarioInicioCBox.addItem("08:00:00");
+        this.horarioInicioCBox.addItem("09:00:00");
+        this.horarioInicioCBox.addItem("10:00:00");
+        this.horarioInicioCBox.addItem("13:00:00");
+        this.horarioInicioCBox.addItem("14:00:00");
+        this.horarioInicioCBox.addItem("15:00:00");
+        this.horarioTerminoCBox.removeAllItems();
+        this.horarioTerminoCBox.addItem("09:00:00");
+        this.horarioTerminoCBox.addItem("10:00:00");
+        this.horarioTerminoCBox.addItem("11:00:00");
+        this.horarioTerminoCBox.addItem("12:00:00");
+        this.horarioTerminoCBox.addItem("14:00:00");
+        this.horarioTerminoCBox.addItem("15:00:00");
+        this.horarioTerminoCBox.addItem("16:00:00");
+
+        CategoriaDeAulaDAO c = new CategoriaDeAulaDAO();
+        List<CategoriaDeAula> categoriasDeAula = c.consultarTodos();
+        categoriaCBox.removeAll();
+        for (CategoriaDeAula ca : categoriasDeAula) {
+            this.categoriaCBox.addItem(ca.getCategoria());
+        }
+
+        cadastroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    cadastroButtonActionPerformed(evt);
+                } catch (ParseException ex) {
+                    Logger.getLogger(CadastroAula.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }// </editor-fold>//GEN-END:initComponents
 
+    public void professorCBoxActionPerformed(java.awt.event.ActionEvent evt) {
+
+    }
+
+    private void cadastroButtonActionPerformed(java.awt.event.ActionEvent evt) throws ParseException {
+        Date data = new Date();
+        String dataIni = null;
+        String datafin = null;
+        boolean erro = false;
+        if (!this.dataTField.getText().matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+            JOptionPane.showMessageDialog(null, "Erro na data", "Erro", JOptionPane.ERROR_MESSAGE);
+            erro = true;
+        } else {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            data = formato.parse(this.dataTField.getText());
+            if (UtilBodyfitness.getDiferencaEmAnos(data) < 0) {
+                JOptionPane.showMessageDialog(null, "Erro na data", "Erro", JOptionPane.ERROR_MESSAGE);
+                erro = true;
+            }
+        }
+        if (this.horarioInicioCBox.getSelectedIndex() > this.horarioTerminoCBox.getSelectedIndex()) {
+            JOptionPane.showMessageDialog(null, "Erro no horário", "Erro", JOptionPane.ERROR_MESSAGE);
+            erro = true;
+        } else {
+            SimpleDateFormat formato = new SimpleDateFormat("HH:MM:SS");
+            dataIni = this.horarioInicioCBox.getSelectedItem().toString();
+            datafin = this.horarioTerminoCBox.getSelectedItem().toString();
+        }
+        if (erro == false) {
+            Aula aula = new Aula(); 
+            if(!this.idTField.getText().isEmpty()) {
+                aula.setId(Long.valueOf(this.idTField.getText()));
+            }
+            FuncionarioDAO fdao = new FuncionarioDAO();
+            CategoriaDeAulaDAO cdao = new CategoriaDeAulaDAO();
+            aula.setProfessor(fdao.consultaPorId(Long.valueOf(this.professorCBox.getSelectedItem().toString().split(" - ")[0])));
+            aula.setCategoria(cdao.consultarPorNome(this.categoriaCBox.getSelectedItem().toString()));
+            aula.setDia(data);
+            aula.setHoraDeInicio(dataIni);
+            aula.setHoraDeTermino(datafin);
+            AulaDAO adao = new AulaDAO();
+            adao.persist(aula);
+            JOptionPane.showMessageDialog(null,"aula cadastrada", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"Erro no cadastro de aula", "Erro", JOptionPane.ERROR_MESSAGE);
+            erro = false;
+        }
+    }
+
     /**
- imageparam args the command line arguments
+     * imageparam args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

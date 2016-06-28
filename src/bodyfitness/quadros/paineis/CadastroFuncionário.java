@@ -266,6 +266,9 @@ public class CadastroFuncionário extends javax.swing.JFrame {
         Endereco endereco = new Endereco();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date dataDeNascimento = new Date();
+        if(!idTField.getText().isEmpty()) {
+            funcionario.setId(Long.valueOf(this.idTField.getText()));
+        }
         try {
              dataDeNascimento = formato.parse(this.datanascTField.getText());
         } catch (ParseException ex) {
