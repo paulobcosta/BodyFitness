@@ -35,6 +35,7 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
         diaLabel = new javax.swing.JLabel();
         header = new javax.swing.JLabel();
         editarButton = new javax.swing.JButton();
+        deletarButton = new javax.swing.JButton();
         rotuloTField = new javax.swing.JTextField();
         idTField = new javax.swing.JTextField();
         coxaEsquerdoTField = new javax.swing.JTextField();
@@ -88,7 +89,11 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
 
         editarButton.setText("Editar");
         treinoPanel.add(editarButton);
-        editarButton.setBounds(460, 490, 80, 50);
+        editarButton.setBounds(500, 490, 80, 50);
+        
+        deletarButton.setText("Deletar");
+        treinoPanel.add(deletarButton);
+        deletarButton.setBounds(420, 490, 80, 50);
 
         rotuloTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +188,7 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
     private javax.swing.JTextField coxaEsquerdoTField;
     private javax.swing.JLabel diaLabel;
     private javax.swing.JButton editarButton;
+    private javax.swing.JButton deletarButton;
     private javax.swing.JComboBox<String> equipamentoCBox;
     private javax.swing.JLabel equipamentoLabel;
     private javax.swing.JLabel header;
