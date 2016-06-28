@@ -6,8 +6,15 @@
 package bodyfitness.quadros.paineis;
 
 import bodyfitness.dao.AdministradorDAO;
+import bodyfitness.dao.CargoDAO;
+import bodyfitness.pessoas.caracteristicas.Cargo;
+import bodyfitness.pessoas.caracteristicas.Endereco;
 import bodyfitness.pessoas.caracteristicas.NivelAdmin;
+import bodyfitness.pessoas.caracteristicas.Permissao;
+import bodyfitness.pessoas.caracteristicas.Turno;
 import bodyfitness.pessoas.funcionarios.Administrador;
+import bodyfitness.pessoas.generico.TipoDePessoa;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
@@ -320,9 +327,91 @@ public class CadastroAdministradores extends javax.swing.JFrame {
                 || this.confsenhaTField.getPassword().toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campo de Cargos em Branco", "Erro", JOptionPane.ERROR_MESSAGE);
         } else if (this.nivelPerCBox.getSelectedItem().toString().equals("gerente")) {
-            admDAO.persist(new Administrador(this.nomeTField.getText(), NivelAdmin.GERENTE));
-            JOptionPane.showMessageDialog(null, "Adm adicionado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-
+            try {
+                Administrador adm = new Administrador();
+                adm.setNome(this.nomeTField.getText());
+                Endereco end = new Endereco();
+                end.setRua(this.ruaTField.getText());
+                end.setNumero(this.numeroTField.getText());
+                end.setEstado(this.estadoCBox.getSelectedItem().toString());
+                end.setBairro(this.bairroTField.getText());
+                end.setCidade(this.cidadeTField.getText());
+                adm.setEndereco(end);
+                adm.setNivelAdmin(NivelAdmin.GERENTE);
+                adm.setPermissao(Permissao.GERENCIAL);
+                adm.setSalario(Double.valueOf(this.salarioTField.getText()));
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                adm.setDataDeNascimento(formato.parse(this.datanascimentoTField.getText()));
+                adm.setSenha(this.senhaTField.getText());
+                adm.setTipoDePessoa(TipoDePessoa.ADMIN);
+                adm.setUsuario(this.nomeTField.getText());
+                CargoDAO daocargo = new CargoDAO();
+                Cargo c = daocargo.consultarPorFuncao("gerente");
+                if (c == null) {
+                    c = new Cargo("gerente");
+                    daocargo.persist(c);
+                }
+                Turno t = Turno.MATUTINO;
+                adm.setCargo(c);
+                if(this.turnoCBox.getSelectedItem().toString().equals("noturno")) {
+                    t = Turno.NOTURNO;
+                }
+                else if(this.turnoCBox.getSelectedItem().toString().equals("vespertino")) {
+                    t = Turno.VESPERTINO;
+                }
+                adm.setTurno(t);
+                if(!this.idTField.getText().isEmpty()) {
+                    adm.setId(Long.valueOf(this.idTField.getText()));
+                }
+                admDAO.persist(adm);
+                JOptionPane.showMessageDialog(null, "gerente adicionado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                
+                JOptionPane.showMessageDialog(null, "Erro durante processo de cadastro:\n"+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (this.nivelPerCBox.getSelectedItem().toString().equals("administrador")) {
+             try {
+                Administrador adm = new Administrador();
+                adm.setNome(this.nomeTField.getText());
+                Endereco end = new Endereco();
+                end.setRua(this.ruaTField.getText());
+                end.setNumero(this.numeroTField.getText());
+                end.setEstado(this.estadoCBox.getSelectedItem().toString());
+                end.setBairro(this.bairroTField.getText());
+                end.setCidade(this.cidadeTField.getText());
+                adm.setEndereco(end);
+                adm.setNivelAdmin(NivelAdmin.ADMINISTRADOR);
+                adm.setPermissao(Permissao.ADMIN);
+                adm.setSalario(Double.valueOf(this.salarioTField.getText()));
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                adm.setDataDeNascimento(formato.parse(this.datanascimentoTField.getText()));
+                adm.setSenha(this.senhaTField.getText());
+                adm.setTipoDePessoa(TipoDePessoa.ADMIN);
+                adm.setUsuario(this.nomeTField.getText());
+                CargoDAO daocargo = new CargoDAO();
+                Cargo c = daocargo.consultarPorFuncao("administrador");
+                if (c == null) {
+                    c = new Cargo("administrador");
+                    daocargo.persist(c);
+                }
+                Turno t = Turno.MATUTINO;
+                adm.setCargo(c);
+                if(this.turnoCBox.getSelectedItem().toString().equals("noturno")) {
+                    t = Turno.NOTURNO;
+                }
+                else if(this.turnoCBox.getSelectedItem().toString().equals("vespertino")) {
+                    t = Turno.VESPERTINO;
+                }
+                adm.setTurno(t);
+                if(!this.idTField.getText().isEmpty()) {
+                    adm.setId(Long.valueOf(this.idTField.getText()));
+                }
+                admDAO.persist(adm);
+                JOptionPane.showMessageDialog(null, "gerente adicionado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                
+                JOptionPane.showMessageDialog(null, "Erro durante processo de cadastro:\n"+e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_cadastroButtonActionPerformed
 

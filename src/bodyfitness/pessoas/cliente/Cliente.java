@@ -9,6 +9,7 @@ import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
 import bodyfitness.pessoas.cliente.caracteristicas.corporal.CondicionamentoFisico;
 import bodyfitness.pessoas.generico.Pessoa;
+import bodyfitness.util.UtilBodyfitness;
 import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.CascadeType;
@@ -106,8 +107,14 @@ public class Cliente extends Pessoa implements EntidadeBase{
         this.situacaoFinanceira = situacaoFinanceira.getSituacao();
     }
     
-    public void setSituacaoFinanceira(String situacaoFinanceira) {
-        this.situacaoFinanceira = situacaoFinanceira;
+    public void setSituacaoFinanceira() {
+        if(this.pago == false && UtilBodyfitness.getDiferencaEmAnos(this.dataDePagamento) < 0) {
+            this.situacaoFinanceira = SituacaoFinanceira.INADIMPLENTE.getSituacao();
+        }
+        else {
+            this.situacaoFinanceira = SituacaoFinanceira.ADIMPLENTE.getSituacao();
+            
+        }
     }
     
     public CondicionamentoFisico getCondicionamentoFisico() {
