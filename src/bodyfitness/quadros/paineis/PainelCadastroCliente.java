@@ -61,7 +61,6 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-        getContentPane().setLayout(null);
 
         CadastroPanel.setLayout(null);
 
@@ -83,7 +82,7 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setText("Cadastro de Clientes");
         ImagemPanel.add(jLabel1);
-        jLabel1.setBounds(275, 40, 450, 48);
+        jLabel1.setBounds(275, 40, 450, 62);
 
         ruaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         ruaLabel.setForeground(new java.awt.Color(254, 254, 254));
@@ -169,8 +168,16 @@ public class PainelCadastroCliente extends javax.swing.JFrame {
         CadastroPanel.add(ImagemPanel);
         ImagemPanel.setBounds(0, 0, 1000, 650);
 
-        getContentPane().add(CadastroPanel);
-        CadastroPanel.setBounds(0, 0, 1000, 650);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(CadastroPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(CadastroPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

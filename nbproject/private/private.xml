@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroAdministradores.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/PainelConsultaFuncionarios.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/equipamentos/Equipamento.java</file>
@@ -19,6 +20,12 @@
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroFuncionário.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/PainelCadastroCliente.java</file>
             <file>file:/home/batista/workspace/BodyFitness/src/bodyfitness/quadros/paineis/CadastroCargo.java</file>
+=======
+            <file>file:/home/todos/alunos/cm/a1509950/BodyFitness/src/bodyfitness/quadros/paineis/LoginSistema.java</file>
+            <file>file:/home/todos/alunos/cm/a1509950/BodyFitness/src/bodyfitness/quadros/paineis/PainelExclusão.java</file>
+            <file>file:/home/todos/alunos/cm/a1509950/BodyFitness/src/META-INF/persistence.xml</file>
+            <file>file:/home/todos/alunos/cm/a1509950/BodyFitness/src/bodyfitness/quadros/paineis/PainelCadastroCliente.java</file>
+>>>>>>> 398b8b9a72c20f27955b04d4b83ec71a69be273a
         </group>
     </open-files>
 </project-private>
