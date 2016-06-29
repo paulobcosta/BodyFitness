@@ -5,6 +5,9 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.relatorios.Relatorio;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author a1509950
@@ -32,6 +35,7 @@ public class GerarRelatório extends javax.swing.JFrame {
         header = new javax.swing.JLabel();
         gerarRelatórioButton = new javax.swing.JButton();
         categoriaCBox = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
         image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -51,6 +55,11 @@ public class GerarRelatório extends javax.swing.JFrame {
         header.setBounds(340, 120, 360, 50);
 
         gerarRelatórioButton.setText("Gerar Relatório");
+        gerarRelatórioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerarRelatórioButtonActionPerformed(evt);
+            }
+        });
         gerarRelatório.add(gerarRelatórioButton);
         gerarRelatórioButton.setBounds(440, 460, 130, 50);
 
@@ -58,10 +67,19 @@ public class GerarRelatório extends javax.swing.JFrame {
         gerarRelatório.add(categoriaCBox);
         categoriaCBox.setBounds(350, 300, 440, 50);
 
+        jTextField1.setText("digite o id...");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        gerarRelatório.add(jTextField1);
+        jTextField1.setBounds(350, 380, 260, 40);
+
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
         gerarRelatório.add(image);
-        image.setBounds(-10, -20, 1969, 1080);
+        image.setBounds(-130, 10, 1968, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,6 +94,37 @@ public class GerarRelatório extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void gerarRelatórioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarRelatórioButtonActionPerformed
+        // TODO add your handling code here:
+        if (this.categoriaCBox.getSelectedItem().toString().equals("inadimplente")) {
+            Relatorio r = new Relatorio();
+            r.GeraRelatorioInadimplente("");
+            JOptionPane.showMessageDialog(null, "relatório de inadimplentes gerado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        } else if (this.categoriaCBox.getSelectedItem().toString().equals("adimplente")) {
+            Relatorio r = new Relatorio();
+            r.GeraRelatorioAdimplente("");
+            JOptionPane.showMessageDialog(null, "relatório de adimplentes gerado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        } else if (this.categoriaCBox.getSelectedItem().toString().equals("maquina sem manutenção")) {
+            Relatorio r = new Relatorio();
+            r.GeraRelatorioMaquinaSManutencao("");
+            JOptionPane.showMessageDialog(null, "relatório de maquina gerado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+
+        } else if (this.categoriaCBox.getSelectedItem().toString().equals("treino por id do cliente")) {
+            Relatorio r = new Relatorio();
+            r.GeraRelatorioTreino("", Long.valueOf(this.jTextField1.getText()));
+            JOptionPane.showMessageDialog(null, "relatório de treino gerado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        } else if (this.categoriaCBox.getSelectedItem().toString().equals("avaliação por id do cliente")) {
+            Relatorio r = new Relatorio();
+            r.GeraRelatorioCondFisico("", Long.valueOf(this.jTextField1.getText()));
+            JOptionPane.showMessageDialog(null, "relatório de avaliação gerado com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_gerarRelatórioButtonActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,5 +168,6 @@ public class GerarRelatório extends javax.swing.JFrame {
     private javax.swing.JButton gerarRelatórioButton;
     private javax.swing.JLabel header;
     private javax.swing.JLabel image;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

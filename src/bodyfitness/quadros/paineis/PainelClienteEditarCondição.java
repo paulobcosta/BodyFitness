@@ -158,7 +158,7 @@ public class PainelClienteEditarCondição extends javax.swing.JFrame {
     private void editarTreinoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTreinoButtonActionPerformed
         // TODO add your handling code here:
         
-        ClienteEditarTreino indices = new ClienteEditarTreino();
+        ClienteEditarTreino indices = new ClienteEditarTreino(this.id);
         indices.setVisible(true);
         
     }//GEN-LAST:event_editarTreinoButtonActionPerformed

@@ -8,6 +8,7 @@ package bodyfitness.pessoas.cliente;
 import bodyfitness.dao.base.EntidadeBase;
 import bodyfitness.pessoas.caracteristicas.SituacaoFinanceira;
 import bodyfitness.pessoas.cliente.caracteristicas.corporal.CondicionamentoFisico;
+import bodyfitness.pessoas.cliente.treino.Treino;
 import bodyfitness.pessoas.generico.Pessoa;
 import bodyfitness.util.UtilBodyfitness;
 import java.util.Calendar;
@@ -61,7 +62,19 @@ public class Cliente extends Pessoa implements EntidadeBase{
     private Date dataDePagamento;
     @Column(name = "pago",nullable = false)
     private boolean pago;
+    @Column(name="treino",nullable = true)
+    private Treino treino;
 
+    public Treino getTreino() {
+        return treino;
+    }
+
+    public void setTreino(Treino treino) {
+        this.treino = treino;
+    }
+
+    
+    
     
     
     public boolean isPago() {
@@ -93,6 +106,7 @@ public class Cliente extends Pessoa implements EntidadeBase{
         this.dataDePagamento = data;
         this.pago = false;
         //this.pagamentos = null;
+        this.treino = new Treino();
     }
 
     public Cliente(String nome) {

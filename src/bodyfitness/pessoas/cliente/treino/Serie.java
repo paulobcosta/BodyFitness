@@ -30,18 +30,23 @@ public class Serie implements Serializable, EntidadeBase {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sequencia_serie")
     private Long id;
     @OneToOne
-    @JoinColumn(name = "equipamento",nullable = false)
+    @JoinColumn(name = "equipamento",nullable = true)
     private Equipamento equipamento;
-    @Column(name = "numero_de_repeticoes",nullable = false)
+    @Column(name = "numero_de_repeticoes",nullable = true)
     private int repeticoes;
-    @Column(name = "numero_de_series",nullable = false)
+    @Column(name = "numero_de_series",nullable = true)
     private int quantidadeDeSeries;
-    @Column(name = "dia",nullable = false)
+    @Column(name = "dia",nullable = true)
     private String dia;
     
     public Serie() {
     }
 
+    public Serie(Equipamento e, int qSerie, int repet) {
+        this.equipamento = e;
+        this.quantidadeDeSeries = qSerie;
+        this.repeticoes = repet;
+    }
     @Override
     public Long getId() {
         return id;

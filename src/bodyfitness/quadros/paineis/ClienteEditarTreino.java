@@ -5,6 +5,15 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.ClienteDAO;
+import bodyfitness.dao.EquipamentoDAO;
+import bodyfitness.equipamentos.Equipamento;
+import bodyfitness.pessoas.cliente.Cliente;
+import bodyfitness.pessoas.cliente.treino.Serie;
+import bodyfitness.pessoas.cliente.treino.Treino;
+import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luan Bodner do Rosário <luan.rosario.bodner@gmail.com>
@@ -14,8 +23,10 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
     /**
      * Creates new form ClienteEditarTreino
      */
-    public ClienteEditarTreino() {
+    private Long id;
+    public ClienteEditarTreino(Long id) {
         initComponents();
+        this.id = id;
     }
 
     /**
@@ -53,7 +64,7 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
         rotuloLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         rotuloLabel.setForeground(new java.awt.Color(254, 254, 254));
         rotuloLabel.setText("Rótulo :");
-        treinoPanel.add(rotuloLabel);
+        //treinoPanel.add(rotuloLabel);
         rotuloLabel.setBounds(60, 160, 100, 50);
 
         idLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
@@ -77,7 +88,7 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
         diaLabel.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         diaLabel.setForeground(new java.awt.Color(254, 254, 254));
         diaLabel.setText("Dia :");
-        treinoPanel.add(diaLabel);
+        //treinoPanel.add(diaLabel);
         diaLabel.setBounds(510, 260, 60, 50);
 
         header.setFont(new java.awt.Font("Cantarell", 0, 36)); // NOI18N
@@ -87,24 +98,35 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
         treinoPanel.add(header);
         header.setBounds(380, 40, 220, 50);
 
-        editarButton.setText("Editar");
+        editarButton.setText("Adicionar");
         treinoPanel.add(editarButton);
         editarButton.setBounds(500, 490, 80, 50);
-        
+
         deletarButton.setText("Deletar");
         treinoPanel.add(deletarButton);
         deletarButton.setBounds(420, 490, 80, 50);
 
-        rotuloTField.addActionListener(new java.awt.event.ActionListener() {
+        /*rotuloTField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rotuloTFieldActionPerformed(evt);
             }
+        });*/
+        deletarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarButtonActionPerformed(evt);
+            }
+
         });
-        treinoPanel.add(rotuloTField);
-        rotuloTField.setBounds(150, 160, 290, 50);
+        editarButton.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt) {
+               editarButtonActionPerformed(evt);
+           } 
+        });
+        //treinoPanel.add(rotuloTField);
+        //rotuloTField.setBounds(150, 160, 290, 50);
         treinoPanel.add(idTField);
         idTField.setBounds(130, 260, 310, 50);
-        treinoPanel.add(coxaEsquerdoTField);
+        // treinoPanel.add(coxaEsquerdoTField);
         coxaEsquerdoTField.setBounds(580, 260, 360, 50);
         treinoPanel.add(qtdSériesTField);
         qtdSériesTField.setBounds(680, 160, 260, 50);
@@ -128,30 +150,51 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(treinoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(treinoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(treinoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(treinoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rotuloTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotuloTFieldActionPerformed
+    /*private void rotuloTFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rotuloTFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rotuloTFieldActionPerformed
-
+    }//GEN-LAST:event_rotuloTFieldActionPerformed*/
     /**
      * @param args the command line arguments
      */
+    private void deletarButtonActionPerformed(ActionEvent evt) {
+        try {
+            ClienteDAO dao = new ClienteDAO();
+            Cliente c= dao.consultarPorId(this.id);
+            c.getTreino().getSeries().clear();
+            dao.persist(c);
+            JOptionPane.showMessageDialog(null,"Treino removido com sucesso!","Confirmação",JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null,"Erro na deleção de treino:\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private void editarButtonActionPerformed(ActionEvent evt) {
+        ClienteDAO dao = new ClienteDAO();
+        Cliente c = dao.consultarPorId(this.id);
+        EquipamentoDAO edao = new EquipamentoDAO();
+        Equipamento e = new Equipamento();
+        e = edao.consultarPorId(Long.valueOf(this.equipamentoCBox.getSelectedItem().toString().split(" - ")[0]));
+        c.getTreino().getSeries().add(new Serie(e,Integer.valueOf(this.qtdSériesTField.getText()),Integer.valueOf(this.repetiçõesTField.getText())));
+        dao.persist(c);
+        JOptionPane.showMessageDialog(null, "Equipamento adicionado ao treino", "confirmação", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -179,7 +222,7 @@ public class ClienteEditarTreino extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClienteEditarTreino().setVisible(true);
+//                new ClienteEditarTreino().setVisible(true);
             }
         });
     }
