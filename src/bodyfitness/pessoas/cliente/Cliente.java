@@ -62,7 +62,7 @@ public class Cliente extends Pessoa implements EntidadeBase{
     private Date dataDePagamento;
     @Column(name = "pago",nullable = false)
     private boolean pago;
-    @Column(name="treino",nullable = true)
+    @JoinColumn(name="treino",nullable = true)
     private Treino treino;
 
     public Treino getTreino() {

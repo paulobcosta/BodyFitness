@@ -5,7 +5,12 @@
  */
 package bodyfitness.quadros.paineis;
 
+import bodyfitness.dao.AdministradorDAO;
+import bodyfitness.dao.FuncionarioDAO;
+import bodyfitness.pessoas.funcionarios.Administrador;
+import java.security.MessageDigest;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -95,13 +100,36 @@ public class LoginSistema extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        
-        this.setVisible(false);
-        
-        JFrame menu = new MenuPrincipal();
-        
-        menu.setVisible(true);
-        
+        AdministradorDAO adao = new AdministradorDAO();
+        FuncionarioDAO fdao = new FuncionarioDAO();
+        boolean verificaADM = false;
+        try {
+            Administrador adm = adao.consultarPorUsuario(this.usuarioTField.getText());
+            String senha = this.senhaTField.getText();
+            MessageDigest algorithm = MessageDigest.getInstance("MD5");
+            byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigest) {
+                hexString.append(String.format("%02X", 0xFF & b));
+            }
+            String senhaCriptografada = hexString.toString();
+            if (senhaCriptografada.equals(adm.getSenha())) {
+                verificaADM = true;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro no login, acesso comum", "Erro", JOptionPane.INFORMATION_MESSAGE);
+
+        } finally {
+            this.setVisible(false);
+            if(verificaADM == false) {
+                JOptionPane.showMessageDialog(null, "Erro no login, acesso comum", "Erro", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+            JFrame menu = new MenuPrincipal(verificaADM);
+
+            menu.setVisible(true);
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
