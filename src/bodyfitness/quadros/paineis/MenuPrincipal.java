@@ -11,13 +11,17 @@ import javax.swing.JFrame;
  *
  * @author a1509950
  */
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuPrincipal
      */
+    private boolean verificaLogin;
     public MenuPrincipal(Boolean verificaADM) {
         initComponents();
+        this.verificaLogin = verificaADM;
+    
     }
 
     /**
