@@ -48,7 +48,7 @@ public class confirmaPagamento extends javax.swing.JFrame {
         okButton = new javax.swing.JButton();
         image = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         consultaPanel.setLayout(null);
 
@@ -112,7 +112,7 @@ public class confirmaPagamento extends javax.swing.JFrame {
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
         consultaPanel.add(image);
-        image.setBounds(-50, -50, 1968, 1080);
+        image.setBounds(-50, -50, 1971, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

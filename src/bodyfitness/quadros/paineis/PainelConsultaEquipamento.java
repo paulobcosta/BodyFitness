@@ -44,7 +44,7 @@ public class PainelConsultaEquipamento extends javax.swing.JFrame {
         buscaTable = new javax.swing.JTable();
         image = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         consultaPanel.setLayout(null);
 

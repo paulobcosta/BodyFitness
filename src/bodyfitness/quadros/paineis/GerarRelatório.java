@@ -79,7 +79,7 @@ public class GerarRelatório extends javax.swing.JFrame {
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
         gerarRelatório.add(image);
-        image.setBounds(-130, 10, 1968, 1080);
+        image.setBounds(-120, -50, 1971, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

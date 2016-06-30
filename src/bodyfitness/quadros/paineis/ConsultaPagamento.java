@@ -54,6 +54,11 @@ public class ConsultaPagamento extends javax.swing.JFrame {
         buscaLabel.setBounds(20, 120, 90, 50);
 
         buscaButton.setText("Buscar");
+        buscaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscaButtonActionPerformed(evt);
+            }
+        });
         consultaPagamentoPanel.add(buscaButton);
         buscaButton.setBounds(800, 120, 180, 50);
         consultaPagamentoPanel.add(buscaTField);
@@ -101,6 +106,10 @@ public class ConsultaPagamento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buscaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscaButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -9,26 +9,18 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="consultasMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Consultas"/>
+            <Property name="text" type="java.lang.String" value="Consulta"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultasMenuActionPerformed"/>
           </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="consultaCliente">
+            <MenuItem class="javax.swing.JMenuItem" name="consultaAula">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta Cliente"/>
+                <Property name="text" type="java.lang.String" value="Consulta Aula"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaClienteActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="consultaFunc">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta Funcion&#xe1;rio"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaFuncActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaAulaActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="consultaEndere&#xe7;o">
@@ -39,12 +31,28 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaEndere&#xe7;oActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="consultaPagamento">
+            <MenuItem class="javax.swing.JMenuItem" name="consultaCliente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta Pagamento"/>
+                <Property name="text" type="java.lang.String" value="Consulta Cliente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaPagamentoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaClienteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="consultaEquipamento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consulta Equipamento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaEquipamentoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="consultaFunc">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consulta Funcion&#xe1;rio"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaFuncActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -62,9 +70,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroAdmActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="cadastroAula">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastro Aula"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroAulaActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="cadastroCargo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastro de Cargo"/>
+                <Property name="text" type="java.lang.String" value="Cadastro Cargo"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroCargoActionPerformed"/>
@@ -72,7 +88,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="cadastroFunc">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastro de Funcion&#xe1;rios"/>
+                <Property name="text" type="java.lang.String" value="Cadastro Funcion&#xe1;rios"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroFuncActionPerformed"/>
@@ -84,6 +100,67 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroClienteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="cadastroEquipamento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastro Equipamento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroEquipamentoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="gerarRelat&#xf3;rioMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gerar Relat&#xf3;rios"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="grMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerar pdfs"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="excluirMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Exclus&#xe3;o"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="excluiDados">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir Dados"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="excluiDadosActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="confirmarMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Confirma&#xe7;&#xf5;es"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="confirmaManuten&#xe7;&#xe3;o">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Confirmar Data de Manuten&#xe7;&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmaManuten&#xe7;&#xe3;oActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="confirmaPagamento">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Confirmar Pagamento"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmaPagamentoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -161,7 +238,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="-220" y="-50" width="1270" height="790"/>
+              <AbsoluteConstraints x="-890" y="0" width="1890" height="790"/>
             </Constraint>
           </Constraints>
         </Component>

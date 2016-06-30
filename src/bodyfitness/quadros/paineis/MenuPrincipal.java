@@ -11,17 +11,17 @@ import javax.swing.JFrame;
  *
  * @author a1509950
  */
-
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuPrincipal
      */
     private boolean verificaLogin;
+
     public MenuPrincipal(Boolean verificaADM) {
         initComponents();
         this.verificaLogin = verificaADM;
-    
+
     }
 
     /**
@@ -37,15 +37,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
         barraPrincipalMBar = new javax.swing.JMenuBar();
         consultasMenu = new javax.swing.JMenu();
-        consultaCliente = new javax.swing.JMenuItem();
-        consultaFunc = new javax.swing.JMenuItem();
+        consultaAula = new javax.swing.JMenuItem();
         consultaEndereço = new javax.swing.JMenuItem();
-        consultaPagamento = new javax.swing.JMenuItem();
+        consultaCliente = new javax.swing.JMenuItem();
+        consultaEquipamento = new javax.swing.JMenuItem();
+        consultaFunc = new javax.swing.JMenuItem();
         cadastroMenu = new javax.swing.JMenu();
         cadastroAdm = new javax.swing.JMenuItem();
+        cadastroAula = new javax.swing.JMenuItem();
         cadastroCargo = new javax.swing.JMenuItem();
         cadastroFunc = new javax.swing.JMenuItem();
         cadastroCliente = new javax.swing.JMenuItem();
+        cadastroEquipamento = new javax.swing.JMenuItem();
+        gerarRelatórioMenu = new javax.swing.JMenu();
+        grMenuItem = new javax.swing.JMenuItem();
+        excluirMenu = new javax.swing.JMenu();
+        excluiDados = new javax.swing.JMenuItem();
+        confirmarMenu = new javax.swing.JMenu();
+        confirmaManutenção = new javax.swing.JMenuItem();
+        confirmaPagamento = new javax.swing.JMenuItem();
         sairMenu = new javax.swing.JMenu();
         mudarUsuario = new javax.swing.JMenuItem();
 
@@ -58,7 +68,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/índice.jpg"))); // NOI18N
         image.setText("jLabel1");
         menuPanel.add(image);
-        image.setBounds(-220, -50, 1270, 790);
+        image.setBounds(-890, 0, 1890, 790);
 
         barraPrincipalMBar.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
@@ -66,28 +76,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        consultasMenu.setText("Consultas");
+        consultasMenu.setText("Consulta");
         consultasMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultasMenuActionPerformed(evt);
             }
         });
 
-        consultaCliente.setText("Consulta Cliente");
-        consultaCliente.addActionListener(new java.awt.event.ActionListener() {
+        consultaAula.setText("Consulta Aula");
+        consultaAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaClienteActionPerformed(evt);
+                consultaAulaActionPerformed(evt);
             }
         });
-        consultasMenu.add(consultaCliente);
-
-        consultaFunc.setText("Consulta Funcionário");
-        consultaFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaFuncActionPerformed(evt);
-            }
-        });
-        consultasMenu.add(consultaFunc);
+        consultasMenu.add(consultaAula);
 
         consultaEndereço.setText("Consulta Endereço");
         consultaEndereço.addActionListener(new java.awt.event.ActionListener() {
@@ -97,13 +99,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         consultasMenu.add(consultaEndereço);
 
-        consultaPagamento.setText("Consulta Pagamento");
-        consultaPagamento.addActionListener(new java.awt.event.ActionListener() {
+        consultaCliente.setText("Consulta Cliente");
+        consultaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaPagamentoActionPerformed(evt);
+                consultaClienteActionPerformed(evt);
             }
         });
-        consultasMenu.add(consultaPagamento);
+        consultasMenu.add(consultaCliente);
+
+        consultaEquipamento.setText("Consulta Equipamento");
+        consultaEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaEquipamentoActionPerformed(evt);
+            }
+        });
+        consultasMenu.add(consultaEquipamento);
+
+        consultaFunc.setText("Consulta Funcionário");
+        consultaFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaFuncActionPerformed(evt);
+            }
+        });
+        consultasMenu.add(consultaFunc);
 
         barraPrincipalMBar.add(consultasMenu);
 
@@ -117,7 +135,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         cadastroMenu.add(cadastroAdm);
 
-        cadastroCargo.setText("Cadastro de Cargo");
+        cadastroAula.setText("Cadastro Aula");
+        cadastroAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroAulaActionPerformed(evt);
+            }
+        });
+        cadastroMenu.add(cadastroAula);
+
+        cadastroCargo.setText("Cadastro Cargo");
         cadastroCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastroCargoActionPerformed(evt);
@@ -125,7 +151,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         cadastroMenu.add(cadastroCargo);
 
-        cadastroFunc.setText("Cadastro de Funcionários");
+        cadastroFunc.setText("Cadastro Funcionários");
         cadastroFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastroFuncActionPerformed(evt);
@@ -141,7 +167,59 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         cadastroMenu.add(cadastroCliente);
 
+        cadastroEquipamento.setText("Cadastro Equipamento");
+        cadastroEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroEquipamentoActionPerformed(evt);
+            }
+        });
+        cadastroMenu.add(cadastroEquipamento);
+
         barraPrincipalMBar.add(cadastroMenu);
+
+        gerarRelatórioMenu.setText("Gerar Relatórios");
+
+        grMenuItem.setText("Gerar pdfs");
+        grMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grMenuItemActionPerformed(evt);
+            }
+        });
+        gerarRelatórioMenu.add(grMenuItem);
+
+        barraPrincipalMBar.add(gerarRelatórioMenu);
+
+        excluirMenu.setText("Exclusão");
+
+        excluiDados.setText("Excluir Dados");
+        excluiDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluiDadosActionPerformed(evt);
+            }
+        });
+        excluirMenu.add(excluiDados);
+
+        barraPrincipalMBar.add(excluirMenu);
+
+        confirmarMenu.setText("Confirmações");
+
+        confirmaManutenção.setText("Confirmar Data de Manutenção");
+        confirmaManutenção.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmaManutençãoActionPerformed(evt);
+            }
+        });
+        confirmarMenu.add(confirmaManutenção);
+
+        confirmaPagamento.setText("Confirmar Pagamento");
+        confirmaPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmaPagamentoActionPerformed(evt);
+            }
+        });
+        confirmarMenu.add(confirmaPagamento);
+
+        barraPrincipalMBar.add(confirmarMenu);
 
         sairMenu.setText("Sair");
 
@@ -184,73 +262,120 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void consultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaClienteActionPerformed
         // TODO add your handling code here:
         JFrame consultaCliente = new PainelConsultaCliente();
-        
+
         consultaCliente.setVisible(true);
     }//GEN-LAST:event_consultaClienteActionPerformed
 
     private void consultaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFuncActionPerformed
         // TODO add your handling code here:
         JFrame consultaFunc = new PainelConsultaFuncionarios();
-        
+
         consultaFunc.setVisible(true);
     }//GEN-LAST:event_consultaFuncActionPerformed
 
     private void consultaEndereçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaEndereçoActionPerformed
         // TODO add your handling code here:
-        
+
         JFrame consultaEnd = new ConsultaEndereçoCliente();
-        
+
         consultaEnd.setVisible(true);
     }//GEN-LAST:event_consultaEndereçoActionPerformed
 
     private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
         // TODO add your handling code here:
-        
+
         JFrame cadastroCliente = new PainelCadastroCliente();
-        
+
         cadastroCliente.setVisible(true);
     }//GEN-LAST:event_cadastroClienteActionPerformed
 
     private void cadastroAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroAdmActionPerformed
         // TODO add your handling code here:
-        
+
         JFrame cadastroAdm = new CadastroAdministradores();
-        
+
         cadastroAdm.setVisible(true);
     }//GEN-LAST:event_cadastroAdmActionPerformed
 
     private void cadastroCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCargoActionPerformed
         // TODO add your handling code here:
-        
+
         JFrame cadastroCargo = new CadastroCargo();
-        
+
         cadastroCargo.setVisible(true);
     }//GEN-LAST:event_cadastroCargoActionPerformed
 
     private void cadastroFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroFuncActionPerformed
         // TODO add your handling code here:
-        
+
         JFrame cadastroFunc = new CadastroFuncionário();
-        
+
         cadastroFunc.setVisible(true);
     }//GEN-LAST:event_cadastroFuncActionPerformed
 
-    private void consultaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaPagamentoActionPerformed
-        // TODO add your handling code here:
-        
-        JFrame consultaPag = new ConsultaPagamento();
-        
-        consultaPag.setVisible(true);
-    }//GEN-LAST:event_consultaPagamentoActionPerformed
-
     private void mudarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mudarUsuarioActionPerformed
         // TODO add your handling code here:
-        
+
         JFrame loginSistema = new LoginSistema();
-        
+
         this.setVisible(false);
         loginSistema.setVisible(true);
     }//GEN-LAST:event_mudarUsuarioActionPerformed
+
+    private void cadastroAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroAulaActionPerformed
+        // TODO add your handling code here:
+
+        CadastroAula caula = new CadastroAula();
+        caula.setVisible(true);
+    }//GEN-LAST:event_cadastroAulaActionPerformed
+
+    private void consultaAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaAulaActionPerformed
+        // TODO add your handling code here:
+
+        ConsultaAula aula = new ConsultaAula();
+        aula.setVisible(true);
+    }//GEN-LAST:event_consultaAulaActionPerformed
+
+    private void consultaEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaEquipamentoActionPerformed
+        // TODO add your handling code here:
+
+        PainelConsultaEquipamento pce = new PainelConsultaEquipamento();
+        pce.setVisible(true);
+    }//GEN-LAST:event_consultaEquipamentoActionPerformed
+
+    private void cadastroEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroEquipamentoActionPerformed
+        // TODO add your handling code here:
+
+        PainelCadastroEquipamento equi = new PainelCadastroEquipamento();
+        equi.setVisible(true);
+    }//GEN-LAST:event_cadastroEquipamentoActionPerformed
+
+    private void grMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grMenuItemActionPerformed
+        // TODO add your handling code here:
+
+        GerarRelatório gr = new GerarRelatório();
+        gr.setVisible(true);
+    }//GEN-LAST:event_grMenuItemActionPerformed
+
+    private void excluiDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluiDadosActionPerformed
+        // TODO add your handling code here:
+
+        PainelExclusão pe = new PainelExclusão();
+        pe.setVisible(true);
+    }//GEN-LAST:event_excluiDadosActionPerformed
+
+    private void confirmaManutençãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaManutençãoActionPerformed
+        // TODO add your handling code here:
+        confirmaManutenção cm = new confirmaManutenção();
+        cm.setVisible(true);
+        
+    }//GEN-LAST:event_confirmaManutençãoActionPerformed
+
+    private void confirmaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPagamentoActionPerformed
+        // TODO add your handling code here:
+        confirmaPagamento cp = new confirmaPagamento();
+        cp.setVisible(true);
+    }//GEN-LAST:event_confirmaPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,7 +407,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new MenuPrincipal().setVisible(true);
+                // new MenuPrincipal().setVisible(true);
             }
         });
     }
@@ -290,20 +415,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraPrincipalMBar;
     private javax.swing.JMenuItem cadastroAdm;
+    private javax.swing.JMenuItem cadastroAula;
     private javax.swing.JMenuItem cadastroCargo;
     private javax.swing.JMenuItem cadastroCliente;
+    private javax.swing.JMenuItem cadastroEquipamento;
     private javax.swing.JMenuItem cadastroFunc;
     private javax.swing.JMenu cadastroMenu;
+    private javax.swing.JMenuItem confirmaManutenção;
+    private javax.swing.JMenuItem confirmaPagamento;
+    private javax.swing.JMenu confirmarMenu;
+    private javax.swing.JMenuItem consultaAula;
     private javax.swing.JMenuItem consultaCliente;
     private javax.swing.JMenuItem consultaEndereço;
+    private javax.swing.JMenuItem consultaEquipamento;
     private javax.swing.JMenuItem consultaFunc;
-    private javax.swing.JMenuItem consultaPagamento;
     private javax.swing.JMenu consultasMenu;
+    private javax.swing.JMenuItem excluiDados;
+    private javax.swing.JMenu excluirMenu;
+    private javax.swing.JMenu gerarRelatórioMenu;
+    private javax.swing.JMenuItem grMenuItem;
     private javax.swing.JLabel image;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JMenuItem mudarUsuario;
     private javax.swing.JMenu sairMenu;
     // End of variables declaration//GEN-END:variables
-
 
 }

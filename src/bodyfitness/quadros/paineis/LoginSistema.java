@@ -122,11 +122,12 @@ public class LoginSistema extends javax.swing.JFrame {
 
         } finally {
             this.setVisible(false);
+            
             if(verificaADM == false) {
                 JOptionPane.showMessageDialog(null, "Erro no login, acesso comum", "Erro", JOptionPane.INFORMATION_MESSAGE);
 
             }
-            JFrame menu = new MenuPrincipal(verificaADM);
+            MenuPrincipal menu = new MenuPrincipal(verificaADM);
 
             menu.setVisible(true);
         }
