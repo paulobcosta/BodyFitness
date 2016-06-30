@@ -6,6 +6,7 @@
 package bodyfitness.quadros.paineis;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -270,7 +271,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFrame consultaFunc = new PainelConsultaFuncionarios();
 
-        consultaFunc.setVisible(true);
+        if (verificaLogin) {
+            consultaFunc.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar essa tela!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_consultaFuncActionPerformed
 
     private void consultaEndereçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaEndereçoActionPerformed
@@ -279,6 +284,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         JFrame consultaEnd = new ConsultaEndereçoCliente();
 
         consultaEnd.setVisible(true);
+
     }//GEN-LAST:event_consultaEndereçoActionPerformed
 
     private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
@@ -293,8 +299,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         JFrame cadastroAdm = new CadastroAdministradores();
-
-        cadastroAdm.setVisible(true);
+        if (verificaLogin) {
+            cadastroAdm.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar essa tela!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_cadastroAdmActionPerformed
 
     private void cadastroCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCargoActionPerformed
@@ -310,7 +319,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         JFrame cadastroFunc = new CadastroFuncionário();
 
-        cadastroFunc.setVisible(true);
+        if (verificaLogin) {
+            cadastroFunc.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar essa tela!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_cadastroFuncActionPerformed
 
     private void mudarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mudarUsuarioActionPerformed
@@ -361,14 +374,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         PainelExclusão pe = new PainelExclusão();
-        pe.setVisible(true);
+        if (verificaLogin) {
+            pe.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar essa tela!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_excluiDadosActionPerformed
 
     private void confirmaManutençãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaManutençãoActionPerformed
         // TODO add your handling code here:
         confirmaManutenção cm = new confirmaManutenção();
         cm.setVisible(true);
-        
+
     }//GEN-LAST:event_confirmaManutençãoActionPerformed
 
     private void confirmaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPagamentoActionPerformed
